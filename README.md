@@ -2,6 +2,22 @@
 
 This repository is the clean reproducibility release of an MSc dissertation study of **PC-STE** (Physics-Conditioned Spectral–Temporal Encoder) for rotating-machinery fault diagnosis. It represents the experiment that was actually executed.
 
+## Quick review
+
+If you are reviewing the dissertation implementation, the main entry points are:
+
+- **Model and training implementation:** `src/methodology_v2/`
+- **Experiment entry points:** `scripts/`
+- **Dataset acquisition, layout and integrity:** `DATA.md`
+- **Frozen experimental specifications, splits and manifests:** `methodology_v2/`
+- **Reproducibility instructions:** `docs/reproducibility.md`
+- **Final compact results:** `results/`
+- **Result provenance:** `results/PROVENANCE.md`
+- **Reduced-label recovery provenance:** `docs/low_label_provenance.md`
+- **Repository map:** `docs/repository_structure.md`
+
+Raw third-party vibration recordings and trained checkpoints are intentionally not redistributed. The repository includes the dataset hashes, manifests, split definitions, preprocessing specifications, compact results and execution paths required to inspect and reproduce the study after obtaining the datasets from their original sources.
+
 ## Scientific scope and provenance
 
 Masked-reconstruction SSL used CWRU, JNU, HIT and MaFaulDa. The original downstream S0/S1 experiment also used all four datasets, four dataset-specific heads and four-domain validation `MacroDomainF1`. Dissertation-facing **Macro-3** tables were subsequently derived as the equal mean of JNU, HIT and MaFaulDa Macro-F1. They must not be interpreted as natively three-domain training.
@@ -10,7 +26,7 @@ S0 is a randomly initialized PC-STE trained end-to-end with supervised loss. S1 
 
 ## Data and preprocessing
 
-The four third-party datasets are not distributed here.
+The four third-party datasets are not distributed here. See [`DATA.md`](DATA.md) for acquisition, local layout, channels, sampling rates and the included integrity/reproducibility metadata.
 
 | Dataset | Expected local path below `PCSTE_DATA_ROOT` | Channel | Native rate |
 |---|---|---|---:|
@@ -59,7 +75,7 @@ Exact public label-efficiency execution paths are included:
 - 10%: `scripts/run_methodology_v2_10pct.py`
 - 100%: `scripts/methodology_v2/experiment_executor.py`
 
-The 1% path is a reduced-label extension executed after the primary registered grid. All paths train CWRU, JNU, HIT and MaFaulDa with four dataset heads and select checkpoints by four-domain validation `MacroDomainF1`. Principal Macro-3 reporting is the post-hoc mean over JNU, HIT and MaFaulDa; these are not native three-domain experiments. See `docs/reproducibility.md` and `docs/low_label_provenance.md`.
+The 1% path is a reduced-label extension executed after the primary registered grid. All paths train CWRU, JNU, HIT and MaFaulDa with four dataset heads and select checkpoints by four-domain validation `MacroDomainF1`. Principal Macro-3 reporting is the later mean over JNU, HIT and MaFaulDa from the saved four-domain outputs; these are not native three-domain experiments. See `docs/reproducibility.md` and `docs/low_label_provenance.md`.
 
 To reproduce the existing compact analyses after generating checkpoints/results:
 
@@ -71,7 +87,7 @@ python scripts/methodology_v2/benchmark_part6_latency.py --help
 
 ## Results summary
 
-Compact, unchanged result tables are under `results/tables/`; selected figures are under `results/figures/`. Principal reported means include full-label S0 Macro-3 0.9214, S1 0.9199, K1 0.936913 and Q8(K1) 0.937011. These are post-hoc Macro-3 summaries of models trained under the executed four-domain protocol. See `results/PROVENANCE.md` before reuse.
+Compact, unchanged result tables are under `results/tables/`; selected figures are under `results/figures/`. Principal reported means include full-label S0 Macro-3 0.9214, S1 0.9199, K1 0.936913 and Q8(K1) 0.937011. These are Macro-3 summaries of models trained under the executed four-domain protocol. See `results/PROVENANCE.md` before reuse.
 
 ## Repository layout
 

@@ -17,7 +17,7 @@
 - Sampling: effective batch 64 = 16 windows per dataset, with replacement; dataset→class→group→window supervised hierarchy. Fold-specific steps/epoch: 202, 205, 201.
 - Downstream selector: maximum four-domain validation MacroDomainF1, strict improvement, earlier epoch on exact ties.
 - TEST: checkpoint sealed first; one TEST evaluation; no TEST-driven selection.
-- Macro-3 reports: post-hoc mean of JNU, HIT and MaFaulDa from saved four-domain outputs.
+- Macro-3 reports: later mean of JNU, HIT and MaFaulDa from saved four-domain outputs.
 - K1: 1,375,953-parameter unidirectional encoder, initialized by retaining the forward direction of all four S1 blocks; CE + KL plus relational mixer-attention KL.
 
 ## Roots
@@ -28,6 +28,17 @@
 
 `methodology_v2/part1_audit` through `part6_compression` include the dataset audit, splits, window manifests, N2 normalizers, architecture/SSL/experiment/compression specifications, registries and hashes. The largest manifest is under 9 MB and is included directly.
 
-## Low-label reproducibility gaps
+## Label-efficiency execution paths
 
-The frozen subset/registry supports 5% and 10%, but the surviving executor is explicitly authorized only for 100%. No exact surviving 1% subset definition or launcher exists. The exact additional launch paths and run artifacts that produced dissertation-facing 1%, 5% and 10% results are therefore not reproducible from this release. No replacement was fabricated.
+The publication release contains the execution paths used for all dissertation-facing label fractions:
+
+- 1%: `scripts/run_methodology_v2_1pct_extension.py`
+- 5%: `scripts/run_methodology_v2_5pct.py`
+- 10%: `scripts/run_methodology_v2_10pct.py`
+- 100%: `scripts/methodology_v2/experiment_executor.py`
+
+The 1% experiment is retained with its historical provenance as a reduced-label extension executed after the primary registered grid. The 5% and 10% launchers belong to the registered reduced-label grid. All four public execution paths preserve the executed four-domain supervised protocol: CWRU, JNU, HIT and MaFaulDa contribute supervised loss and encoder gradients through four dataset-specific heads; checkpoints are selected by four-domain validation MacroDomainF1; the principal reported Macro-3 statistic averages JNU, HIT and MaFaulDa from the saved four-domain outputs.
+
+The original 1%, 5% and 10% launchers were recovered from their authoritative execution copies. Their historical and publication SHA-256 hashes, publication-only portability edits, output naming and pairing evidence are documented in `docs/low_label_provenance.md`. Original compact result summaries are under `results/tables/low_label/`, and original S0/S1 subset/stream pairing proofs are under `methodology_v2/low_label_provenance/`.
+
+Raw datasets, model checkpoints, full predictions, continuous-score caches and full experiment run trees are deliberately not included. Artifact-dependent integration tests therefore require locally regenerated or separately preserved artifacts, but the publication repository contains the code paths, frozen scientific specifications, manifests, compact result summaries and provenance needed to inspect and rerun the study after obtaining the third-party datasets.
