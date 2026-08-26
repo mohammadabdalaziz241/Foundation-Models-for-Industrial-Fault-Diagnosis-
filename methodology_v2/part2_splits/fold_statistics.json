@@ -1,0 +1,1244 @@
+{
+ "1": {
+  "CWRU": {
+   "test": {
+    "duration_s": 106.72,
+    "groups": 3,
+    "per_class": {
+     "B007": {
+      "duration_s": 35.57,
+      "groups": 1,
+      "recordings": 4
+     },
+     "IR021": {
+      "duration_s": 35.62,
+      "groups": 1,
+      "recordings": 4
+     },
+     "OR014@6": {
+      "duration_s": 35.52,
+      "groups": 1,
+      "recordings": 4
+     }
+    },
+    "recordings": 12
+   },
+   "train": {
+    "duration_s": 172.99,
+    "groups": 3,
+    "per_class": {
+     "B014": {
+      "duration_s": 35.62,
+      "groups": 1,
+      "recordings": 4
+     },
+     "IR007": {
+      "duration_s": 35.45,
+      "groups": 1,
+      "recordings": 4
+     },
+     "OR021@12": {
+      "duration_s": 33.12,
+      "groups": 1,
+      "recordings": 4
+     },
+     "OR021@3": {
+      "duration_s": 33.13,
+      "groups": 1,
+      "recordings": 4
+     },
+     "OR021@6": {
+      "duration_s": 35.68,
+      "groups": 1,
+      "recordings": 4
+     }
+    },
+    "recordings": 20
+   },
+   "validation": {
+    "duration_s": 166.47,
+    "groups": 3,
+    "per_class": {
+     "B021": {
+      "duration_s": 35.52,
+      "groups": 1,
+      "recordings": 4
+     },
+     "IR014": {
+      "duration_s": 29.56,
+      "groups": 1,
+      "recordings": 4
+     },
+     "OR007@12": {
+      "duration_s": 32.93,
+      "groups": 1,
+      "recordings": 4
+     },
+     "OR007@3": {
+      "duration_s": 32.95,
+      "groups": 1,
+      "recordings": 4
+     },
+     "OR007@6": {
+      "duration_s": 35.52,
+      "groups": 1,
+      "recordings": 4
+     }
+    },
+    "recordings": 20
+   }
+  },
+  "HIT": {
+   "test": {
+    "duration_s": 294.91,
+    "groups": 20,
+    "per_class": {
+     "0": {
+      "duration_s": 117.96,
+      "groups": 8,
+      "recordings": 8
+     },
+     "1": {
+      "duration_s": 117.96,
+      "groups": 8,
+      "recordings": 8
+     },
+     "2": {
+      "duration_s": 58.98,
+      "groups": 4,
+      "recordings": 4
+     }
+    },
+    "recordings": 20
+   },
+   "train": {
+    "duration_s": 1386.09,
+    "groups": 94,
+    "per_class": {
+     "0": {
+      "duration_s": 545.59,
+      "groups": 37,
+      "recordings": 37
+     },
+     "1": {
+      "duration_s": 589.82,
+      "groups": 40,
+      "recordings": 40
+     },
+     "2": {
+      "duration_s": 250.68,
+      "groups": 17,
+      "recordings": 17
+     }
+    },
+    "recordings": 94
+   },
+   "validation": {
+    "duration_s": 294.91,
+    "groups": 20,
+    "per_class": {
+     "0": {
+      "duration_s": 117.96,
+      "groups": 8,
+      "recordings": 8
+     },
+     "1": {
+      "duration_s": 117.96,
+      "groups": 8,
+      "recordings": 8
+     },
+     "2": {
+      "duration_s": 58.98,
+      "groups": 4,
+      "recordings": 4
+     }
+    },
+    "recordings": 20
+   }
+  },
+  "JNU": {
+   "test": {
+    "duration_s": 36.04,
+    "groups": 12,
+    "per_class": {
+     "ib": {
+      "duration_s": 6.01,
+      "groups": 3,
+      "recordings": 3
+     },
+     "n": {
+      "duration_s": 18.02,
+      "groups": 3,
+      "recordings": 3
+     },
+     "ob": {
+      "duration_s": 6.01,
+      "groups": 3,
+      "recordings": 3
+     },
+     "tb": {
+      "duration_s": 6.01,
+      "groups": 3,
+      "recordings": 3
+     }
+    },
+    "recordings": 12
+   },
+   "train": {
+    "duration_s": 108.11,
+    "groups": 36,
+    "per_class": {
+     "ib": {
+      "duration_s": 18.02,
+      "groups": 9,
+      "recordings": 3
+     },
+     "n": {
+      "duration_s": 54.05,
+      "groups": 9,
+      "recordings": 3
+     },
+     "ob": {
+      "duration_s": 18.02,
+      "groups": 9,
+      "recordings": 3
+     },
+     "tb": {
+      "duration_s": 18.02,
+      "groups": 9,
+      "recordings": 3
+     }
+    },
+    "recordings": 12
+   },
+   "validation": {
+    "duration_s": 36.04,
+    "groups": 12,
+    "per_class": {
+     "ib": {
+      "duration_s": 6.01,
+      "groups": 3,
+      "recordings": 3
+     },
+     "n": {
+      "duration_s": 18.02,
+      "groups": 3,
+      "recordings": 3
+     },
+     "ob": {
+      "duration_s": 6.01,
+      "groups": 3,
+      "recordings": 3
+     },
+     "tb": {
+      "duration_s": 6.01,
+      "groups": 3,
+      "recordings": 3
+     }
+    },
+    "recordings": 12
+   }
+  },
+  "MAFAULDA": {
+   "test": {
+    "duration_s": 2235.0,
+    "groups": 16,
+    "per_class": {
+     "horizontal-misalignment": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "imbalance": {
+      "duration_s": 235.0,
+      "groups": 1,
+      "recordings": 47
+     },
+     "normal": {
+      "duration_s": 35.0,
+      "groups": 7,
+      "recordings": 7
+     },
+     "overhang/ball_fault": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "overhang/cage_fault": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "overhang/outer_race": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "underhang/ball_fault": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "underhang/cage_fault": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "underhang/outer_race": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "vertical-misalignment": {
+      "duration_s": 250.0,
+      "groups": 1,
+      "recordings": 50
+     }
+    },
+    "recordings": 447
+   },
+   "train": {
+    "duration_s": 5460.0,
+    "groups": 58,
+    "per_class": {
+     "horizontal-misalignment": {
+      "duration_s": 495.0,
+      "groups": 2,
+      "recordings": 99
+     },
+     "imbalance": {
+      "duration_s": 1190.0,
+      "groups": 5,
+      "recordings": 238
+     },
+     "normal": {
+      "duration_s": 175.0,
+      "groups": 35,
+      "recordings": 35
+     },
+     "overhang/ball_fault": {
+      "duration_s": 315.0,
+      "groups": 2,
+      "recordings": 63
+     },
+     "overhang/cage_fault": {
+      "duration_s": 450.0,
+      "groups": 2,
+      "recordings": 90
+     },
+     "overhang/outer_race": {
+      "duration_s": 450.0,
+      "groups": 2,
+      "recordings": 90
+     },
+     "underhang/ball_fault": {
+      "duration_s": 440.0,
+      "groups": 2,
+      "recordings": 88
+     },
+     "underhang/cage_fault": {
+      "duration_s": 450.0,
+      "groups": 2,
+      "recordings": 90
+     },
+     "underhang/outer_race": {
+      "duration_s": 490.0,
+      "groups": 2,
+      "recordings": 98
+     },
+     "vertical-misalignment": {
+      "duration_s": 1005.0,
+      "groups": 4,
+      "recordings": 201
+     }
+    },
+    "recordings": 1092
+   },
+   "validation": {
+    "duration_s": 2060.0,
+    "groups": 16,
+    "per_class": {
+     "horizontal-misalignment": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "imbalance": {
+      "duration_s": 240.0,
+      "groups": 1,
+      "recordings": 48
+     },
+     "normal": {
+      "duration_s": 35.0,
+      "groups": 7,
+      "recordings": 7
+     },
+     "overhang/ball_fault": {
+      "duration_s": 125.0,
+      "groups": 1,
+      "recordings": 25
+     },
+     "overhang/cage_fault": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "overhang/outer_race": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "underhang/ball_fault": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "underhang/cage_fault": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "underhang/outer_race": {
+      "duration_s": 185.0,
+      "groups": 1,
+      "recordings": 37
+     },
+     "vertical-misalignment": {
+      "duration_s": 250.0,
+      "groups": 1,
+      "recordings": 50
+     }
+    },
+    "recordings": 412
+   }
+  }
+ },
+ "2": {
+  "CWRU": {
+   "test": {
+    "duration_s": 172.99,
+    "groups": 3,
+    "per_class": {
+     "B014": {
+      "duration_s": 35.62,
+      "groups": 1,
+      "recordings": 4
+     },
+     "IR007": {
+      "duration_s": 35.45,
+      "groups": 1,
+      "recordings": 4
+     },
+     "OR021@12": {
+      "duration_s": 33.12,
+      "groups": 1,
+      "recordings": 4
+     },
+     "OR021@3": {
+      "duration_s": 33.13,
+      "groups": 1,
+      "recordings": 4
+     },
+     "OR021@6": {
+      "duration_s": 35.68,
+      "groups": 1,
+      "recordings": 4
+     }
+    },
+    "recordings": 20
+   },
+   "train": {
+    "duration_s": 166.47,
+    "groups": 3,
+    "per_class": {
+     "B021": {
+      "duration_s": 35.52,
+      "groups": 1,
+      "recordings": 4
+     },
+     "IR014": {
+      "duration_s": 29.56,
+      "groups": 1,
+      "recordings": 4
+     },
+     "OR007@12": {
+      "duration_s": 32.93,
+      "groups": 1,
+      "recordings": 4
+     },
+     "OR007@3": {
+      "duration_s": 32.95,
+      "groups": 1,
+      "recordings": 4
+     },
+     "OR007@6": {
+      "duration_s": 35.52,
+      "groups": 1,
+      "recordings": 4
+     }
+    },
+    "recordings": 20
+   },
+   "validation": {
+    "duration_s": 106.72,
+    "groups": 3,
+    "per_class": {
+     "B007": {
+      "duration_s": 35.57,
+      "groups": 1,
+      "recordings": 4
+     },
+     "IR021": {
+      "duration_s": 35.62,
+      "groups": 1,
+      "recordings": 4
+     },
+     "OR014@6": {
+      "duration_s": 35.52,
+      "groups": 1,
+      "recordings": 4
+     }
+    },
+    "recordings": 12
+   }
+  },
+  "HIT": {
+   "test": {
+    "duration_s": 294.91,
+    "groups": 20,
+    "per_class": {
+     "0": {
+      "duration_s": 117.96,
+      "groups": 8,
+      "recordings": 8
+     },
+     "1": {
+      "duration_s": 117.96,
+      "groups": 8,
+      "recordings": 8
+     },
+     "2": {
+      "duration_s": 58.98,
+      "groups": 4,
+      "recordings": 4
+     }
+    },
+    "recordings": 20
+   },
+   "train": {
+    "duration_s": 1386.09,
+    "groups": 94,
+    "per_class": {
+     "0": {
+      "duration_s": 545.59,
+      "groups": 37,
+      "recordings": 37
+     },
+     "1": {
+      "duration_s": 589.82,
+      "groups": 40,
+      "recordings": 40
+     },
+     "2": {
+      "duration_s": 250.68,
+      "groups": 17,
+      "recordings": 17
+     }
+    },
+    "recordings": 94
+   },
+   "validation": {
+    "duration_s": 294.91,
+    "groups": 20,
+    "per_class": {
+     "0": {
+      "duration_s": 117.96,
+      "groups": 8,
+      "recordings": 8
+     },
+     "1": {
+      "duration_s": 117.96,
+      "groups": 8,
+      "recordings": 8
+     },
+     "2": {
+      "duration_s": 58.98,
+      "groups": 4,
+      "recordings": 4
+     }
+    },
+    "recordings": 20
+   }
+  },
+  "JNU": {
+   "test": {
+    "duration_s": 36.04,
+    "groups": 12,
+    "per_class": {
+     "ib": {
+      "duration_s": 6.01,
+      "groups": 3,
+      "recordings": 3
+     },
+     "n": {
+      "duration_s": 18.02,
+      "groups": 3,
+      "recordings": 3
+     },
+     "ob": {
+      "duration_s": 6.01,
+      "groups": 3,
+      "recordings": 3
+     },
+     "tb": {
+      "duration_s": 6.01,
+      "groups": 3,
+      "recordings": 3
+     }
+    },
+    "recordings": 12
+   },
+   "train": {
+    "duration_s": 108.11,
+    "groups": 36,
+    "per_class": {
+     "ib": {
+      "duration_s": 18.02,
+      "groups": 9,
+      "recordings": 3
+     },
+     "n": {
+      "duration_s": 54.05,
+      "groups": 9,
+      "recordings": 3
+     },
+     "ob": {
+      "duration_s": 18.02,
+      "groups": 9,
+      "recordings": 3
+     },
+     "tb": {
+      "duration_s": 18.02,
+      "groups": 9,
+      "recordings": 3
+     }
+    },
+    "recordings": 12
+   },
+   "validation": {
+    "duration_s": 36.04,
+    "groups": 12,
+    "per_class": {
+     "ib": {
+      "duration_s": 6.01,
+      "groups": 3,
+      "recordings": 3
+     },
+     "n": {
+      "duration_s": 18.02,
+      "groups": 3,
+      "recordings": 3
+     },
+     "ob": {
+      "duration_s": 6.01,
+      "groups": 3,
+      "recordings": 3
+     },
+     "tb": {
+      "duration_s": 6.01,
+      "groups": 3,
+      "recordings": 3
+     }
+    },
+    "recordings": 12
+   }
+  },
+  "MAFAULDA": {
+   "test": {
+    "duration_s": 1980.0,
+    "groups": 16,
+    "per_class": {
+     "horizontal-misalignment": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "imbalance": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "normal": {
+      "duration_s": 35.0,
+      "groups": 7,
+      "recordings": 7
+     },
+     "overhang/ball_fault": {
+      "duration_s": 100.0,
+      "groups": 1,
+      "recordings": 20
+     },
+     "overhang/cage_fault": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "overhang/outer_race": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "underhang/ball_fault": {
+      "duration_s": 190.0,
+      "groups": 1,
+      "recordings": 38
+     },
+     "underhang/cage_fault": {
+      "duration_s": 240.0,
+      "groups": 1,
+      "recordings": 48
+     },
+     "underhang/outer_race": {
+      "duration_s": 185.0,
+      "groups": 1,
+      "recordings": 37
+     },
+     "vertical-misalignment": {
+      "duration_s": 250.0,
+      "groups": 1,
+      "recordings": 50
+     }
+    },
+    "recordings": 396
+   },
+   "train": {
+    "duration_s": 5570.0,
+    "groups": 58,
+    "per_class": {
+     "horizontal-misalignment": {
+      "duration_s": 490.0,
+      "groups": 2,
+      "recordings": 98
+     },
+     "imbalance": {
+      "duration_s": 1180.0,
+      "groups": 5,
+      "recordings": 236
+     },
+     "normal": {
+      "duration_s": 175.0,
+      "groups": 35,
+      "recordings": 35
+     },
+     "overhang/ball_fault": {
+      "duration_s": 340.0,
+      "groups": 2,
+      "recordings": 68
+     },
+     "overhang/cage_fault": {
+      "duration_s": 490.0,
+      "groups": 2,
+      "recordings": 98
+     },
+     "overhang/outer_race": {
+      "duration_s": 450.0,
+      "groups": 2,
+      "recordings": 90
+     },
+     "underhang/ball_fault": {
+      "duration_s": 495.0,
+      "groups": 2,
+      "recordings": 99
+     },
+     "underhang/cage_fault": {
+      "duration_s": 455.0,
+      "groups": 2,
+      "recordings": 91
+     },
+     "underhang/outer_race": {
+      "duration_s": 490.0,
+      "groups": 2,
+      "recordings": 98
+     },
+     "vertical-misalignment": {
+      "duration_s": 1005.0,
+      "groups": 4,
+      "recordings": 201
+     }
+    },
+    "recordings": 1114
+   },
+   "validation": {
+    "duration_s": 2205.0,
+    "groups": 16,
+    "per_class": {
+     "horizontal-misalignment": {
+      "duration_s": 250.0,
+      "groups": 1,
+      "recordings": 50
+     },
+     "imbalance": {
+      "duration_s": 240.0,
+      "groups": 1,
+      "recordings": 48
+     },
+     "normal": {
+      "duration_s": 35.0,
+      "groups": 7,
+      "recordings": 7
+     },
+     "overhang/ball_fault": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "overhang/cage_fault": {
+      "duration_s": 205.0,
+      "groups": 1,
+      "recordings": 41
+     },
+     "overhang/outer_race": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "underhang/ball_fault": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "underhang/cage_fault": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "underhang/outer_race": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "vertical-misalignment": {
+      "duration_s": 250.0,
+      "groups": 1,
+      "recordings": 50
+     }
+    },
+    "recordings": 441
+   }
+  }
+ },
+ "3": {
+  "CWRU": {
+   "test": {
+    "duration_s": 166.47,
+    "groups": 3,
+    "per_class": {
+     "B021": {
+      "duration_s": 35.52,
+      "groups": 1,
+      "recordings": 4
+     },
+     "IR014": {
+      "duration_s": 29.56,
+      "groups": 1,
+      "recordings": 4
+     },
+     "OR007@12": {
+      "duration_s": 32.93,
+      "groups": 1,
+      "recordings": 4
+     },
+     "OR007@3": {
+      "duration_s": 32.95,
+      "groups": 1,
+      "recordings": 4
+     },
+     "OR007@6": {
+      "duration_s": 35.52,
+      "groups": 1,
+      "recordings": 4
+     }
+    },
+    "recordings": 20
+   },
+   "train": {
+    "duration_s": 106.72,
+    "groups": 3,
+    "per_class": {
+     "B007": {
+      "duration_s": 35.57,
+      "groups": 1,
+      "recordings": 4
+     },
+     "IR021": {
+      "duration_s": 35.62,
+      "groups": 1,
+      "recordings": 4
+     },
+     "OR014@6": {
+      "duration_s": 35.52,
+      "groups": 1,
+      "recordings": 4
+     }
+    },
+    "recordings": 12
+   },
+   "validation": {
+    "duration_s": 172.99,
+    "groups": 3,
+    "per_class": {
+     "B014": {
+      "duration_s": 35.62,
+      "groups": 1,
+      "recordings": 4
+     },
+     "IR007": {
+      "duration_s": 35.45,
+      "groups": 1,
+      "recordings": 4
+     },
+     "OR021@12": {
+      "duration_s": 33.12,
+      "groups": 1,
+      "recordings": 4
+     },
+     "OR021@3": {
+      "duration_s": 33.13,
+      "groups": 1,
+      "recordings": 4
+     },
+     "OR021@6": {
+      "duration_s": 35.68,
+      "groups": 1,
+      "recordings": 4
+     }
+    },
+    "recordings": 20
+   }
+  },
+  "HIT": {
+   "test": {
+    "duration_s": 294.91,
+    "groups": 20,
+    "per_class": {
+     "0": {
+      "duration_s": 117.96,
+      "groups": 8,
+      "recordings": 8
+     },
+     "1": {
+      "duration_s": 117.96,
+      "groups": 8,
+      "recordings": 8
+     },
+     "2": {
+      "duration_s": 58.98,
+      "groups": 4,
+      "recordings": 4
+     }
+    },
+    "recordings": 20
+   },
+   "train": {
+    "duration_s": 1386.09,
+    "groups": 94,
+    "per_class": {
+     "0": {
+      "duration_s": 545.59,
+      "groups": 37,
+      "recordings": 37
+     },
+     "1": {
+      "duration_s": 589.82,
+      "groups": 40,
+      "recordings": 40
+     },
+     "2": {
+      "duration_s": 250.68,
+      "groups": 17,
+      "recordings": 17
+     }
+    },
+    "recordings": 94
+   },
+   "validation": {
+    "duration_s": 294.91,
+    "groups": 20,
+    "per_class": {
+     "0": {
+      "duration_s": 117.96,
+      "groups": 8,
+      "recordings": 8
+     },
+     "1": {
+      "duration_s": 117.96,
+      "groups": 8,
+      "recordings": 8
+     },
+     "2": {
+      "duration_s": 58.98,
+      "groups": 4,
+      "recordings": 4
+     }
+    },
+    "recordings": 20
+   }
+  },
+  "JNU": {
+   "test": {
+    "duration_s": 36.04,
+    "groups": 12,
+    "per_class": {
+     "ib": {
+      "duration_s": 6.01,
+      "groups": 3,
+      "recordings": 3
+     },
+     "n": {
+      "duration_s": 18.02,
+      "groups": 3,
+      "recordings": 3
+     },
+     "ob": {
+      "duration_s": 6.01,
+      "groups": 3,
+      "recordings": 3
+     },
+     "tb": {
+      "duration_s": 6.01,
+      "groups": 3,
+      "recordings": 3
+     }
+    },
+    "recordings": 12
+   },
+   "train": {
+    "duration_s": 108.11,
+    "groups": 36,
+    "per_class": {
+     "ib": {
+      "duration_s": 18.02,
+      "groups": 9,
+      "recordings": 3
+     },
+     "n": {
+      "duration_s": 54.05,
+      "groups": 9,
+      "recordings": 3
+     },
+     "ob": {
+      "duration_s": 18.02,
+      "groups": 9,
+      "recordings": 3
+     },
+     "tb": {
+      "duration_s": 18.02,
+      "groups": 9,
+      "recordings": 3
+     }
+    },
+    "recordings": 12
+   },
+   "validation": {
+    "duration_s": 36.04,
+    "groups": 12,
+    "per_class": {
+     "ib": {
+      "duration_s": 6.01,
+      "groups": 3,
+      "recordings": 3
+     },
+     "n": {
+      "duration_s": 18.02,
+      "groups": 3,
+      "recordings": 3
+     },
+     "ob": {
+      "duration_s": 6.01,
+      "groups": 3,
+      "recordings": 3
+     },
+     "tb": {
+      "duration_s": 6.01,
+      "groups": 3,
+      "recordings": 3
+     }
+    },
+    "recordings": 12
+   }
+  },
+  "MAFAULDA": {
+   "test": {
+    "duration_s": 2030.0,
+    "groups": 16,
+    "per_class": {
+     "horizontal-misalignment": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "imbalance": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "normal": {
+      "duration_s": 35.0,
+      "groups": 7,
+      "recordings": 7
+     },
+     "overhang/ball_fault": {
+      "duration_s": 125.0,
+      "groups": 1,
+      "recordings": 25
+     },
+     "overhang/cage_fault": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "overhang/outer_race": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "underhang/ball_fault": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "underhang/cage_fault": {
+      "duration_s": 210.0,
+      "groups": 1,
+      "recordings": 42
+     },
+     "underhang/outer_race": {
+      "duration_s": 185.0,
+      "groups": 1,
+      "recordings": 37
+     },
+     "vertical-misalignment": {
+      "duration_s": 250.0,
+      "groups": 1,
+      "recordings": 50
+     }
+    },
+    "recordings": 406
+   },
+   "train": {
+    "duration_s": 5500.0,
+    "groups": 58,
+    "per_class": {
+     "horizontal-misalignment": {
+      "duration_s": 490.0,
+      "groups": 2,
+      "recordings": 98
+     },
+     "imbalance": {
+      "duration_s": 1175.0,
+      "groups": 5,
+      "recordings": 235
+     },
+     "normal": {
+      "duration_s": 175.0,
+      "groups": 35,
+      "recordings": 35
+     },
+     "overhang/ball_fault": {
+      "duration_s": 345.0,
+      "groups": 2,
+      "recordings": 69
+     },
+     "overhang/cage_fault": {
+      "duration_s": 450.0,
+      "groups": 2,
+      "recordings": 90
+     },
+     "overhang/outer_race": {
+      "duration_s": 450.0,
+      "groups": 2,
+      "recordings": 90
+     },
+     "underhang/ball_fault": {
+      "duration_s": 435.0,
+      "groups": 2,
+      "recordings": 87
+     },
+     "underhang/cage_fault": {
+      "duration_s": 485.0,
+      "groups": 2,
+      "recordings": 97
+     },
+     "underhang/outer_race": {
+      "duration_s": 490.0,
+      "groups": 2,
+      "recordings": 98
+     },
+     "vertical-misalignment": {
+      "duration_s": 1005.0,
+      "groups": 4,
+      "recordings": 201
+     }
+    },
+    "recordings": 1100
+   },
+   "validation": {
+    "duration_s": 2225.0,
+    "groups": 16,
+    "per_class": {
+     "horizontal-misalignment": {
+      "duration_s": 250.0,
+      "groups": 1,
+      "recordings": 50
+     },
+     "imbalance": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "normal": {
+      "duration_s": 35.0,
+      "groups": 7,
+      "recordings": 7
+     },
+     "overhang/ball_fault": {
+      "duration_s": 215.0,
+      "groups": 1,
+      "recordings": 43
+     },
+     "overhang/cage_fault": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "overhang/outer_race": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "underhang/ball_fault": {
+      "duration_s": 250.0,
+      "groups": 1,
+      "recordings": 50
+     },
+     "underhang/cage_fault": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "underhang/outer_race": {
+      "duration_s": 245.0,
+      "groups": 1,
+      "recordings": 49
+     },
+     "vertical-misalignment": {
+      "duration_s": 250.0,
+      "groups": 1,
+      "recordings": 50
+     }
+    },
+    "recordings": 445
+   }
+  }
+ }
+}

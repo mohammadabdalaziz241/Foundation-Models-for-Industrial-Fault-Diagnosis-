@@ -1,0 +1,34 @@
+{
+ "stage": "methodology_v2 Part 2 frozen split protocol",
+ "started_utc": "2026-08-11T19:47:55.699376+00:00",
+ "finished_utc": "2026-08-11T19:47:55.973293+00:00",
+ "command": "scripts/methodology_v2/run_part2_splits.py",
+ "python": "3.12.3 (main, Nov  6 2025, 13:44:16) [GCC 13.3.0]",
+ "platform": "Linux-6.8.0-79-generic-x86_64-with-glibc2.39",
+ "git": {
+  "commit": "9047ccbc6857d84c593c48222bf8aa526015c5e9",
+  "branch": "bearing-generalisation-v1"
+ },
+ "part1_artifact_hashes": {
+  "recording_manifest.csv": "5c9ca10fc552b51720a3e91326b07d1145e3524fa63765d4b488c38de7250c1d",
+  "CWRU_GROUPING_RECHECK.md": "0a5fa8c5baef31f056ddb1eeae906aac292af39c058cfe715b639dc8b69162d7",
+  "cwru_grouping_recheck_table.csv": "edc1e78a1f942c9ce8327c2a4f00d277ca49099826c2576fa82be93b9dfc7535",
+  "PART1_DATASET_AUDIT_REPORT.md": "d924f395df1314cc307449975fcaea73921566c6434517d69099a6be0edec52d"
+ },
+ "seeds_used": {
+  "1": {
+   "HIT": 101,
+   "MAFAULDA": 201
+  },
+  "2": {
+   "HIT": 102,
+   "MAFAULDA": 202
+  },
+  "3": {
+   "HIT": 103,
+   "MAFAULDA": 203
+  }
+ },
+ "n_rejected_seeds": 0,
+ "master_protocol_hash": "527ccc1d449b223a37ecf109ed27be5279e17d85ba4e881abb9c68f4035e69c6"
+}

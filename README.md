@@ -1,0 +1,90 @@
+# Foundation Models for Industrial Fault Diagnosis: PC-STE
+
+This repository is the clean reproducibility release of an MSc dissertation study of **PC-STE** (Physics-Conditioned Spectral–Temporal Encoder) for rotating-machinery fault diagnosis. It represents the experiment that was actually executed.
+
+## Scientific scope and provenance
+
+Masked-reconstruction SSL used CWRU, JNU, HIT and MaFaulDa. The original downstream S0/S1 experiment also used all four datasets, four dataset-specific heads and four-domain validation `MacroDomainF1`. Dissertation-facing **Macro-3** tables were subsequently derived as the equal mean of JNU, HIT and MaFaulDa Macro-F1. They must not be interpreted as natively three-domain training.
+
+S0 is a randomly initialized PC-STE trained end-to-end with supervised loss. S1 uses the matched SSL checkpoint and then trains the same encoder and heads end-to-end. K1 is the retained four-block, one-direction student initialized by surgery from Full S1 and trained with `(1-alpha) CE + alpha T^2 KL + L_rel`, where `alpha=0.5`, `T=4`, and `L_rel` is mixer-attention relational KL with weight 1.0. Q8 is the recorded weight-only per-output-channel INT8 representation; packed dynamic INT8 is separately used for CPU latency.
+
+## Data and preprocessing
+
+The four third-party datasets are not distributed here.
+
+| Dataset | Expected local path below `PCSTE_DATA_ROOT` | Channel | Native rate |
+|---|---|---|---:|
+| CWRU | `raw/` and `raw_cwru_48k/` | drive-end acceleration | 48 kHz primary |
+| JNU | `raw_jnu/JNU-Bearing-Dataset/` | vertical acceleration | 50 kHz |
+| HIT | `raw_hit/gdrive_full/HIT-dataset/` | casing accelerometer ch3 | 25 kHz |
+| MaFaulDa | `raw_mafaulda/full/` | underhang radial acceleration, column 3 | 50 kHz |
+
+Acquire each dataset from the authoritative URLs in `src/methodology_v2/registry.py`; follow its terms and verify against `methodology_v2/part1_audit/raw_file_hashes.csv`. Set `PCSTE_DATA_ROOT`, or place data under repository-relative `data/`.
+
+Pipeline: waveform → native-rate 1 s windows → periodic-Hann STFT → `abs(STFT)` → `log1p` → fold/dataset/frequency-bin TRAIN-only N2 → 16×8 patches → PC-STE. Training stride is 0.5 s; validation/TEST stride is 1 s. No resampling is used.
+
+## Architecture
+
+PC-STE uses a convolutional patch stem, absolute Fourier frequency/time coordinates, four bidirectional Mamba-1 blocks at `d_model=192`, a Hz-aware gated cross-band mixer, validity-masked pooling and four linear dataset heads. The frozen specification is `configs/dissertation/pcste_encoder.yaml`.
+
+## Environment
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements_frozen.txt
+pip install -e . --no-deps
+cp .env.example .env
+```
+
+Python 3.12 is the preserved environment target. CUDA is optional for inspection/tests but required for the original GPU execution profile.
+
+## Reproduction workflow
+
+Commands below build artifacts and can be computationally expensive. They are not executed by repository tests.
+
+```bash
+python scripts/methodology_v2/run_part1_audit.py
+python scripts/methodology_v2/run_part2.py
+python scripts/methodology_v2/run_part3b.py
+python scripts/methodology_v2/run_part4c.py
+python scripts/methodology_v2/experiment_executor.py --help
+python scripts/methodology_v2/part6_compression.py --help
+```
+
+Exact public label-efficiency execution paths are included:
+
+- 1%: `scripts/run_methodology_v2_1pct_extension.py`
+- 5%: `scripts/run_methodology_v2_5pct.py`
+- 10%: `scripts/run_methodology_v2_10pct.py`
+- 100%: `scripts/methodology_v2/experiment_executor.py`
+
+The 1% path is a reduced-label extension executed after the primary registered grid. All paths train CWRU, JNU, HIT and MaFaulDa with four dataset heads and select checkpoints by four-domain validation `MacroDomainF1`. Principal Macro-3 reporting is the post-hoc mean over JNU, HIT and MaFaulDa; these are not native three-domain experiments. See `docs/reproducibility.md` and `docs/low_label_provenance.md`.
+
+To reproduce the existing compact analyses after generating checkpoints/results:
+
+```bash
+python scripts/extract_100pct_final_analysis.py
+python scripts/posthoc_100pct_frozen_evaluation.py --help
+python scripts/methodology_v2/benchmark_part6_latency.py --help
+```
+
+## Results summary
+
+Compact, unchanged result tables are under `results/tables/`; selected figures are under `results/figures/`. Principal reported means include full-label S0 Macro-3 0.9214, S1 0.9199, K1 0.936913 and Q8(K1) 0.937011. These are post-hoc Macro-3 summaries of models trained under the executed four-domain protocol. See `results/PROVENANCE.md` before reuse.
+
+## Repository layout
+
+- `src/methodology_v2/`: complete current implementation
+- `scripts/methodology_v2/`: frozen builders, executor and compression tools
+- `methodology_v2/`: frozen specifications, manifests, registries and hashes
+- `configs/dissertation/`: convenient copies of authoritative frozen specifications
+- `tests/methodology_v2/`: current PC-STE tests
+- `results/`: curated summaries only
+- `docs/`: methodology, reproducibility and layout documentation
+
+No raw data, checkpoints, teacher caches, probability caches or training logs are included. No software licence has yet been selected.
+
+## Citation
+
+Dissertation citation to be added after final bibliographic approval.

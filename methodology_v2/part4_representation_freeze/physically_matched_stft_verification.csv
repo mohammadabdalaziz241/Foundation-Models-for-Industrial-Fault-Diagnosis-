@@ -1,0 +1,5 @@
+dataset,sampling_rate_hz,n_fft,hop,analysis_ms,hop_ms,freq_resolution_hz,freq_bins,time_frames,nyquist_hz,tensor_shape,transform,window_fn
+CWRU,48000,1024,256,21.333,5.333,46.875,513,184,24000.0,"(513, 184)",log1p,"periodic Hann, center=False, no padding, one-sided rfft"
+JNU,50000,1024,256,20.48,5.12,48.828,513,192,25000.0,"(513, 192)",log1p,"periodic Hann, center=False, no padding, one-sided rfft"
+HIT,25000,512,128,20.48,5.12,48.828,257,192,12500.0,"(257, 192)",log1p,"periodic Hann, center=False, no padding, one-sided rfft"
+MAFAULDA,50000,1024,256,20.48,5.12,48.828,513,192,25000.0,"(513, 192)",log1p,"periodic Hann, center=False, no padding, one-sided rfft"

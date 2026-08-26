@@ -1,0 +1,4 @@
+option,params,pct_of_encoder,verdict
+D1_per_token_mlp+X1,119552,5.0,RECOMMENDED (simplest adequate; cross-time context already provided by encoder + X1 band context)
+D2_shallow_transformer_1blk_d128,245888,10.3,alternative if D1 cannot beat P1 baseline
+D3_temporal_conv,368640,15.5,not preferred (local RF duplicates encoder work)

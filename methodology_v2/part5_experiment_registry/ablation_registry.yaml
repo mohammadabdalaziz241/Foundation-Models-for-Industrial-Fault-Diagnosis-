@@ -1,0 +1,23 @@
+{
+ "A1": {
+  "change": "absolute coords -> index PE",
+  "config": "PCSTEConfig(use_coordinates=False)",
+  "question": "does physical calibration help"
+ },
+ "A2": {
+  "change": "Hz-gated exchange -> masked mean fusion",
+  "config": "PCSTEConfig(use_mixer=False)",
+  "question": "does cross-band exchange help"
+ },
+ "A3": {
+  "change": "BiMamba -> comparable Transformer",
+  "config": "PCSTEConfig(backbone='transformer')",
+  "question": "backbone-specific?"
+ },
+ "A4": {
+  "change": "N2 -> N1 normalization",
+  "layer": "representation",
+  "question": "does amplitude preservation matter"
+ },
+ "policy": "full-label condition only; NOT launched in 5D"
+}

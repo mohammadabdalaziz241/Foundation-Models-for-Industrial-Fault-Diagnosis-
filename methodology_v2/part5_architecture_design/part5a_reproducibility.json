@@ -1,0 +1,19 @@
+{
+ "stage": "methodology_v2 Part 5A architecture and novelty audit",
+ "started_utc": "2026-08-12T00:34:12.752037+00:00",
+ "finished_utc": "2026-08-12T00:34:12.773681+00:00",
+ "command": "scripts/methodology_v2/run_part5a.py",
+ "python": "3.12.3 (main, Nov  6 2025, 13:44:16) [GCC 13.3.0]",
+ "platform": "Linux-6.8.0-79-generic-x86_64-with-glibc2.39",
+ "git": {
+  "commit": "5d1b1e027766a736f632e8356d720e56e1cd50c9",
+  "branch": "bearing-generalisation-v1"
+ },
+ "seals_verified": [
+  "part2",
+  "part3b",
+  "part4c"
+ ],
+ "literature_search_date": "2026-08-12",
+ "note": "design study only; no model layers imported"
+}

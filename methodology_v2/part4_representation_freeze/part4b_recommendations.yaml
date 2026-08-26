@@ -1,0 +1,68 @@
+# part4b_recommendations.yaml — methodology_v2 Part 4B
+# Status: PENDING_HUMAN_APPROVAL. Evidence: PART4B_REPRESENTATION_REPORT.md
+# (all diagnostics Fold-1 TRAIN only; no labels/probes/accuracy used).
+
+status: PENDING_HUMAN_APPROVAL
+
+normalization_recommendation: N2
+definition: >
+  Per-dataset, per-frequency-bin statistics mu[D,f], std[D,f] fitted over
+  TRAIN windows of the SAME fold only; X_norm[f,t] = (X[f,t] - mu[D,f]) /
+  max(std[D,f], 1e-8). Three independent normalizers (one per fold) —
+  never shared, because groups swap train/test roles across folds (e.g.
+  every CWRU specimen is TRAIN in exactly one fold and TEST in another).
+  Validation/test consume the stored TRAIN statistics of their fold.
+
+evidence_summary:
+  amplitude_retention: >
+    N2 preserves window-energy ordering (Spearman 0.96-1.00 vs
+    pre-normalization energy; window-mean spread retained 0.29-0.64);
+    N1 removes it exactly (0 by construction) — severity/intensity
+    information would be first-order erased under N1.
+  dataset_scale_shortcut: >
+    Unnormalized log1p means differ by dataset (0.54-1.22). Both N1 and
+    N2 remove the trivial cross-dataset first/second-order offsets; N2
+    additionally keeps within-dataset variation.
+  structure: >
+    N1 is affine per window (all within-window structure exactly
+    preserved). N2 preserves temporal profiles (corr mean 0.96, min 0.64)
+    and deliberately subtracts the per-dataset spectral baseline
+    (freq-profile corr mean 0.35) — visually this exposes
+    fault-modulated high-frequency striations that the raw baseline
+    masks (figures/norm_compare_*.png).
+  numerics: >
+    Both finite everywhere; ranges N1 [-1.34, 5.10], N2 [-3.44, 4.46]
+    (dev p1/p99 about [-1.6, 3.3]); zero floored bins/windows on the
+    645-window dev sample.
+  reconstruction_target: >
+    N2 keeps window-level amplitude variation -> the masked-SSL decoder
+    reconstructs deviations from a stable rig baseline including level
+    information; N1 forces every window to zero-mean/unit-std ->
+    reconstruction limited to relative structure.
+
+fairness_disclosure: >
+  N2 uses DATASET IDENTITY to select preprocessing statistics. This is
+  declared, not hidden. It is methodologically acceptable because (i) the
+  same fold-specific normalizer is applied identically to S0, S1
+  pretraining, S1 fine-tuning, validation and test; (ii) dataset identity
+  is already an explicit input of the benchmark design (dataset-specific
+  Task-B heads, dataset-balanced sampling); (iii) it parallels standard
+  per-corpus feature normalization. Cost to the "shared foundation
+  encoder" claim: the encoder is shared, but its INPUT normalization is
+  per-source — the claim must be stated as "shared encoder over
+  per-dataset-standardised physical spectrograms", and the N1 alternative
+  remains available as a robustness ablation if the claim needs to be
+  free of any dataset-conditioned preprocessing.
+
+n1_fallback: >
+  N1 (per-window) remains the documented fallback: dataset-identity-free
+  and leakage-trivial, at the cost of erasing absolute-level information.
+
+next_steps_after_approval:  # NOT executed in Part 4B
+  - freeze normalization = N2 in the representation spec
+  - fit normalizer_fold_1/2/3 from each fold's FULL TRAIN partition
+    (bounded generation step with its own seal + tests)
+  - only then Part 5 architecture work
+
+checkpoint_note: Parts 1-4B remain UNCOMMITTED; checkpoint commit
+  recommended before representation generation / Part 5.

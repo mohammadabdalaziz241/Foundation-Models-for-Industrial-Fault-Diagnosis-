@@ -1,0 +1,165 @@
+{
+ "pending": [
+  {
+   "alternatives": [
+    0.0,
+    0.1,
+    1.0
+   ],
+   "key": "relational_alpha_kl_weight",
+   "question": "Fixed weight lambda_rel of the relational term KL(alpha_teacher || alpha_student) over valid mixer bands (same-cell single teacher) added to the K1/K0 loss.",
+   "rationale": "Plan \u00a74 Stage 3 says 'fixed-weight' without a number. The band-attention KL is bounded by log(33)=3.5 and is typically O(1e-2..1e-1) for trained models, so weight 1.0 keeps it a mild regulariser next to the CE/KD terms; 0.0 recovers the pure Hinton loss. Must be fixed before sealing; never tuned on validation.",
+   "recommended": 1.0,
+   "status": "PENDING_PREREG",
+   "value": null
+  },
+  {
+   "alternatives": [
+    [
+     0,
+     2
+    ],
+    [
+     0,
+     3
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     2,
+     3
+    ]
+   ],
+   "key": "student_d_retained_layers",
+   "question": "Which two of the four teacher BiMamba layers initialise Student-D layers (0, 1) for K1/K0/P1 (plan says 'kept layers' without naming them).",
+   "rationale": "[0, 2] = every-other-layer inheritance (DistilBERT-style depth truncation); [0, 3] keeps the layer whose output trained the final LayerNorm. Stage-2 drop-one-layer sensitivity (validation-only, descriptive) may be cited as explanation but the plan fixes the mapping a priori.",
+   "recommended": [
+    0,
+    2
+   ],
+   "status": "PENDING_PREREG",
+   "value": null
+  },
+  {
+   "alternatives": [
+    "mean_prob_at_T",
+    "mean_logits"
+   ],
+   "key": "ensemble_rule",
+   "question": "How the three same-fold teacher logit vectors are combined into the soft target at temperature T.",
+   "rationale": "mean_prob_at_T = mean_k softmax(z_k / T) (the ensemble predictive distribution, Hinton 2015 / Lakshminarayanan 2017); mean_logits = softmax(mean_k z_k / T). Both are implemented and deterministic; one must be sealed.",
+   "recommended": "mean_prob_at_T",
+   "status": "PENDING_PREREG",
+   "value": null
+  },
+  {
+   "alternatives": [
+    null,
+    32,
+    64
+   ],
+   "key": "student_dw_stem_rank",
+   "question": "Rank r of the optional low-rank Student-DW patch stem (Linear 1024->r->128 replacing Linear 1024->128).",
+   "rationale": "Plan says '(+ low-rank stem)' without a rank. None = keep the full stem (679,633 encoder params); r=64 -> ~622k; r=32 -> ~588k. Optional arm; decide only if DW is run.",
+   "recommended": null,
+   "status": "PENDING_PREREG",
+   "value": null
+  },
+  {
+   "alternatives": [
+    {
+     "keep": "fwd",
+     "residual": "mean_of_remaining"
+    },
+    {
+     "keep": "fwd",
+     "residual": "keep_half_scale"
+    },
+    {
+     "keep": "bwd",
+     "residual": "mean_of_remaining"
+    }
+   ],
+   "key": "half_student_direction_variant",
+   "question": "For the Stage-2 equal-cost alternative '4 layers x 1 direction': which direction is kept and how the residual is scaled after removing one direction.",
+   "rationale": "mean_of_remaining: y = x + fwd(LN x) (mean over the one remaining direction); keep_half_scale: y = x + 0.5*fwd(LN x) (training-free removal without rescaling). Both are reported descriptively by the sensitivity tool.",
+   "recommended": {
+    "keep": "fwd",
+    "residual": "mean_of_remaining"
+   },
+   "status": "PENDING_PREREG",
+   "value": null
+  },
+  {
+   "alternatives": [
+    0.02,
+    0.05,
+    0.1
+   ],
+   "key": "stage2_fallback_threshold",
+   "question": "Fixed validation threshold that triggers the fallback pruning ratios (d_inner 384->320, d_state 16->12).",
+   "rationale": "Plan \u00a74 Stage 2 names the fallbacks but not the numeric threshold. Recommendation: fallbacks activate only if the chosen half student loses > 0.05 median validation MacroDomainF1 training-free; otherwise unchanged.",
+   "recommended": {
+    "max_drop": 0.05,
+    "metric": "median validation MacroDomainF1 drop after training-free removal (fold-wise, S1 checkpoints)"
+   },
+   "status": "PENDING_PREREG",
+   "value": null
+  },
+  {
+   "alternatives": [
+    "2x2",
+    "4x1"
+   ],
+   "key": "compact_student_variant",
+   "question": "Which equal-cost half student the K1/C_small/K0 core arms train: '2x2' (2 BiMamba layers x 2 directions, retained layers per student_d_retained_layers) or '4x1' (4 layers x forward direction only).",
+   "rationale": "Plan \u00a74 Stage 2: the rule may only choose between these two equal-cost variants. The rule was executed BEFORE sealing (half_student_decision.json); the sealed value records its outcome.",
+   "recommended": "outcome of the pre-registered Stage-2 rule (median validation MacroDomainF1 after training-free removal; tie -> 2x2)",
+   "status": "PENDING_PREREG",
+   "value": null
+  },
+  {
+   "alternatives": [
+    "64+64",
+    "32+32",
+    "masked-CE inside the KD batch"
+   ],
+   "key": "f1_batch_composition",
+   "question": "F1 few-shot KD step composition: hard labels on the registered 10% subset + KD on 100% of TRAIN.",
+   "rationale": "Plan fixes the mechanism (SimCLRv2-style) but not the batch composition; F1 depends on registered 10% S1 runs that do not exist yet.",
+   "recommended": {
+    "ce_stream": "registered 10% supervised sampler, 64 windows/step",
+    "kd_stream": "label-free SSL sampler over full TRAIN, 64 windows/step",
+    "note": "128 windows per optimizer step (2x compute of a standard step) \u2014 or 32+32 to keep 64"
+   },
+   "status": "PENDING_PREREG",
+   "value": null
+  }
+ ],
+ "resolved": {
+  "compact_student_variant": "4x1",
+  "ensemble_rule": "mean_prob_at_T",
+  "f1_batch_composition": {
+   "note": "F1 stays disabled and non-runnable until the registered 10%-label S1 runs exist; the composition must be resolved in a documented amendment BEFORE enabling F1 (never from TEST).",
+   "status": "DEFERRED_UNTIL_FEWSHOT"
+  },
+  "half_student_direction_variant": {
+   "keep": "fwd",
+   "residual": "mean_of_remaining"
+  },
+  "relational_alpha_kl_weight": 1.0,
+  "stage2_fallback_threshold": {
+   "max_drop": 0.05,
+   "metric": "median validation MacroDomainF1 drop after training-free removal",
+   "scope": "Stage-2 d_inner/d_state pruning-ratio fallback (384->320, 16->12) within the descriptive sensitivity screens; does NOT alter the sealed Student-D architecture of Stage 3"
+  },
+  "student_d_retained_layers": [
+   0,
+   2
+  ],
+  "student_dw_stem_rank": null
+ },
+ "unresolved": []
+}

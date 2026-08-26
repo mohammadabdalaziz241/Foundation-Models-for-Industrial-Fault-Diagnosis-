@@ -1,0 +1,18 @@
+{
+ "stage": "methodology_v2 Part 4C normalizer fitting and seal",
+ "started_utc": "2026-08-11T23:33:41.492928+00:00",
+ "finished_utc": "2026-08-11T23:35:08.368728+00:00",
+ "command": "scripts/methodology_v2/run_part4c.py --workers 3",
+ "python": "3.12.3 (main, Nov  6 2025, 13:44:16) [GCC 13.3.0]",
+ "platform": "Linux-6.8.0-79-generic-x86_64-with-glibc2.39",
+ "git": {
+  "commit": "5d1b1e027766a736f632e8356d720e56e1cd50c9",
+  "branch": "bearing-generalisation-v1"
+ },
+ "methodology_checkpoint_commit": "5d1b1e027766a736f632e8356d720e56e1cd50c9",
+ "part2_seal_verified": true,
+ "part3b_seal_verified": true,
+ "part4b_approved_spec_sha256": "7751ccd9b70521d2b6385b8ac09d65c4499d1e3b75a4c39ec5632041b208514d",
+ "part4c_master_representation_hash": "ee9414e8988c36b8a1ecad7d2622a54439a4bcc180a6a4e6a50b2f256160064f",
+ "fitting": "TRAIN-only, fold- and dataset-isolated, streaming parallel-Welford float64; no spectrogram files written; no models"
+}

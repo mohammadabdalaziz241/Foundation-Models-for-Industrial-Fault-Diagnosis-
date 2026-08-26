@@ -1,0 +1,20 @@
+{
+ "A1_coordinates": {
+  "config": "PCSTEConfig(use_coordinates=False)",
+  "question": "does physical calibration matter"
+ },
+ "A2_mixer": {
+  "config": "PCSTEConfig(use_mixer=False)",
+  "question": "does cross-band interaction matter"
+ },
+ "A3_backbone": {
+  "config": "PCSTEConfig(backbone='transformer')",
+  "params_bimamba": 2382033,
+  "params_transformer": 2147793,
+  "question": "does the SSM backbone matter"
+ },
+ "A4_normalization": {
+  "layer": "representation (Part 4C registry); NOT fitted here",
+  "question": "does N2 matter vs N1"
+ }
+}

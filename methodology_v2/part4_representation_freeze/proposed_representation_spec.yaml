@@ -1,0 +1,62 @@
+# proposed_representation_spec.yaml — methodology_v2 Part 4B
+# Status: PROPOSED — becomes frozen only upon human approval (normalization
+# field pending the N1/N2 decision in part4b_recommendations.yaml).
+#
+# This describes EXACTLY what a future Part-5 model receives.
+
+input_window:
+  duration_s: 1.0
+  signal: raw acceleration, native numerical units, single channel
+  channels: {CWRU: DE, JNU: acc_vertical, HIT: ch3,
+             MAFAULDA: col3_underhang_radial}
+  sampling_rate_hz: {CWRU: 48000, JNU: 50000, HIT: 25000, MAFAULDA: 50000}
+  resampling: NONE (frozen)
+  source_of_truth: Part-3B window manifests (master hash 99ffde7e...),
+    served by src/methodology_v2/part3b_reader.py
+
+stft:  # physically matched, frozen
+  config: {CWRU: {n_fft: 1024, hop: 256}, JNU: {n_fft: 1024, hop: 256},
+           HIT: {n_fft: 512, hop: 128}, MAFAULDA: {n_fft: 1024, hop: 256}}
+  physical_match: analysis 20.48-21.33 ms, hop 5.12-5.33 ms,
+    bin spacing 46.88-48.83 Hz across all datasets
+  window_fn: periodic Hann  # 0.5 - 0.5*cos(2*pi*n/N)
+  center: false
+  padding: none            # complete frames only
+  sided: one-sided real FFT (numpy.fft.rfft semantics)
+  implementation: explicit framed DFT
+    (src/methodology_v2/part4a_repdesign.py::tf_map) — no library defaults
+
+value_transform:
+  formula: log1p(abs(STFT(x)))    # frozen
+  forbidden: [raw magnitude as final input, power, dB, RGB, colormaps in
+              model path]
+
+normalization:
+  status: PENDING N1/N2 approval (recommendation: N2 —
+    per-dataset per-frequency-bin TRAIN statistics, fitted per fold)
+  rule: statistics fitted on the fold's TRAIN partition only;
+    validation/test reuse stored TRAIN values; three independent
+    normalizers (fold_1, fold_2, fold_3) — never shared across folds
+  numerical_floor: std clamped at 1e-8; floored bins/windows counted and
+    reported, never silently dropped
+
+coordinates:
+  time_s: frame_index * hop / sampling_rate  (frame left edge)
+  frequency_hz: bin_index * sampling_rate / n_fft   # physical Hz kept as
+    metadata; JNU/HIT/MaFaulDa share an identical bin->Hz grid
+    (48.828 Hz spacing); CWRU differs slightly (46.875 Hz)
+  frequency_embedding: NOT implemented (Part-5 design, Strategy C)
+
+tensor:
+  channels: 1 (numeric, float32 target dtype)
+  shapes: {CWRU: [513, 184], JNU: [513, 192], HIT: [257, 192],
+           MAFAULDA: [513, 192]}   # (freq_bins, time_frames)
+  resizing: STRICTLY FORBIDDEN (no 224x224, no 128x128, no interpolation,
+    no JPEG/PNG model input, no RGB)
+  variable_dims: frequency dimension differs (257 vs 513); time dimension
+    184 vs 192 — batching/masking/architecture solutions belong to Part 5
+    (candidates only: padding+masks, coordinate patch sequences, ragged
+    batching, shared low-frequency trunk)
+
+multi_resolution: deferred pre-registered Part-5 ablation
+  ({512/128 + 4096/1024}); NOT part of the primary representation

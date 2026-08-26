@@ -1,0 +1,5 @@
+window_s,n_load0_recordings,shortest_load0_s,n_load0_zero_windows,min_windows_0pct,total_windows_0pct,total_windows_50pct,eliminates_any_recording
+0.25,13,1.329,0,5,205,402,False
+0.5,13,1.329,0,2,102,192,False
+1.0,13,1.329,0,1,49,89,False
+2.0,13,1.329,1,0,20,36,True

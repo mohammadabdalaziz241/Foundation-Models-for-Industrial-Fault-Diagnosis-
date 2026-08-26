@@ -1,0 +1,67 @@
+# architecture_candidates.yaml — methodology_v2 Part 5A
+# Status: DESIGN ONLY — nothing implemented. Ranked candidates from the
+# prior-art audit. All candidates use the identical encoder for S0 and S1
+# (non-negotiable fairness rule); only the pretraining decoder/objective
+# is S1-specific.
+
+candidate_A:
+  name: PC-STE (Physically Calibrated Spectro-Temporal Encoder)
+  rank: 1 (RECOMMENDED PRIMARY)
+  blocks: |
+    16x8 conv patch stem (shared, per-band)
+    -> + Fourier features of ABSOLUTE physical coordinates (f_c in kHz,
+       t in s) [C2]
+    -> per-frequency-band temporal BiMamba stack, weights shared across
+       bands [S2 + B2], 4 blocks, d=192
+    -> frequency-gated cross-band mixer conditioned on absolute Hz [F3]
+    -> masked mean pooling over valid band-time tokens
+  estimated_params: "~2.2M (Small tier; formula-based estimate)"
+  tokens: "CWRU 33x23=759, JNU/MaF 33x24=792, HIT 17x24=408; per-band
+    sequences of 23-24 tokens"
+  complexity: linear in tokens (SSM); mixer ~bands^2*d at most
+  strengths: [variable band count without fake HIT high-frequencies,
+    absolute-Hz physics alignment, linear scaling, compact,
+    band-local masking natural for SSL]
+  weaknesses: [Mamba efficiency edge modest at per-band L=24,
+    cross-band mixer is the main untested component]
+  closest_prior: "FISHER/ECHO (band-split, but no cross-band module,
+    normalized-frequency PE, ViT backbone, audio/industrial-acoustic
+    pretraining); SSAMBA/AuM (SSL Mamba, audio)"
+  novelty_risk: medium (survives only with careful wording — see
+    novelty_claim_stress_test.csv)
+  implementation_risk: medium (mamba-ssm dependency; custom mixer)
+  s0_s1_fairness: identical encoder; decoder only in S1
+  ssl_suitability: good (masked band-time patches; N2 target)
+
+candidate_B:
+  name: Axial Compact Transformer (SepTr-style)
+  rank: 2 (SAFEST FALLBACK)
+  blocks: |
+    16x8 conv patch stem -> + C2 absolute-coordinate features
+    -> alternating time-axis / frequency-axis attention blocks [S4],
+       4 blocks total, d=192
+    -> masked mean pooling
+  estimated_params: "~2.4M"
+  tokens: as candidate A (flattened with axis masks)
+  strengths: [all components mature, trivial implementation,
+    attention cost negligible at L<=792]
+  weaknesses: [no architectural contribution beyond coordinates,
+    padding+masks needed on frequency axis]
+  closest_prior: SepTr + SSAST-style masking
+  novelty_risk: none claimed (engineering baseline)
+  implementation_risk: low
+
+candidate_C:
+  name: PC-STE-Interleaved (+ optional multi-resolution branch)
+  rank: 3 (AMBITIOUS ALTERNATIVE)
+  blocks: |
+    as candidate A, but the F3 mixer is interleaved after EVERY temporal
+    block (repeated cross-band exchange), plus the pre-registered
+    optional 512/4096 multi-resolution branch fused at pooling
+  estimated_params: "~2.8M (+~0.6M second-branch stem if enabled)"
+  strengths: [maximum cross-band expressivity, houses the
+    multi-resolution ablation naturally]
+  weaknesses: [highest implementation risk, more components than the
+    evidence demands, risks over-claiming]
+  novelty_risk: medium-high
+  implementation_risk: high

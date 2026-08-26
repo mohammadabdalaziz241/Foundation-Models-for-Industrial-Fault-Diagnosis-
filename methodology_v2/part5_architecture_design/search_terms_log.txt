@@ -1,0 +1,9 @@
+web searches executed on 2026-08-12:
+- VibFM self-supervised transformer foundation model prognostics health management vibration spectrogram masked
+- ECHO frequency-aware hierarchical encoding variable sampling rate machine signals arXiv
+- SSAMBA self-supervised audio representation learning Mamba state space model parameters patch masked
+- "Audio Mamba" selective state spaces self-supervised audio representations Yadav patch ordering parameters
+- FISHER foundation model industrial signal band-split sub-band heterogeneous sampling rate arXiv
+- Mamba bearing fault diagnosis spectrogram state space model rotating machinery 2024 2025
+- masked autoencoder vibration signal self-supervised bearing pretraining cross-dataset foundation 2025
+- SepTr separable transformer audio spectrogram Ristea SpecTNT time-frequency transformer music frequency class token

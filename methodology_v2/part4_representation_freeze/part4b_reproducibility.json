@@ -1,0 +1,18 @@
+{
+ "stage": "methodology_v2 Part 4B representation freeze study",
+ "started_utc": "2026-08-11T23:15:06.111832+00:00",
+ "finished_utc": "2026-08-11T23:15:34.288216+00:00",
+ "command": "scripts/methodology_v2/run_part4b.py",
+ "python": "3.12.3 (main, Nov  6 2025, 13:44:16) [GCC 13.3.0]",
+ "platform": "Linux-6.8.0-79-generic-x86_64-with-glibc2.39",
+ "git": {
+  "commit": "9047ccbc6857d84c593c48222bf8aa526015c5e9",
+  "branch": "bearing-generalisation-v1",
+  "n_untracked_or_modified": 26
+ },
+ "part2_seal_verified": true,
+ "part3b_seal_verified": true,
+ "part3b_window_hashes_sha256": "0e869490aa147932612cca7ac97ef4e7dba7219242304ae5fdcf3f29ad2cd5e8",
+ "data_access": "Fold-1 TRAIN only (part4b_signal_access_log.json)",
+ "note": "N2 statistics here are DEV-SAMPLE estimates for the comparison only; final fold-specific normalizers are NOT fitted (requires approval)"
+}

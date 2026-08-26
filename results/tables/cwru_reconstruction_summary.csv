@@ -1,0 +1,2 @@
+Dataset,n_cells,MSE mean,MSE sample SD,MSE valid cells,NMSE mean,NMSE sample SD,NMSE valid cells,MAE mean,MAE sample SD,MAE valid cells,R² mean,R² sample SD,R² valid cells,Pearson r mean,Pearson r sample SD,Pearson r valid cells,Spearman ρ mean,Spearman ρ sample SD,Spearman ρ valid cells
+CWRU,9,12.242316894230882,13.99702888246551,9,0.44773984752828283,0.14192661326668662,9,0.7375795895225207,0.5092506551526217,9,0.378301259718669,0.11740610295229031,9,0.6204555134666695,0.08046494956329768,9,0.6151932773496863,0.07071492379395221,9

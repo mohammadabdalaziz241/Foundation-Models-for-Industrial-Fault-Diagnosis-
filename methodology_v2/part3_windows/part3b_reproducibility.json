@@ -1,0 +1,18 @@
+{
+ "stage": "methodology_v2 Part 3B frozen window extraction",
+ "started_utc": "2026-08-11T22:46:05.237696+00:00",
+ "finished_utc": "2026-08-11T22:46:46.137554+00:00",
+ "command": "scripts/methodology_v2/run_part3b.py",
+ "python": "3.12.3 (main, Nov  6 2025, 13:44:16) [GCC 13.3.0]",
+ "platform": "Linux-6.8.0-79-generic-x86_64-with-glibc2.39",
+ "git": {
+  "commit": "9047ccbc6857d84c593c48222bf8aa526015c5e9",
+  "branch": "bearing-generalisation-v1",
+  "n_untracked_or_modified": 26
+ },
+ "part2_master_hash_verified": true,
+ "part2_split_hashes_sha256": "8eabcf349d32f37b904bc1c0ea9e89d36b7812d16366eb3b78e533db4a580616",
+ "part3a_recommendations_sha256": "ab3a0dbb47b094f79e126ec2cb8d5e2a3b8fb157aa00fa16454a9b397e53aa7f",
+ "part3b_master_hash": "99ffde7e5c0e2cb9b05713801aedcb10b11ccc229d4c2d10a58a1506db10bb51",
+ "frozen_overrides": "native sampling rates kept (25 kHz common rate rejected by approved decision)"
+}

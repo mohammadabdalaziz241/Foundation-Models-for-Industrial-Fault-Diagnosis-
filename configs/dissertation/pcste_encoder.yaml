@@ -1,0 +1,49 @@
+{
+ "architecture": {
+  "backbone": "bimamba",
+  "bidirectional_fusion": "mean_of_directions",
+  "coordinate_encoder": "fourier_absolute_khz_seconds",
+  "d_model": 192,
+  "dropout": 0.0,
+  "n_temporal_blocks": 4,
+  "name": "PC-STE",
+  "patch_freq_bins": 16,
+  "patch_time_frames": 8,
+  "pooling": "validity_masked_mean",
+  "stem_conv_channels": 8,
+  "use_coordinates": true,
+  "use_mixer": true,
+  "version": "part5b.v1"
+ },
+ "bidirectional_design": "per layer: x + 0.5*(MambaFwd(LN(x)) + flip(MambaBwd(flip(LN(x)))))",
+ "coordinate_features": "8 log-spaced wavelengths per coordinate; f in [0.1,51.2] kHz, t in [0.02,2.56] s; sin+cos -> 32 dims -> Linear(32,192); phi(f)=16-dim freq-only features",
+ "mamba_implementation": "reference-faithful pure-PyTorch Mamba-1 selective scan (official parameterization; mamba_ssm CUDA package unbuildable on torch 2.12.0+cu130 \u2014 disclosed)",
+ "mixer_equations": "a_j=w2^T tanh(W1[h_j;phi(f_j)]); alpha=masked_softmax(a); c=sum alpha_j V h_j; g_i=sigmoid(G[h_i;phi(f_i);c]); h'_i=h_i+g_i*W_c c",
+ "parameter_breakdown": {
+  "coordinate_encoder": 6336,
+  "cross_band_mixer": 164737,
+  "patch_stem": 196880,
+  "temporal_backbone": 2014080,
+  "total": 2382033
+ },
+ "s0_s1_rule": "identical encoder class/config for S0 and S1; only pretraining history may differ",
+ "supported_shapes": {
+  "CWRU": [
+   513,
+   184
+  ],
+  "HIT": [
+   257,
+   192
+  ],
+  "JNU": [
+   513,
+   192
+  ],
+  "MAFAULDA": [
+   513,
+   192
+  ]
+ },
+ "upstream_part4c_hash": "ee9414e8988c36b8a1ecad7d2622a54439a4bcc180a6a4e6a50b2f256160064f"
+}

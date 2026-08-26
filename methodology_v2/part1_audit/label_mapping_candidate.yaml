@@ -1,0 +1,72 @@
+# label_mapping_candidate.yaml — methodology_v2 Part 1
+#
+# CANDIDATE mapping only. Nothing is collapsed yet; every manifest row keeps
+# its dataset-native original_label. This file records which original labels
+# COULD legitimately map into a shared taxonomy (Task A), with justification,
+# and which must never be forced into it.
+#
+# Shared candidate classes: Healthy, InnerRace, OuterRace, RollingElement.
+# Sentinel values:
+#   NON_BEARING_DO_NOT_MAP  — system-level fault, physically not a bearing
+#                             fault; must not be mapped into bearing classes.
+#   NO_CROSS_DATASET_MATCH  — genuine bearing fault type that exists in only
+#                             one dataset; usable in Task B only.
+
+shared_classes: [Healthy, InnerRace, OuterRace, RollingElement]
+
+CWRU:
+  # original_label -> candidate shared class
+  Normal:    {maps_to: Healthy,        justification: "documented healthy baseline (files 97-100)"}
+  IR007:     {maps_to: InnerRace,      justification: "documented EDM inner-raceway defect, 7 mil"}
+  IR014:     {maps_to: InnerRace,      justification: "as above, 14 mil"}
+  IR021:     {maps_to: InnerRace,      justification: "as above, 21 mil"}
+  IR028:     {maps_to: InnerRace,      justification: "as above, 28 mil (12 kHz DE only)"}
+  B007:      {maps_to: RollingElement, justification: "documented ball defect; ball = rolling element"}
+  B014:      {maps_to: RollingElement, justification: "as above"}
+  B021:      {maps_to: RollingElement, justification: "as above"}
+  B028:      {maps_to: RollingElement, justification: "as above"}
+  OR007@3:   {maps_to: OuterRace,      justification: "documented outer-raceway defect; clock position kept as metadata, not label"}
+  OR007@6:   {maps_to: OuterRace,      justification: "as above"}
+  OR007@12:  {maps_to: OuterRace,      justification: "as above"}
+  OR014@6:   {maps_to: OuterRace,      justification: "as above"}
+  OR021@3:   {maps_to: OuterRace,      justification: "as above (48 kHz DE only)"}
+  OR021@6:   {maps_to: OuterRace,      justification: "as above"}
+  OR021@12:  {maps_to: OuterRace,      justification: "as above"}
+
+JNU:
+  n:  {maps_to: Healthy,        justification: "documented healthy condition"}
+  ib: {maps_to: InnerRace,      justification: "documented wire-cut dent on inner ring"}
+  ob: {maps_to: OuterRace,      justification: "documented wire-cut dent on outer ring"}
+  tb: {maps_to: RollingElement, justification: "documented wire-cut dent on roller; roller = rolling element (broader category shared with CWRU ball)"}
+
+HIT:
+  "0": {maps_to: Healthy,   justification: "documented healthy inter-shaft bearing (sessions data1, data2)"}
+  "1": {maps_to: InnerRace, justification: "documented inner-ring wire-cut faults (data3: 0.5x0.5 mm; data4: 0.5x1.0 mm)"}
+  "2": {maps_to: OuterRace, justification: "documented outer-ring wire-cut fault (data5: 0.5x0.5 mm)"}
+  # note: HIT contributes no RollingElement class; machine type (aero-engine
+  # inter-shaft bearing, casing sensors) differs radically from motor test
+  # rigs — domain gap disclosed in the audit report.
+
+MAFAULDA:
+  normal:                    {maps_to: Healthy, justification: "documented no-fault operation"}
+  imbalance:                 {maps_to: NON_BEARING_DO_NOT_MAP, justification: "rotor imbalance is a system-level fault; forcing it into a bearing-fault class would be physically wrong"}
+  horizontal-misalignment:   {maps_to: NON_BEARING_DO_NOT_MAP, justification: "shaft misalignment is a system-level fault"}
+  vertical-misalignment:     {maps_to: NON_BEARING_DO_NOT_MAP, justification: "shaft misalignment is a system-level fault"}
+  underhang/outer_race:      {maps_to: OuterRace,      confidence: conditional, justification: "folder taxonomy + website summary table say outer race; the website's detailed sec-1.4.5 tables permute fault-type names (see data_integrity_report.md) — semantic label carries documented residual ambiguity"}
+  overhang/outer_race:       {maps_to: OuterRace,      confidence: conditional, justification: "as above; same physical defective bearing as underhang/outer_race"}
+  underhang/ball_fault:      {maps_to: RollingElement, confidence: conditional, justification: "folder taxonomy + summary table say ball (rolling element); detailed-table permutation caveat as above"}
+  overhang/ball_fault:       {maps_to: RollingElement, confidence: conditional, justification: "as above"}
+  underhang/cage_fault:      {maps_to: NO_CROSS_DATASET_MATCH, justification: "cage fault exists in no other candidate dataset; usable only under dataset-specific heads (Task B)"}
+  overhang/cage_fault:       {maps_to: NO_CROSS_DATASET_MATCH, justification: "as above"}
+  # note: under the operational folder taxonomy MaFaulDa has NO inner-race
+  # class (the website's 'inner track' wording appears only in the
+  # permuted detailed tables).
+
+rules:
+  - never map imbalance or misalignment into bearing-fault categories
+  - bearing_position (underhang/overhang, OR clock position) is metadata,
+    never part of the shared label
+  - severity (defect size, added mass, offset) is metadata, never part of
+    the shared label
+  - rows whose maps_to is a sentinel are EXCLUDED from Task A and retained
+    with native labels for Task B / SSL pretraining

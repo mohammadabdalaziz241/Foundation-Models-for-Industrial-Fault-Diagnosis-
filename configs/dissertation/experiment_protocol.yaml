@@ -1,0 +1,46 @@
+{
+ "arms": {
+  "S0": "random PC-STE encoder + dataset heads",
+  "S1": "SSL-pretrained PC-STE encoder (best MacroDomainReconMSE checkpoint) + SAME heads"
+ },
+ "exploratory": "ablations A1-A4 (full-label only)",
+ "folds": [
+  1,
+  2,
+  3
+ ],
+ "label_fractions": [
+  0.05,
+  0.1,
+  0.25,
+  0.5,
+  1.0
+ ],
+ "part5c_spec_hash": "f5c65a7e021d85d667027b86e4e5c8d04b6a3e20dc1cef8c4e996c9bb05d6596",
+ "primary_comparison": "S1@100% vs S0@100% on MacroDomainF1_test",
+ "primary_hypothesis": "S1 improves MacroDomainF1_test over S0 at 100% labels",
+ "run_matrix": {
+  "downstream": 90,
+  "ssl": 9,
+  "total": 99
+ },
+ "run_states": [
+  "REGISTERED",
+  "RUNNING",
+  "COMPLETE",
+  "FAILED"
+ ],
+ "secondary": "label efficiency at 5/10/25/50%",
+ "seeds": [
+  42,
+  1337,
+  2026
+ ],
+ "test_access": "train -> validation checkpoint -> freeze -> single TEST evaluation; no test-driven decisions; failed runs restart only with identical registry config",
+ "upstream": {
+  "part2": "527ccc1d449b223a37ecf109ed27be5279e17d85ba4e881abb9c68f4035e69c6",
+  "part3b": "99ffde7e5c0e2cb9b05713801aedcb10b11ccc229d4c2d10a58a1506db10bb51",
+  "part4c": "ee9414e8988c36b8a1ecad7d2622a54439a4bcc180a6a4e6a50b2f256160064f",
+  "part5b_architecture": "962bb1de520a941a1c3a67c63c97d28983783327f7e263a73c9ec0bad0b6711f"
+ }
+}

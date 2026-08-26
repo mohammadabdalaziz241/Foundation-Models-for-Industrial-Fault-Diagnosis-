@@ -1,0 +1,103 @@
+# part4a_recommendations.yaml — methodology_v2 Part 4A
+# Status: PENDING_HUMAN_APPROVAL — recommendations only; nothing frozen,
+# no full-dataset spectrograms generated. Evidence:
+# PART4A_STFT_DESIGN_REPORT.md (all diagnostics Fold-1 TRAIN only;
+# no label-driven or performance-driven selection).
+
+status: PENDING_HUMAN_APPROVAL
+
+single_resolution_stft:
+  recommendation:
+    n_fft: 1024
+    hop: 256              # 25% of analysis window (75% frame overlap)
+    window: periodic Hann
+    convention: center=False, no padding, one-sided rfft, full frames only
+  per_dataset_shape_1s:   # (freq_bins, time_frames), native rates kept
+    CWRU: [513, 184]      # df 46.9 Hz, frame 21.3 ms, hop 5.3 ms
+    JNU: [513, 192]       # df 48.8 Hz, frame 20.5 ms, hop 5.1 ms
+    HIT: [513, 94]        # df 24.4 Hz, frame 41.0 ms, hop 10.2 ms
+    MAFAULDA: [513, 192]  # df 48.8 Hz
+  rationale: >
+    Best balance on the measured trade-off: hop <= 10 ms everywhere keeps
+    impulse trains sharply localised (visually confirmed on all four
+    datasets; JNU/MaFaulDa transient streaks fully resolved); df ~24-49 Hz
+    resolves resonance bands and sideband spacings while frame count per
+    window stays 94-192; tensor is 0.19-0.39 MB float32 per window.
+    Larger n_fft raises per-frame peak counts roughly linearly but at
+    2048/4096 the 41-164 ms frames begin to smear impulse spacing at high
+    shaft rates, and slow-shaft lines (10-30 Hz) remain unresolvable at
+    every candidate anyway (see limitation below).
+  known_limitation: >
+    Shaft-frequency lines themselves (10-30 Hz for JNU/slow MaFaulDa/CWRU)
+    are below or near one bin at all candidates; rotational periodicity is
+    carried by the impulse-train TIME structure, which the 25% hop
+    preserves. Documented, not fixable within a 1-s STFT without
+    order-tracking (out of scope).
+
+multi_resolution:
+  verdict: MAYBE
+  evidence: >
+    512 vs 4096 comparisons show real but modest complementarity: the
+    short config localises impulse trains (time-gradient energy roughly
+    constant across n_fft), the long config nearly quadruples resolvable
+    spectral peaks per frame and raises peak contrast (e.g. MaFaulDa
+    0.69 -> 0.91). Structures are complementary but the single 1024/256
+    already exposes both families of structure acceptably.
+  recommendation: >
+    Start single-resolution (1024/256). Hold the dual pair
+    {512/128, 4096/1024} (combined ~0.7 MB/window) as a pre-registered
+    Part-5 ablation ONLY if the encoder shows deficits on
+    slow-shaft/harmonic-dominated cases. Do not build fusion now.
+
+value_transform:
+  recommendation: log1p          # log1p(|TF|)
+  rationale: >
+    Bounded, well-conditioned dynamic range on TRAIN dev windows
+    (p0.1-p99.9 span ~4.4 vs 75.5 for dB, 153 for magnitude, 7.4e4 for
+    power); exact zeros map to exact 0 without an epsilon floor (dB needs
+    eps and produces a -200 dB floor artefact); monotone compression
+    keeps weak harmonics/sidebands visible (visually confirmed: CWRU
+    upper-band harmonics invisible in raw magnitude, clear under log1p);
+    smooth non-negative target well suited to masked reconstruction.
+  runner_up: dB (20*log10(|X|+1e-10)) — acceptable but wider range and
+    floor-sensitive; magnitude/power rejected (peak-dominated).
+
+physical_frequency_treatment:
+  recommendation: strategy_C_physical_hz_coordinate
+  rationale: >
+    Native rates are frozen, so identical row indices mean different Hz
+    (verified table: bin 256 of n_fft=1024 = 12.0 kHz CWRU / 12.5 kHz
+    JNU-MaFaulDa / 6.25 kHz HIT). Strategy A (raw index) would let the
+    encoder silently misalign physics across datasets; Strategy B
+    (f/Nyquist) makes ranges comparable but 0.8 still means 10 kHz vs
+    20 kHz; Strategy C attaches the true Hz coordinate to every bin/patch
+    (future physical-frequency positional encoding) and preserves
+    cross-dataset physical alignment without resampling. Strategy D
+    (shared low band + dataset-specific high band) remains a conceptual
+    fallback that can be expressed INSIDE C at Part-5 design if needed.
+  to_implement_in: Part 4B / Part 5 (architecture), not now
+
+normalization_direction:
+  frozen_rule_already: statistics fit on TRAIN of the relevant fold only;
+    validation/test reuse stored TRAIN statistics; nothing fitted in 4A
+  finding: >
+    Fold-1 TRAIN dev windows show clear per-dataset log1p scale offsets
+    (means 0.53 CWRU / 1.30 JNU / 1.01 HIT / 1.24 MaFaulDa) — a single
+    global multi-dataset statistic would leave dataset identity as a
+    dominant scale cue and under-normalise CWRU.
+  recommendation_for_4b: >
+    Test two candidates in Part 4B, decided there: (1) per-dataset,
+    per-frequency-bin TRAIN mean/std (preserves within-dataset amplitude
+    relations, removes cross-dataset scale shortcut, aligns bin scales);
+    (2) per-window standardisation (simplest, removes absolute amplitude
+    including possibly informative level differences). Reject global
+    multi-dataset stats as primary. No normalization of val/test ever
+    except via stored TRAIN statistics.
+
+hit_fragment_joints:
+  verdict: NO SYSTEMATIC ARTEFACT — proceed
+  evidence: 60 joints in 53 fold-1 TRAIN windows; time-domain jump ratio
+    median 0.23 / max 1.23 (vs within-window p99.9 diffs); boundary-frame
+    energy z-scores mean -0.02 / max 2.58; boundary-frame spectral
+    flatness 0.8182 vs window mean 0.8178; no visible broadband streaks.
+    No smoothing/cross-fade applied or needed.

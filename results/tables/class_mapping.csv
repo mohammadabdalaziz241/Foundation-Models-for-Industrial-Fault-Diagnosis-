@@ -1,0 +1,18 @@
+dataset,numeric_label,semantic_class_name
+JNU,n,healthy
+JNU,ib,inner race fault
+JNU,ob,outer race fault
+JNU,tb,rolling element fault
+HIT,0,healthy
+HIT,1,inner race fault
+HIT,2,outer race fault
+MaFaulDa,normal,normal
+MaFaulDa,imbalance,imbalance
+MaFaulDa,horizontal-misalignment,horizontal-misalignment
+MaFaulDa,vertical-misalignment,vertical-misalignment
+MaFaulDa,underhang/ball_fault,underhang/ball fault
+MaFaulDa,underhang/cage_fault,underhang/cage fault
+MaFaulDa,underhang/outer_race,underhang/outer race
+MaFaulDa,overhang/ball_fault,overhang/ball fault
+MaFaulDa,overhang/cage_fault,overhang/cage fault
+MaFaulDa,overhang/outer_race,overhang/outer race

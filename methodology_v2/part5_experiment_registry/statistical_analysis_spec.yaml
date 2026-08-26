@@ -1,0 +1,16 @@
+{
+ "caveat": "fold x seed cells are paired but not fully independent; conclusions stay cautious",
+ "delta": "MacroDomainF1(S1) - MacroDomainF1(S0)",
+ "paired_unit": "fold x seed (9 pairs per fraction)",
+ "primary_test": "exact two-sided paired sign-flip permutation test (2^9 = 512 flips) at 100% labels",
+ "report": [
+  "mean S0",
+  "mean S1",
+  "mean delta",
+  "median delta",
+  "sd delta",
+  "all 9 paired deltas",
+  "effect size"
+ ],
+ "secondary": "same test at 5/10/25/50% with Holm correction if inferential p-values are reported across fractions"
+}

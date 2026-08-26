@@ -1,0 +1,40 @@
+{
+ "stage": "methodology_v2 Part 4A STFT design study",
+ "started_utc": "2026-08-11T23:02:12.486207+00:00",
+ "finished_utc": "2026-08-11T23:02:24.606454+00:00",
+ "command": "scripts/methodology_v2/run_part4a.py",
+ "python": "3.12.3 (main, Nov  6 2025, 13:44:16) [GCC 13.3.0]",
+ "platform": "Linux-6.8.0-79-generic-x86_64-with-glibc2.39",
+ "git": {
+  "commit": "9047ccbc6857d84c593c48222bf8aa526015c5e9",
+  "branch": "bearing-generalisation-v1",
+  "n_untracked_or_modified": 26
+ },
+ "part2_seal_verified": true,
+ "part3b_seal_verified": true,
+ "part3b_window_hashes_sha256": "0e869490aa147932612cca7ac97ef4e7dba7219242304ae5fdcf3f29ad2cd5e8",
+ "data_access": "Fold-1 TRAIN only (see part4a_signal_access_log.json)",
+ "per_dataset_log1p_scale_dev": {
+  "CWRU": {
+   "log1p_mean": 0.5259,
+   "log1p_std": 0.8727,
+   "log1p_p99": 3.7242
+  },
+  "JNU": {
+   "log1p_mean": 1.3047,
+   "log1p_std": 0.7812,
+   "log1p_p99": 3.3856
+  },
+  "HIT": {
+   "log1p_mean": 1.014,
+   "log1p_std": 0.6532,
+   "log1p_p99": 2.9761
+  },
+  "MAFAULDA": {
+   "log1p_mean": 1.2391,
+   "log1p_std": 1.0729,
+   "log1p_p99": 5.0591
+  }
+ },
+ "n_figures": 22
+}

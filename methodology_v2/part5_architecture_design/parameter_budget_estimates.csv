@@ -1,0 +1,6 @@
+tier,embedding_dim,n_blocks,block_type,estimated_params,estimated_params_m,tokens_16x8_max,rough_fwd_activation_mb_per_window,batch64_activation_mb,within_target_range
+Tiny,128,3,bimamba,738918,0.74,792,3.09,198.0,True
+Small,192,4,bimamba,2130739,2.13,792,5.8,371.2,True
+Medium,256,6,bimamba,5501747,5.5,792,10.83,693.0,True
+Small-transformer,192,4,transformer,1953792,1.95,792,,,True
+Small-tcn,192,4,tcn,1658880,1.66,792,,,True

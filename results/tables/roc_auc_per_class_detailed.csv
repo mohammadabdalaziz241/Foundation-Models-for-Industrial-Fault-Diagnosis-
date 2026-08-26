@@ -1,0 +1,307 @@
+arm,fold,seed,dataset,numeric_or_original_label,class,roc_auc,positive_n,negative_n
+S0,1,42,JNU,n,healthy,1.0,15,9
+S0,1,42,JNU,ib,inner race fault,1.0,3,21
+S0,1,42,JNU,ob,outer race fault,1.0,3,21
+S0,1,42,JNU,tb,rolling element fault,1.0,3,21
+S0,1,42,HIT,0,healthy,1.0,112,168
+S0,1,42,HIT,1,inner race fault,0.9895833333333333,112,168
+S0,1,42,HIT,2,outer race fault,0.9881218112244898,56,224
+S0,1,42,MaFaulDa,normal,normal,0.9998181818181818,35,2200
+S0,1,42,MaFaulDa,imbalance,imbalance,0.990468085106383,235,2000
+S0,1,42,MaFaulDa,horizontal-misalignment,horizontal-misalignment,0.9999774382114655,245,1990
+S0,1,42,MaFaulDa,vertical-misalignment,vertical-misalignment,0.9989360201511335,250,1985
+S0,1,42,MaFaulDa,underhang/ball_fault,underhang/ball fault,0.999495436365501,245,1990
+S0,1,42,MaFaulDa,underhang/cage_fault,underhang/cage fault,0.9999774382114655,245,1990
+S0,1,42,MaFaulDa,underhang/outer_race,underhang/outer race,0.9992390524048816,245,1990
+S0,1,42,MaFaulDa,overhang/ball_fault,overhang/ball fault,1.0,245,1990
+S0,1,42,MaFaulDa,overhang/cage_fault,overhang/cage fault,0.9937996102963799,245,1990
+S0,1,42,MaFaulDa,overhang/outer_race,overhang/outer race,0.9939247256691622,245,1990
+S1,1,42,JNU,n,healthy,1.0,15,9
+S1,1,42,JNU,ib,inner race fault,1.0,3,21
+S1,1,42,JNU,ob,outer race fault,1.0,3,21
+S1,1,42,JNU,tb,rolling element fault,1.0,3,21
+S1,1,42,HIT,0,healthy,1.0,112,168
+S1,1,42,HIT,1,inner race fault,1.0,112,168
+S1,1,42,HIT,2,outer race fault,1.0,56,224
+S1,1,42,MaFaulDa,normal,normal,0.9997467532467532,35,2200
+S1,1,42,MaFaulDa,imbalance,imbalance,0.9805287234042553,235,2000
+S1,1,42,MaFaulDa,horizontal-misalignment,horizontal-misalignment,0.898432981232694,245,1990
+S1,1,42,MaFaulDa,vertical-misalignment,vertical-misalignment,0.999968765743073,250,1985
+S1,1,42,MaFaulDa,underhang/ball_fault,underhang/ball fault,1.0,245,1990
+S1,1,42,MaFaulDa,underhang/cage_fault,underhang/cage fault,1.0,245,1990
+S1,1,42,MaFaulDa,underhang/outer_race,underhang/outer race,1.0,245,1990
+S1,1,42,MaFaulDa,overhang/ball_fault,overhang/ball fault,1.0,245,1990
+S1,1,42,MaFaulDa,overhang/cage_fault,overhang/cage fault,0.9888206337811507,245,1990
+S1,1,42,MaFaulDa,overhang/outer_race,overhang/outer race,0.9801435750179469,245,1990
+S0,1,1337,JNU,n,healthy,1.0,15,9
+S0,1,1337,JNU,ib,inner race fault,1.0,3,21
+S0,1,1337,JNU,ob,outer race fault,1.0,3,21
+S0,1,1337,JNU,tb,rolling element fault,1.0,3,21
+S0,1,1337,HIT,0,healthy,0.998937074829932,112,168
+S0,1,1337,HIT,1,inner race fault,0.9993622448979592,112,168
+S0,1,1337,HIT,2,outer race fault,1.0,56,224
+S0,1,1337,MaFaulDa,normal,normal,0.9994025974025974,35,2200
+S0,1,1337,MaFaulDa,imbalance,imbalance,0.9947340425531915,235,2000
+S0,1,1337,MaFaulDa,horizontal-misalignment,horizontal-misalignment,0.9644508255563531,245,1990
+S0,1,1337,MaFaulDa,vertical-misalignment,vertical-misalignment,0.9999959697732997,250,1985
+S0,1,1337,MaFaulDa,underhang/ball_fault,underhang/ball fault,1.0,245,1990
+S0,1,1337,MaFaulDa,underhang/cage_fault,underhang/cage fault,1.0,245,1990
+S0,1,1337,MaFaulDa,underhang/outer_race,underhang/outer race,0.9992411034765665,245,1990
+S0,1,1337,MaFaulDa,overhang/ball_fault,overhang/ball fault,1.0,245,1990
+S0,1,1337,MaFaulDa,overhang/cage_fault,overhang/cage fault,0.9974648753973951,245,1990
+S0,1,1337,MaFaulDa,overhang/outer_race,overhang/outer race,0.9980084093939083,245,1990
+S1,1,1337,JNU,n,healthy,1.0,15,9
+S1,1,1337,JNU,ib,inner race fault,1.0,3,21
+S1,1,1337,JNU,ob,outer race fault,1.0,3,21
+S1,1,1337,JNU,tb,rolling element fault,1.0,3,21
+S1,1,1337,HIT,0,healthy,1.0,112,168
+S1,1,1337,HIT,1,inner race fault,1.0,112,168
+S1,1,1337,HIT,2,outer race fault,1.0,56,224
+S1,1,1337,MaFaulDa,normal,normal,0.999051948051948,35,2200
+S1,1,1337,MaFaulDa,imbalance,imbalance,0.9981574468085106,235,2000
+S1,1,1337,MaFaulDa,horizontal-misalignment,horizontal-misalignment,0.9986257819710799,245,1990
+S1,1,1337,MaFaulDa,vertical-misalignment,vertical-misalignment,0.9999959697732997,250,1985
+S1,1,1337,MaFaulDa,underhang/ball_fault,underhang/ball fault,1.0,245,1990
+S1,1,1337,MaFaulDa,underhang/cage_fault,underhang/cage fault,1.0,245,1990
+S1,1,1337,MaFaulDa,underhang/outer_race,underhang/outer race,0.9999958978566301,245,1990
+S1,1,1337,MaFaulDa,overhang/ball_fault,overhang/ball fault,0.9999343657060814,245,1990
+S1,1,1337,MaFaulDa,overhang/cage_fault,overhang/cage fault,0.9990483027381807,245,1990
+S1,1,1337,MaFaulDa,overhang/outer_race,overhang/outer race,0.9987775612757667,245,1990
+S0,1,2026,JNU,n,healthy,1.0,15,9
+S0,1,2026,JNU,ib,inner race fault,1.0,3,21
+S0,1,2026,JNU,ob,outer race fault,1.0,3,21
+S0,1,2026,JNU,tb,rolling element fault,1.0,3,21
+S0,1,2026,HIT,0,healthy,1.0,112,168
+S0,1,2026,HIT,1,inner race fault,1.0,112,168
+S0,1,2026,HIT,2,outer race fault,1.0,56,224
+S0,1,2026,MaFaulDa,normal,normal,0.9999610389610389,35,2200
+S0,1,2026,MaFaulDa,imbalance,imbalance,0.9938425531914894,235,2000
+S0,1,2026,MaFaulDa,horizontal-misalignment,horizontal-misalignment,0.9791385498923187,245,1990
+S0,1,2026,MaFaulDa,vertical-misalignment,vertical-misalignment,0.9999818639798489,250,1985
+S0,1,2026,MaFaulDa,underhang/ball_fault,underhang/ball fault,0.9991939288278125,245,1990
+S0,1,2026,MaFaulDa,underhang/cage_fault,underhang/cage fault,0.999911803917547,245,1990
+S0,1,2026,MaFaulDa,underhang/outer_race,underhang/outer race,0.9998871910573275,245,1990
+S0,1,2026,MaFaulDa,overhang/ball_fault,overhang/ball fault,0.9993395549174444,245,1990
+S0,1,2026,MaFaulDa,overhang/cage_fault,overhang/cage fault,0.9384975899907703,245,1990
+S0,1,2026,MaFaulDa,overhang/outer_race,overhang/outer race,0.7871418316070147,245,1990
+S1,1,2026,JNU,n,healthy,1.0,15,9
+S1,1,2026,JNU,ib,inner race fault,1.0,3,21
+S1,1,2026,JNU,ob,outer race fault,1.0,3,21
+S1,1,2026,JNU,tb,rolling element fault,1.0,3,21
+S1,1,2026,HIT,0,healthy,1.0,112,168
+S1,1,2026,HIT,1,inner race fault,1.0,112,168
+S1,1,2026,HIT,2,outer race fault,1.0,56,224
+S1,1,2026,MaFaulDa,normal,normal,0.999987012987013,35,2200
+S1,1,2026,MaFaulDa,imbalance,imbalance,0.9976765957446809,235,2000
+S1,1,2026,MaFaulDa,horizontal-misalignment,horizontal-misalignment,0.9581642908419649,245,1990
+S1,1,2026,MaFaulDa,vertical-misalignment,vertical-misalignment,1.0,250,1985
+S1,1,2026,MaFaulDa,underhang/ball_fault,underhang/ball fault,0.9937052609988719,245,1990
+S1,1,2026,MaFaulDa,underhang/cage_fault,underhang/cage fault,1.0,245,1990
+S1,1,2026,MaFaulDa,underhang/outer_race,underhang/outer race,0.9908932417187981,245,1990
+S1,1,2026,MaFaulDa,overhang/ball_fault,overhang/ball fault,0.9999302635627115,245,1990
+S1,1,2026,MaFaulDa,overhang/cage_fault,overhang/cage fault,0.999083170956825,245,1990
+S1,1,2026,MaFaulDa,overhang/outer_race,overhang/outer race,0.9990011280894268,245,1990
+S0,2,42,JNU,n,healthy,1.0,15,9
+S0,2,42,JNU,ib,inner race fault,1.0,3,21
+S0,2,42,JNU,ob,outer race fault,1.0,3,21
+S0,2,42,JNU,tb,rolling element fault,1.0,3,21
+S0,2,42,HIT,0,healthy,1.0,112,168
+S0,2,42,HIT,1,inner race fault,1.0,112,168
+S0,2,42,HIT,2,outer race fault,1.0,56,224
+S0,2,42,MaFaulDa,normal,normal,0.9956959236136613,35,1945
+S0,2,42,MaFaulDa,imbalance,imbalance,0.9623631123919308,245,1735
+S0,2,42,MaFaulDa,horizontal-misalignment,horizontal-misalignment,0.7679115450214667,245,1735
+S0,2,42,MaFaulDa,vertical-misalignment,vertical-misalignment,0.9860323699421966,250,1730
+S0,2,42,MaFaulDa,underhang/ball_fault,underhang/ball fault,0.9899588356365774,190,1790
+S0,2,42,MaFaulDa,underhang/cage_fault,underhang/cage fault,0.9337140804597701,240,1740
+S0,2,42,MaFaulDa,underhang/outer_race,underhang/outer race,0.9483339607016487,185,1795
+S0,2,42,MaFaulDa,overhang/ball_fault,overhang/ball fault,0.9996648936170213,100,1880
+S0,2,42,MaFaulDa,overhang/cage_fault,overhang/cage fault,0.9994965594306887,245,1735
+S0,2,42,MaFaulDa,overhang/outer_race,overhang/outer race,0.9991366229488914,245,1735
+S1,2,42,JNU,n,healthy,1.0,15,9
+S1,2,42,JNU,ib,inner race fault,1.0,3,21
+S1,2,42,JNU,ob,outer race fault,1.0,3,21
+S1,2,42,JNU,tb,rolling element fault,1.0,3,21
+S1,2,42,HIT,0,healthy,1.0,112,168
+S1,2,42,HIT,1,inner race fault,1.0,112,168
+S1,2,42,HIT,2,outer race fault,1.0,56,224
+S1,2,42,MaFaulDa,normal,normal,0.9876753580609622,35,1945
+S1,2,42,MaFaulDa,imbalance,imbalance,0.9966876433570546,245,1735
+S1,2,42,MaFaulDa,horizontal-misalignment,horizontal-misalignment,0.9967817443980473,245,1735
+S1,2,42,MaFaulDa,vertical-misalignment,vertical-misalignment,0.9999098265895954,250,1730
+S1,2,42,MaFaulDa,underhang/ball_fault,underhang/ball fault,0.9999676565715966,190,1790
+S1,2,42,MaFaulDa,underhang/cage_fault,underhang/cage fault,0.9625778256704981,240,1740
+S1,2,42,MaFaulDa,underhang/outer_race,underhang/outer race,0.9294165474666869,185,1795
+S1,2,42,MaFaulDa,overhang/ball_fault,overhang/ball fault,1.0,100,1880
+S1,2,42,MaFaulDa,overhang/cage_fault,overhang/cage fault,1.0,245,1735
+S1,2,42,MaFaulDa,overhang/outer_race,overhang/outer race,1.0,245,1735
+S0,2,1337,JNU,n,healthy,1.0,15,9
+S0,2,1337,JNU,ib,inner race fault,1.0,3,21
+S0,2,1337,JNU,ob,outer race fault,1.0,3,21
+S0,2,1337,JNU,tb,rolling element fault,1.0,3,21
+S0,2,1337,HIT,0,healthy,1.0,112,168
+S0,2,1337,HIT,1,inner race fault,1.0,112,168
+S0,2,1337,HIT,2,outer race fault,1.0,56,224
+S0,2,1337,MaFaulDa,normal,normal,0.8847447668013221,35,1945
+S0,2,1337,MaFaulDa,imbalance,imbalance,0.9531329765335529,245,1735
+S0,2,1337,MaFaulDa,horizontal-misalignment,horizontal-misalignment,0.9944856789978238,245,1735
+S0,2,1337,MaFaulDa,vertical-misalignment,vertical-misalignment,0.9980462427745664,250,1730
+S0,2,1337,MaFaulDa,underhang/ball_fault,underhang/ball fault,0.9815436636283446,190,1790
+S0,2,1337,MaFaulDa,underhang/cage_fault,underhang/cage fault,0.9467528735632185,240,1740
+S0,2,1337,MaFaulDa,underhang/outer_race,underhang/outer race,0.9637340962132048,185,1795
+S0,2,1337,MaFaulDa,overhang/ball_fault,overhang/ball fault,0.9998297872340426,100,1880
+S0,2,1337,MaFaulDa,overhang/cage_fault,overhang/cage fault,0.9957913309415986,245,1735
+S0,2,1337,MaFaulDa,overhang/outer_race,overhang/outer race,0.9978733164735636,245,1735
+S1,2,1337,JNU,n,healthy,1.0,15,9
+S1,2,1337,JNU,ib,inner race fault,1.0,3,21
+S1,2,1337,JNU,ob,outer race fault,1.0,3,21
+S1,2,1337,JNU,tb,rolling element fault,1.0,3,21
+S1,2,1337,HIT,0,healthy,1.0,112,168
+S1,2,1337,HIT,1,inner race fault,1.0,112,168
+S1,2,1337,HIT,2,outer race fault,1.0,56,224
+S1,2,1337,MaFaulDa,normal,normal,0.9979140653690782,35,1945
+S1,2,1337,MaFaulDa,imbalance,imbalance,0.9849908839616539,245,1735
+S1,2,1337,MaFaulDa,horizontal-misalignment,horizontal-misalignment,0.9194071634417456,245,1735
+S1,2,1337,MaFaulDa,vertical-misalignment,vertical-misalignment,0.985579190751445,250,1730
+S1,2,1337,MaFaulDa,underhang/ball_fault,underhang/ball fault,1.0,190,1790
+S1,2,1337,MaFaulDa,underhang/cage_fault,underhang/cage fault,0.9840636973180076,240,1740
+S1,2,1337,MaFaulDa,underhang/outer_race,underhang/outer race,0.9668448392682376,185,1795
+S1,2,1337,MaFaulDa,overhang/ball_fault,overhang/ball fault,1.0,100,1880
+S1,2,1337,MaFaulDa,overhang/cage_fault,overhang/cage fault,0.9860259954125742,245,1735
+S1,2,1337,MaFaulDa,overhang/outer_race,overhang/outer race,0.9992777745103805,245,1735
+S0,2,2026,JNU,n,healthy,1.0,15,9
+S0,2,2026,JNU,ib,inner race fault,1.0,3,21
+S0,2,2026,JNU,ob,outer race fault,1.0,3,21
+S0,2,2026,JNU,tb,rolling element fault,1.0,3,21
+S0,2,2026,HIT,0,healthy,1.0,112,168
+S0,2,2026,HIT,1,inner race fault,1.0,112,168
+S0,2,2026,HIT,2,outer race fault,1.0,56,224
+S0,2,2026,MaFaulDa,normal,normal,0.9535512302607418,35,1945
+S0,2,2026,MaFaulDa,imbalance,imbalance,0.9710592248426748,245,1735
+S0,2,2026,MaFaulDa,horizontal-misalignment,horizontal-misalignment,0.9327577486325942,245,1735
+S0,2,2026,MaFaulDa,vertical-misalignment,vertical-misalignment,0.9867630057803468,250,1730
+S0,2,2026,MaFaulDa,underhang/ball_fault,underhang/ball fault,0.9997530138194648,190,1790
+S0,2,2026,MaFaulDa,underhang/cage_fault,underhang/cage fault,0.9260153256704982,240,1740
+S0,2,2026,MaFaulDa,underhang/outer_race,underhang/outer race,0.9006218474742154,185,1795
+S0,2,2026,MaFaulDa,overhang/ball_fault,overhang/ball fault,1.0,100,1880
+S0,2,2026,MaFaulDa,overhang/cage_fault,overhang/cage fault,0.9985837793330589,245,1735
+S0,2,2026,MaFaulDa,overhang/outer_race,overhang/outer race,0.9996777039345998,245,1735
+S1,2,2026,JNU,n,healthy,1.0,15,9
+S1,2,2026,JNU,ib,inner race fault,1.0,3,21
+S1,2,2026,JNU,ob,outer race fault,1.0,3,21
+S1,2,2026,JNU,tb,rolling element fault,1.0,3,21
+S1,2,2026,HIT,0,healthy,1.0,112,168
+S1,2,2026,HIT,1,inner race fault,1.0,112,168
+S1,2,2026,HIT,2,outer race fault,1.0,56,224
+S1,2,2026,MaFaulDa,normal,normal,0.9946088872567022,35,1945
+S1,2,2026,MaFaulDa,imbalance,imbalance,0.9816938187378697,245,1735
+S1,2,2026,MaFaulDa,horizontal-misalignment,horizontal-misalignment,0.9822995941892606,245,1735
+S1,2,2026,MaFaulDa,vertical-misalignment,vertical-misalignment,0.9991410404624277,250,1730
+S1,2,2026,MaFaulDa,underhang/ball_fault,underhang/ball fault,0.9873890032343429,190,1790
+S1,2,2026,MaFaulDa,underhang/cage_fault,underhang/cage fault,0.9809015804597702,240,1740
+S1,2,2026,MaFaulDa,underhang/outer_race,underhang/outer race,0.9962297673718287,185,1795
+S1,2,2026,MaFaulDa,overhang/ball_fault,overhang/ball fault,1.0,100,1880
+S1,2,2026,MaFaulDa,overhang/cage_fault,overhang/cage fault,0.9978709639475386,245,1735
+S1,2,2026,MaFaulDa,overhang/outer_race,overhang/outer race,0.9998165029700641,245,1735
+S0,3,42,JNU,n,healthy,1.0,15,9
+S0,3,42,JNU,ib,inner race fault,1.0,3,21
+S0,3,42,JNU,ob,outer race fault,1.0,3,21
+S0,3,42,JNU,tb,rolling element fault,1.0,3,21
+S0,3,42,HIT,0,healthy,1.0,112,168
+S0,3,42,HIT,1,inner race fault,1.0,112,168
+S0,3,42,HIT,2,outer race fault,1.0,56,224
+S0,3,42,MaFaulDa,normal,normal,1.0,35,1995
+S0,3,42,MaFaulDa,imbalance,imbalance,0.9954427485279826,245,1785
+S0,3,42,MaFaulDa,horizontal-misalignment,horizontal-misalignment,0.9997187446407134,245,1785
+S0,3,42,MaFaulDa,vertical-misalignment,vertical-misalignment,0.9999550561797753,250,1780
+S0,3,42,MaFaulDa,underhang/ball_fault,underhang/ball fault,1.0,245,1785
+S0,3,42,MaFaulDa,underhang/cage_fault,underhang/cage fault,0.9728048142333856,210,1820
+S0,3,42,MaFaulDa,underhang/outer_race,underhang/outer race,0.9987196953050611,185,1845
+S0,3,42,MaFaulDa,overhang/ball_fault,overhang/ball fault,1.0,125,1905
+S0,3,42,MaFaulDa,overhang/cage_fault,overhang/cage fault,0.9977934030755159,245,1785
+S0,3,42,MaFaulDa,overhang/outer_race,overhang/outer race,0.9947567598467958,245,1785
+S1,3,42,JNU,n,healthy,1.0,15,9
+S1,3,42,JNU,ib,inner race fault,1.0,3,21
+S1,3,42,JNU,ob,outer race fault,1.0,3,21
+S1,3,42,JNU,tb,rolling element fault,1.0,3,21
+S1,3,42,HIT,0,healthy,1.0,112,168
+S1,3,42,HIT,1,inner race fault,1.0,112,168
+S1,3,42,HIT,2,outer race fault,1.0,56,224
+S1,3,42,MaFaulDa,normal,normal,0.9975653419262441,35,1995
+S1,3,42,MaFaulDa,imbalance,imbalance,0.9953009775338707,245,1785
+S1,3,42,MaFaulDa,horizontal-misalignment,horizontal-misalignment,0.9964351454867661,245,1785
+S1,3,42,MaFaulDa,vertical-misalignment,vertical-misalignment,0.9924539325842696,250,1780
+S1,3,42,MaFaulDa,underhang/ball_fault,underhang/ball fault,0.9999954267421254,245,1785
+S1,3,42,MaFaulDa,underhang/cage_fault,underhang/cage fault,0.8755285190999477,210,1820
+S1,3,42,MaFaulDa,underhang/outer_race,underhang/outer race,0.9724837032154106,185,1845
+S1,3,42,MaFaulDa,overhang/ball_fault,overhang/ball fault,0.9994162729658793,125,1905
+S1,3,42,MaFaulDa,overhang/cage_fault,overhang/cage fault,0.999051048991025,245,1785
+S1,3,42,MaFaulDa,overhang/outer_race,overhang/outer race,0.9985228377065112,245,1785
+S0,3,1337,JNU,n,healthy,1.0,15,9
+S0,3,1337,JNU,ib,inner race fault,1.0,3,21
+S0,3,1337,JNU,ob,outer race fault,1.0,3,21
+S0,3,1337,JNU,tb,rolling element fault,1.0,3,21
+S0,3,1337,HIT,0,healthy,1.0,112,168
+S0,3,1337,HIT,1,inner race fault,1.0,112,168
+S0,3,1337,HIT,2,outer race fault,1.0,56,224
+S0,3,1337,MaFaulDa,normal,normal,1.0,35,1995
+S0,3,1337,MaFaulDa,imbalance,imbalance,0.9991493740353283,245,1785
+S0,3,1337,MaFaulDa,horizontal-misalignment,horizontal-misalignment,0.9998079231692677,245,1785
+S0,3,1337,MaFaulDa,vertical-misalignment,vertical-misalignment,0.9969303370786516,250,1780
+S0,3,1337,MaFaulDa,underhang/ball_fault,underhang/ball fault,0.9974435488481106,245,1785
+S0,3,1337,MaFaulDa,underhang/cage_fault,underhang/cage fault,0.7968550497121926,210,1820
+S0,3,1337,MaFaulDa,underhang/outer_race,underhang/outer race,0.9946194975463267,185,1845
+S0,3,1337,MaFaulDa,overhang/ball_fault,overhang/ball fault,1.0,125,1905
+S0,3,1337,MaFaulDa,overhang/cage_fault,overhang/cage fault,0.9981867032527296,245,1785
+S0,3,1337,MaFaulDa,overhang/outer_race,overhang/outer race,0.9856902761104442,245,1785
+S1,3,1337,JNU,n,healthy,1.0,15,9
+S1,3,1337,JNU,ib,inner race fault,1.0,3,21
+S1,3,1337,JNU,ob,outer race fault,1.0,3,21
+S1,3,1337,JNU,tb,rolling element fault,1.0,3,21
+S1,3,1337,HIT,0,healthy,0.9912840136054422,112,168
+S1,3,1337,HIT,1,inner race fault,1.0,112,168
+S1,3,1337,HIT,2,outer race fault,1.0,56,224
+S1,3,1337,MaFaulDa,normal,normal,1.0,35,1995
+S1,3,1337,MaFaulDa,imbalance,imbalance,0.9984576687817985,245,1785
+S1,3,1337,MaFaulDa,horizontal-misalignment,horizontal-misalignment,0.98459726747842,245,1785
+S1,3,1337,MaFaulDa,vertical-misalignment,vertical-misalignment,0.9976786516853933,250,1780
+S1,3,1337,MaFaulDa,underhang/ball_fault,underhang/ball fault,0.9999542674212543,245,1785
+S1,3,1337,MaFaulDa,underhang/cage_fault,underhang/cage fault,0.939330193615908,210,1820
+S1,3,1337,MaFaulDa,underhang/outer_race,underhang/outer race,0.9896638101516151,185,1845
+S1,3,1337,MaFaulDa,overhang/ball_fault,overhang/ball fault,1.0,125,1905
+S1,3,1337,MaFaulDa,overhang/cage_fault,overhang/cage fault,0.9999679871948779,245,1785
+S1,3,1337,MaFaulDa,overhang/outer_race,overhang/outer race,0.993105813754073,245,1785
+S0,3,2026,JNU,n,healthy,1.0,15,9
+S0,3,2026,JNU,ib,inner race fault,1.0,3,21
+S0,3,2026,JNU,ob,outer race fault,1.0,3,21
+S0,3,2026,JNU,tb,rolling element fault,1.0,3,21
+S0,3,2026,HIT,0,healthy,1.0,112,168
+S0,3,2026,HIT,1,inner race fault,0.9998405612244898,112,168
+S0,3,2026,HIT,2,outer race fault,1.0,56,224
+S0,3,2026,MaFaulDa,normal,normal,1.0,35,1995
+S0,3,2026,MaFaulDa,imbalance,imbalance,0.9999771337106271,245,1785
+S0,3,2026,MaFaulDa,horizontal-misalignment,horizontal-misalignment,0.9912536443148687,245,1785
+S0,3,2026,MaFaulDa,vertical-misalignment,vertical-misalignment,0.9989797752808989,250,1780
+S0,3,2026,MaFaulDa,underhang/ball_fault,underhang/ball fault,1.0,245,1785
+S0,3,2026,MaFaulDa,underhang/cage_fault,underhang/cage fault,0.94216378859236,210,1820
+S0,3,2026,MaFaulDa,underhang/outer_race,underhang/outer race,0.9863941990771259,185,1845
+S0,3,2026,MaFaulDa,overhang/ball_fault,overhang/ball fault,1.0,125,1905
+S0,3,2026,MaFaulDa,overhang/cage_fault,overhang/cage fault,0.9995403875836049,245,1785
+S0,3,2026,MaFaulDa,overhang/outer_race,overhang/outer race,0.998204996284228,245,1785
+S1,3,2026,JNU,n,healthy,1.0,15,9
+S1,3,2026,JNU,ib,inner race fault,1.0,3,21
+S1,3,2026,JNU,ob,outer race fault,1.0,3,21
+S1,3,2026,JNU,tb,rolling element fault,1.0,3,21
+S1,3,2026,HIT,0,healthy,0.9507068452380952,112,168
+S1,3,2026,HIT,1,inner race fault,0.9426020408163266,112,168
+S1,3,2026,HIT,2,outer race fault,1.0,56,224
+S1,3,2026,MaFaulDa,normal,normal,1.0,35,1995
+S1,3,2026,MaFaulDa,imbalance,imbalance,0.9852523866689532,245,1785
+S1,3,2026,MaFaulDa,horizontal-misalignment,horizontal-misalignment,1.0,245,1785
+S1,3,2026,MaFaulDa,vertical-misalignment,vertical-misalignment,0.998973033707865,250,1780
+S1,3,2026,MaFaulDa,underhang/ball_fault,underhang/ball fault,0.9999954267421254,245,1785
+S1,3,2026,MaFaulDa,underhang/cage_fault,underhang/cage fault,0.7575510204081634,210,1820
+S1,3,2026,MaFaulDa,underhang/outer_race,underhang/outer race,0.9997597597597598,185,1845
+S1,3,2026,MaFaulDa,overhang/ball_fault,overhang/ball fault,1.0,125,1905
+S1,3,2026,MaFaulDa,overhang/cage_fault,overhang/cage fault,0.9999862802263763,245,1785
+S1,3,2026,MaFaulDa,overhang/outer_race,overhang/outer race,0.9999954267421254,245,1785

@@ -1,0 +1,31 @@
+{
+ "downstream": {
+  "identical_for_S0_and_S1": true,
+  "max_epochs": 50,
+  "no_early_stopping": true,
+  "single_lr_encoder_and_heads": true
+ },
+ "shared_recipe": {
+  "betas": [
+   0.9,
+   0.95
+  ],
+  "eps": 1e-08,
+  "grad_clip_global_norm": 1.0,
+  "lr": 0.0003,
+  "min_lr": 1e-06,
+  "optimizer": "AdamW",
+  "warmup_epochs": 5,
+  "weight_decay": 0.05
+ },
+ "ssl": {
+  "max_epochs": 60,
+  "no_early_stopping": true
+ },
+ "steps_per_epoch": {
+  "1": 202,
+  "2": 205,
+  "3": 201
+ },
+ "steps_per_epoch_rule": "ceil(FULL fold TRAIN windows / 64) for SSL and for EVERY label fraction (fixed compute; low fractions revisit labelled windows via replacement)"
+}

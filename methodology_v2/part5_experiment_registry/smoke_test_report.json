@@ -1,0 +1,36 @@
+{
+ "label": "NOT_AN_EXPERIMENT \u2014 smoke verification only; weights discarded; no metrics reported",
+ "batch64_feasibility": {
+  "device": "cuda",
+  "effective_batch": 64,
+  "micro_batch": 32,
+  "gradient_accumulation": 2,
+  "train_step_ms": 2527.6,
+  "peak_mem_mb": 18245.9,
+  "note": "mechanical gradient accumulation preserves effective batch 64 and the exact batch loss (dataset-aligned chunks); identical for S0 and S1"
+ },
+ "ssl_smoke": {
+  "steps": 2,
+  "losses": [
+   1.0376,
+   1.1476
+  ],
+  "micro_batch": 32,
+  "mixer_grad_max": 0.000344,
+  "mixer_grad_nonzero": true
+ },
+ "s0_smoke": {
+  "steps": 2,
+  "losses": [
+   1.5208,
+   1.4185
+  ],
+  "micro_batch": 32,
+  "all_heads_received_gradients": true
+ },
+ "s1_loading_smoke": {
+  "encoder_state_loaded": true,
+  "paired_heads_identical_init": true,
+  "supervised_step_after_load": 1.4917
+ }
+}

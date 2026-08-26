@@ -1,0 +1,94 @@
+{
+ "A_recording": {
+  "n_groups": 56,
+  "groups_per_class": {
+   "Ball": 12,
+   "Healthy": 4,
+   "InnerRace": 12,
+   "OuterRace": 28
+  },
+  "groups_per_severity_mil": {
+   "7": 20,
+   "14": 12,
+   "21": 20
+  },
+  "groups_touching_each_load": {
+   "0": 14,
+   "1": 14,
+   "2": 14,
+   "3": 14
+  },
+  "same_physical_specimen_can_cross_partitions": true,
+  "recordings_per_group_min": 1,
+  "recordings_per_group_max": 1
+ },
+ "B_specimen_x_load": {
+  "n_groups": 56,
+  "groups_per_class": {
+   "Ball": 12,
+   "Healthy": 4,
+   "InnerRace": 12,
+   "OuterRace": 28
+  },
+  "groups_per_severity_mil": {
+   "7": 20,
+   "14": 12,
+   "21": 20
+  },
+  "groups_touching_each_load": {
+   "0": 14,
+   "1": 14,
+   "2": 14,
+   "3": 14
+  },
+  "same_physical_specimen_can_cross_partitions": true,
+  "recordings_per_group_min": 1,
+  "recordings_per_group_max": 1
+ },
+ "C1_installation": {
+  "n_groups": 14,
+  "groups_per_class": {
+   "Ball": 3,
+   "Healthy": 1,
+   "InnerRace": 3,
+   "OuterRace": 7
+  },
+  "groups_per_severity_mil": {
+   "7": 5,
+   "14": 3,
+   "21": 5
+  },
+  "groups_touching_each_load": {
+   "0": 14,
+   "1": 14,
+   "2": 14,
+   "3": 14
+  },
+  "same_physical_specimen_can_cross_partitions": true,
+  "recordings_per_group_min": 4,
+  "recordings_per_group_max": 4
+ },
+ "C2_specimen": {
+  "n_groups": 10,
+  "groups_per_class": {
+   "Ball": 3,
+   "Healthy": 1,
+   "InnerRace": 3,
+   "OuterRace": 3
+  },
+  "groups_per_severity_mil": {
+   "7": 3,
+   "14": 3,
+   "21": 3
+  },
+  "groups_touching_each_load": {
+   "0": 10,
+   "1": 10,
+   "2": 10,
+   "3": 10
+  },
+  "same_physical_specimen_can_cross_partitions": false,
+  "recordings_per_group_min": 4,
+  "recordings_per_group_max": 12
+ }
+}

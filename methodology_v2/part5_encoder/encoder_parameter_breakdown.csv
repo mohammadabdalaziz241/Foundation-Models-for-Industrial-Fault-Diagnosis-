@@ -1,0 +1,7 @@
+component,params
+patch_stem,196880
+coordinate_encoder,6336
+temporal_backbone,2014080
+cross_band_mixer,164737
+total,2382033
+TOTAL_transformer_ablation,2147793

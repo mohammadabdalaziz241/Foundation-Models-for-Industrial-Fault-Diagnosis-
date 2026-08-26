@@ -1,0 +1,90 @@
+{
+ "choice": {
+  "chosen": "4x1",
+  "median_2x2": 0.5574894608254581,
+  "median_4x1": 0.6842917091323478,
+  "rule": "median validation MacroDomainF1 after training-free removal; tie -> 2x2 (a-priori primary)"
+ },
+ "descriptive_median_drop_of_chosen": 0.12530374490648044,
+ "executed_before_seal": true,
+ "inputs": {
+  "data": "fold validation sets only (TEST structurally refused)",
+  "models": "9 primary S1 100%-label checkpoints (hash-verified)",
+  "retained_layers_2x2": [
+   0,
+   2
+  ],
+  "variant_4x1": {
+   "keep": "fwd",
+   "residual": "mean_of_remaining"
+  }
+ },
+ "median_baseline_val_f1": 0.8095954540388283,
+ "note": "drop is descriptive; recovery is exactly what Stage-3 KD training provides",
+ "per_model": [
+  {
+   "baseline_val_f1": 0.854438780146433,
+   "model": "s1_f1_s42_l100",
+   "sha256": "477c79e0498e7a9b90ec897f68aa7bbf2d77997fac7b1d557a7d7362d86764b3",
+   "val_f1_2x2_training_free": 0.597909776081554,
+   "val_f1_4x1_training_free": 0.6328436656247829
+  },
+  {
+   "baseline_val_f1": 0.8454072243379959,
+   "model": "s1_f1_s1337_l100",
+   "sha256": "2bc947babbc5189e6e7f165f371fd79740c61ef800e473008c8ffd4e0fbd343e",
+   "val_f1_2x2_training_free": 0.5574894608254581,
+   "val_f1_4x1_training_free": 0.7848509559575718
+  },
+  {
+   "baseline_val_f1": 0.8471519610489782,
+   "model": "s1_f1_s2026_l100",
+   "sha256": "9e62fbb69e4f1299ad5f99b6e2223b48e331b0b01c947ef6e120d3557047ee48",
+   "val_f1_2x2_training_free": 0.5611984198489149,
+   "val_f1_4x1_training_free": 0.7703149205376361
+  },
+  {
+   "baseline_val_f1": 0.8095954540388283,
+   "model": "s1_f2_s42_l100",
+   "sha256": "46a830168b480e383d9983b2c42be26e129f59a5d1bfbffc933aac7e495929fb",
+   "val_f1_2x2_training_free": 0.541635888495912,
+   "val_f1_4x1_training_free": 0.6842917091323478
+  },
+  {
+   "baseline_val_f1": 0.7762468055248086,
+   "model": "s1_f2_s1337_l100",
+   "sha256": "8747d2e35f6f745ca9f6eaf44b2813c57a1e39f1e3261d578509ba258e685080",
+   "val_f1_2x2_training_free": 0.46734285034894263,
+   "val_f1_4x1_training_free": 0.6746888525735997
+  },
+  {
+   "baseline_val_f1": 0.8321612073449756,
+   "model": "s1_f2_s2026_l100",
+   "sha256": "604e6124d5bea27dda16d7efa20f200b2c764bc599db6dfefec74552666eb6bd",
+   "val_f1_2x2_training_free": 0.43524608088769484,
+   "val_f1_4x1_training_free": 0.7509978402909776
+  },
+  {
+   "baseline_val_f1": 0.724676420311686,
+   "model": "s1_f3_s42_l100",
+   "sha256": "91c337b199f13deeaaf4e256df8f2372d38cdbd104e154f5f1e38868b389ba04",
+   "val_f1_2x2_training_free": 0.4768822863290979,
+   "val_f1_4x1_training_free": 0.6427797572269889
+  },
+  {
+   "baseline_val_f1": 0.7861957075539945,
+   "model": "s1_f3_s1337_l100",
+   "sha256": "91254e13ef337e23d8607d844e97ab16a0963084def6a7c887abdb8744606f3c",
+   "val_f1_2x2_training_free": 0.6034179037302363,
+   "val_f1_4x1_training_free": 0.6699576696673037
+  },
+  {
+   "baseline_val_f1": 0.7945893700618804,
+   "model": "s1_f3_s2026_l100",
+   "sha256": "4af71287cc920019aa8d30e472c60c427a069a3cd6dd998d1d8f0f53e8551a1c",
+   "val_f1_2x2_training_free": 0.6560463920325703,
+   "val_f1_4x1_training_free": 0.7631519376085019
+  }
+ ],
+ "rule": "pre-registered Stage-2 half-student rule: choose by MEDIAN validation MacroDomainF1 after training-free removal; tie -> 2x2 (a-priori primary)"
+}

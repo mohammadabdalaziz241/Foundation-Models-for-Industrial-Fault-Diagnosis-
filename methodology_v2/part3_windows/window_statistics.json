@@ -1,0 +1,824 @@
+{
+ "counts": {
+  "1": {
+   "CWRU": {
+    "test": {
+     "by_class": {
+      "B007": 35,
+      "IR021": 35,
+      "OR014@6": 35
+     },
+     "windows": 105
+    },
+    "train": {
+     "by_class": {
+      "B014": 66,
+      "IR007": 66,
+      "OR021@12": 61,
+      "OR021@3": 61,
+      "OR021@6": 66
+     },
+     "windows": 320
+    },
+    "validation": {
+     "by_class": {
+      "B021": 35,
+      "IR014": 28,
+      "OR007@12": 32,
+      "OR007@3": 32,
+      "OR007@6": 35
+     },
+     "windows": 162
+    }
+   },
+   "HIT": {
+    "test": {
+     "by_class": {
+      "0": 112,
+      "1": 112,
+      "2": 56
+     },
+     "windows": 280
+    },
+    "train": {
+     "by_class": {
+      "0": 1036,
+      "1": 1120,
+      "2": 476
+     },
+     "windows": 2632
+    },
+    "validation": {
+     "by_class": {
+      "0": 112,
+      "1": 112,
+      "2": 56
+     },
+     "windows": 280
+    }
+   },
+   "JNU": {
+    "test": {
+     "by_class": {
+      "ib": 3,
+      "n": 15,
+      "ob": 3,
+      "tb": 3
+     },
+     "windows": 24
+    },
+    "train": {
+     "by_class": {
+      "ib": 12,
+      "n": 84,
+      "ob": 12,
+      "tb": 12
+     },
+     "windows": 120
+    },
+    "validation": {
+     "by_class": {
+      "ib": 3,
+      "n": 15,
+      "ob": 3,
+      "tb": 3
+     },
+     "windows": 24
+    }
+   },
+   "MAFAULDA": {
+    "test": {
+     "by_class": {
+      "horizontal-misalignment": 245,
+      "imbalance": 235,
+      "normal": 35,
+      "overhang/ball_fault": 245,
+      "overhang/cage_fault": 245,
+      "overhang/outer_race": 245,
+      "underhang/ball_fault": 245,
+      "underhang/cage_fault": 245,
+      "underhang/outer_race": 245,
+      "vertical-misalignment": 250
+     },
+     "windows": 2235
+    },
+    "train": {
+     "by_class": {
+      "horizontal-misalignment": 891,
+      "imbalance": 2142,
+      "normal": 315,
+      "overhang/ball_fault": 567,
+      "overhang/cage_fault": 810,
+      "overhang/outer_race": 810,
+      "underhang/ball_fault": 792,
+      "underhang/cage_fault": 810,
+      "underhang/outer_race": 882,
+      "vertical-misalignment": 1809
+     },
+     "windows": 9828
+    },
+    "validation": {
+     "by_class": {
+      "horizontal-misalignment": 245,
+      "imbalance": 240,
+      "normal": 35,
+      "overhang/ball_fault": 125,
+      "overhang/cage_fault": 245,
+      "overhang/outer_race": 245,
+      "underhang/ball_fault": 245,
+      "underhang/cage_fault": 245,
+      "underhang/outer_race": 185,
+      "vertical-misalignment": 250
+     },
+     "windows": 2060
+    }
+   }
+  },
+  "2": {
+   "CWRU": {
+    "test": {
+     "by_class": {
+      "B014": 35,
+      "IR007": 35,
+      "OR021@12": 32,
+      "OR021@3": 32,
+      "OR021@6": 35
+     },
+     "windows": 169
+    },
+    "train": {
+     "by_class": {
+      "B021": 66,
+      "IR014": 53,
+      "OR007@12": 61,
+      "OR007@3": 61,
+      "OR007@6": 66
+     },
+     "windows": 307
+    },
+    "validation": {
+     "by_class": {
+      "B007": 35,
+      "IR021": 35,
+      "OR014@6": 35
+     },
+     "windows": 105
+    }
+   },
+   "HIT": {
+    "test": {
+     "by_class": {
+      "0": 112,
+      "1": 112,
+      "2": 56
+     },
+     "windows": 280
+    },
+    "train": {
+     "by_class": {
+      "0": 1036,
+      "1": 1120,
+      "2": 476
+     },
+     "windows": 2632
+    },
+    "validation": {
+     "by_class": {
+      "0": 112,
+      "1": 112,
+      "2": 56
+     },
+     "windows": 280
+    }
+   },
+   "JNU": {
+    "test": {
+     "by_class": {
+      "ib": 3,
+      "n": 15,
+      "ob": 3,
+      "tb": 3
+     },
+     "windows": 24
+    },
+    "train": {
+     "by_class": {
+      "ib": 9,
+      "n": 81,
+      "ob": 9,
+      "tb": 9
+     },
+     "windows": 108
+    },
+    "validation": {
+     "by_class": {
+      "ib": 3,
+      "n": 15,
+      "ob": 3,
+      "tb": 3
+     },
+     "windows": 24
+    }
+   },
+   "MAFAULDA": {
+    "test": {
+     "by_class": {
+      "horizontal-misalignment": 245,
+      "imbalance": 245,
+      "normal": 35,
+      "overhang/ball_fault": 100,
+      "overhang/cage_fault": 245,
+      "overhang/outer_race": 245,
+      "underhang/ball_fault": 190,
+      "underhang/cage_fault": 240,
+      "underhang/outer_race": 185,
+      "vertical-misalignment": 250
+     },
+     "windows": 1980
+    },
+    "train": {
+     "by_class": {
+      "horizontal-misalignment": 882,
+      "imbalance": 2124,
+      "normal": 315,
+      "overhang/ball_fault": 612,
+      "overhang/cage_fault": 882,
+      "overhang/outer_race": 810,
+      "underhang/ball_fault": 891,
+      "underhang/cage_fault": 819,
+      "underhang/outer_race": 882,
+      "vertical-misalignment": 1809
+     },
+     "windows": 10026
+    },
+    "validation": {
+     "by_class": {
+      "horizontal-misalignment": 250,
+      "imbalance": 240,
+      "normal": 35,
+      "overhang/ball_fault": 245,
+      "overhang/cage_fault": 205,
+      "overhang/outer_race": 245,
+      "underhang/ball_fault": 245,
+      "underhang/cage_fault": 245,
+      "underhang/outer_race": 245,
+      "vertical-misalignment": 250
+     },
+     "windows": 2205
+    }
+   }
+  },
+  "3": {
+   "CWRU": {
+    "test": {
+     "by_class": {
+      "B021": 35,
+      "IR014": 28,
+      "OR007@12": 32,
+      "OR007@3": 32,
+      "OR007@6": 35
+     },
+     "windows": 162
+    },
+    "train": {
+     "by_class": {
+      "B007": 66,
+      "IR021": 66,
+      "OR014@6": 66
+     },
+     "windows": 198
+    },
+    "validation": {
+     "by_class": {
+      "B014": 35,
+      "IR007": 35,
+      "OR021@12": 32,
+      "OR021@3": 32,
+      "OR021@6": 35
+     },
+     "windows": 169
+    }
+   },
+   "HIT": {
+    "test": {
+     "by_class": {
+      "0": 112,
+      "1": 112,
+      "2": 56
+     },
+     "windows": 280
+    },
+    "train": {
+     "by_class": {
+      "0": 1036,
+      "1": 1120,
+      "2": 476
+     },
+     "windows": 2632
+    },
+    "validation": {
+     "by_class": {
+      "0": 112,
+      "1": 112,
+      "2": 56
+     },
+     "windows": 280
+    }
+   },
+   "JNU": {
+    "test": {
+     "by_class": {
+      "ib": 3,
+      "n": 15,
+      "ob": 3,
+      "tb": 3
+     },
+     "windows": 24
+    },
+    "train": {
+     "by_class": {
+      "ib": 12,
+      "n": 84,
+      "ob": 12,
+      "tb": 12
+     },
+     "windows": 120
+    },
+    "validation": {
+     "by_class": {
+      "ib": 3,
+      "n": 15,
+      "ob": 3,
+      "tb": 3
+     },
+     "windows": 24
+    }
+   },
+   "MAFAULDA": {
+    "test": {
+     "by_class": {
+      "horizontal-misalignment": 245,
+      "imbalance": 245,
+      "normal": 35,
+      "overhang/ball_fault": 125,
+      "overhang/cage_fault": 245,
+      "overhang/outer_race": 245,
+      "underhang/ball_fault": 245,
+      "underhang/cage_fault": 210,
+      "underhang/outer_race": 185,
+      "vertical-misalignment": 250
+     },
+     "windows": 2030
+    },
+    "train": {
+     "by_class": {
+      "horizontal-misalignment": 882,
+      "imbalance": 2115,
+      "normal": 315,
+      "overhang/ball_fault": 621,
+      "overhang/cage_fault": 810,
+      "overhang/outer_race": 810,
+      "underhang/ball_fault": 783,
+      "underhang/cage_fault": 873,
+      "underhang/outer_race": 882,
+      "vertical-misalignment": 1809
+     },
+     "windows": 9900
+    },
+    "validation": {
+     "by_class": {
+      "horizontal-misalignment": 250,
+      "imbalance": 245,
+      "normal": 35,
+      "overhang/ball_fault": 215,
+      "overhang/cage_fault": 245,
+      "overhang/outer_race": 245,
+      "underhang/ball_fault": 250,
+      "underhang/cage_fault": 245,
+      "underhang/outer_race": 245,
+      "vertical-misalignment": 250
+     },
+     "windows": 2225
+    }
+   }
+  }
+ },
+ "coverage": {
+  "1": {
+   "cwru_load": {
+    "test": {
+     "0hp": 15,
+     "1hp": 30,
+     "2hp": 30,
+     "3hp": 30
+    },
+    "train": {
+     "0hp": 35,
+     "1hp": 95,
+     "2hp": 95,
+     "3hp": 95
+    },
+    "validation": {
+     "0hp": 15,
+     "1hp": 47,
+     "2hp": 50,
+     "3hp": 50
+    }
+   },
+   "cwru_load0_recordings_with_windows": 13,
+   "jnu_class_speed": {
+    "test": 12,
+    "train": 12,
+    "validation": 12
+   },
+   "mafaulda_configs": {
+    "test": 16,
+    "train": 58,
+    "validation": 16
+   }
+  },
+  "2": {
+   "cwru_load": {
+    "test": {
+     "0hp": 19,
+     "1hp": 50,
+     "2hp": 50,
+     "3hp": 50
+    },
+    "train": {
+     "0hp": 27,
+     "1hp": 90,
+     "2hp": 95,
+     "3hp": 95
+    },
+    "validation": {
+     "0hp": 15,
+     "1hp": 30,
+     "2hp": 30,
+     "3hp": 30
+    }
+   },
+   "cwru_load0_recordings_with_windows": 13,
+   "jnu_class_speed": {
+    "test": 12,
+    "train": 12,
+    "validation": 12
+   },
+   "mafaulda_configs": {
+    "test": 16,
+    "train": 58,
+    "validation": 16
+   }
+  },
+  "3": {
+   "cwru_load": {
+    "test": {
+     "0hp": 15,
+     "1hp": 47,
+     "2hp": 50,
+     "3hp": 50
+    },
+    "train": {
+     "0hp": 27,
+     "1hp": 57,
+     "2hp": 57,
+     "3hp": 57
+    },
+    "validation": {
+     "0hp": 19,
+     "1hp": 50,
+     "2hp": 50,
+     "3hp": 50
+    }
+   },
+   "cwru_load0_recordings_with_windows": 13,
+   "jnu_class_speed": {
+    "test": 12,
+    "train": 12,
+    "validation": 12
+   },
+   "mafaulda_configs": {
+    "test": 16,
+    "train": 58,
+    "validation": 16
+   }
+  }
+ },
+ "estimate_comparison": [
+  {
+   "actual": 320,
+   "dataset": "CWRU",
+   "difference": 0,
+   "estimated": 320,
+   "fold": 1,
+   "split": "train"
+  },
+  {
+   "actual": 162,
+   "dataset": "CWRU",
+   "difference": 0,
+   "estimated": 162,
+   "fold": 1,
+   "split": "validation"
+  },
+  {
+   "actual": 105,
+   "dataset": "CWRU",
+   "difference": 0,
+   "estimated": 105,
+   "fold": 1,
+   "split": "test"
+  },
+  {
+   "actual": 120,
+   "dataset": "JNU",
+   "difference": 0,
+   "estimated": 120,
+   "fold": 1,
+   "split": "train"
+  },
+  {
+   "actual": 24,
+   "dataset": "JNU",
+   "difference": 0,
+   "estimated": 24,
+   "fold": 1,
+   "split": "validation"
+  },
+  {
+   "actual": 24,
+   "dataset": "JNU",
+   "difference": 0,
+   "estimated": 24,
+   "fold": 1,
+   "split": "test"
+  },
+  {
+   "actual": 2632,
+   "dataset": "HIT",
+   "difference": 0,
+   "estimated": 2632,
+   "fold": 1,
+   "split": "train"
+  },
+  {
+   "actual": 280,
+   "dataset": "HIT",
+   "difference": 0,
+   "estimated": 280,
+   "fold": 1,
+   "split": "validation"
+  },
+  {
+   "actual": 280,
+   "dataset": "HIT",
+   "difference": 0,
+   "estimated": 280,
+   "fold": 1,
+   "split": "test"
+  },
+  {
+   "actual": 9828,
+   "dataset": "MAFAULDA",
+   "difference": 0,
+   "estimated": 9828,
+   "fold": 1,
+   "split": "train"
+  },
+  {
+   "actual": 2060,
+   "dataset": "MAFAULDA",
+   "difference": 0,
+   "estimated": 2060,
+   "fold": 1,
+   "split": "validation"
+  },
+  {
+   "actual": 2235,
+   "dataset": "MAFAULDA",
+   "difference": 0,
+   "estimated": 2235,
+   "fold": 1,
+   "split": "test"
+  },
+  {
+   "actual": 307,
+   "dataset": "CWRU",
+   "difference": 0,
+   "estimated": 307,
+   "fold": 2,
+   "split": "train"
+  },
+  {
+   "actual": 105,
+   "dataset": "CWRU",
+   "difference": 0,
+   "estimated": 105,
+   "fold": 2,
+   "split": "validation"
+  },
+  {
+   "actual": 169,
+   "dataset": "CWRU",
+   "difference": 0,
+   "estimated": 169,
+   "fold": 2,
+   "split": "test"
+  },
+  {
+   "actual": 108,
+   "dataset": "JNU",
+   "difference": 0,
+   "estimated": 108,
+   "fold": 2,
+   "split": "train"
+  },
+  {
+   "actual": 24,
+   "dataset": "JNU",
+   "difference": 0,
+   "estimated": 24,
+   "fold": 2,
+   "split": "validation"
+  },
+  {
+   "actual": 24,
+   "dataset": "JNU",
+   "difference": 0,
+   "estimated": 24,
+   "fold": 2,
+   "split": "test"
+  },
+  {
+   "actual": 2632,
+   "dataset": "HIT",
+   "difference": 0,
+   "estimated": 2632,
+   "fold": 2,
+   "split": "train"
+  },
+  {
+   "actual": 280,
+   "dataset": "HIT",
+   "difference": 0,
+   "estimated": 280,
+   "fold": 2,
+   "split": "validation"
+  },
+  {
+   "actual": 280,
+   "dataset": "HIT",
+   "difference": 0,
+   "estimated": 280,
+   "fold": 2,
+   "split": "test"
+  },
+  {
+   "actual": 10026,
+   "dataset": "MAFAULDA",
+   "difference": 0,
+   "estimated": 10026,
+   "fold": 2,
+   "split": "train"
+  },
+  {
+   "actual": 2205,
+   "dataset": "MAFAULDA",
+   "difference": 0,
+   "estimated": 2205,
+   "fold": 2,
+   "split": "validation"
+  },
+  {
+   "actual": 1980,
+   "dataset": "MAFAULDA",
+   "difference": 0,
+   "estimated": 1980,
+   "fold": 2,
+   "split": "test"
+  },
+  {
+   "actual": 198,
+   "dataset": "CWRU",
+   "difference": 0,
+   "estimated": 198,
+   "fold": 3,
+   "split": "train"
+  },
+  {
+   "actual": 169,
+   "dataset": "CWRU",
+   "difference": 0,
+   "estimated": 169,
+   "fold": 3,
+   "split": "validation"
+  },
+  {
+   "actual": 162,
+   "dataset": "CWRU",
+   "difference": 0,
+   "estimated": 162,
+   "fold": 3,
+   "split": "test"
+  },
+  {
+   "actual": 120,
+   "dataset": "JNU",
+   "difference": 0,
+   "estimated": 120,
+   "fold": 3,
+   "split": "train"
+  },
+  {
+   "actual": 24,
+   "dataset": "JNU",
+   "difference": 0,
+   "estimated": 24,
+   "fold": 3,
+   "split": "validation"
+  },
+  {
+   "actual": 24,
+   "dataset": "JNU",
+   "difference": 0,
+   "estimated": 24,
+   "fold": 3,
+   "split": "test"
+  },
+  {
+   "actual": 2632,
+   "dataset": "HIT",
+   "difference": 0,
+   "estimated": 2632,
+   "fold": 3,
+   "split": "train"
+  },
+  {
+   "actual": 280,
+   "dataset": "HIT",
+   "difference": 0,
+   "estimated": 280,
+   "fold": 3,
+   "split": "validation"
+  },
+  {
+   "actual": 280,
+   "dataset": "HIT",
+   "difference": 0,
+   "estimated": 280,
+   "fold": 3,
+   "split": "test"
+  },
+  {
+   "actual": 9900,
+   "dataset": "MAFAULDA",
+   "difference": 0,
+   "estimated": 9900,
+   "fold": 3,
+   "split": "train"
+  },
+  {
+   "actual": 2225,
+   "dataset": "MAFAULDA",
+   "difference": 0,
+   "estimated": 2225,
+   "fold": 3,
+   "split": "validation"
+  },
+  {
+   "actual": 2030,
+   "dataset": "MAFAULDA",
+   "difference": 0,
+   "estimated": 2030,
+   "fold": 3,
+   "split": "test"
+  }
+ ],
+ "hit_boundary": {
+  "1": {
+   "crossing_1_boundary": 2508,
+   "crossing_2_boundaries": 684,
+   "crossing_ge1_pct": 100.0,
+   "total_windows": 3192
+  },
+  "2": {
+   "crossing_1_boundary": 2508,
+   "crossing_2_boundaries": 684,
+   "crossing_ge1_pct": 100.0,
+   "total_windows": 3192
+  },
+  "3": {
+   "crossing_1_boundary": 2508,
+   "crossing_2_boundaries": 684,
+   "crossing_ge1_pct": 100.0,
+   "total_windows": 3192
+  }
+ },
+ "sampled_signal_integrity": {
+  "bad_length": 0,
+  "checked": 1086,
+  "constant_windows": [],
+  "nonfinite": 0,
+  "step": 50
+ }
+}

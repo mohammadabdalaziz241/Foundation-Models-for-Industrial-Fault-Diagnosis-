@@ -1,0 +1,23 @@
+{
+ "stage": "methodology_v2 Part 5D experiment registry freeze",
+ "started_utc": "2026-08-12T14:30:15.799623+00:00",
+ "finished_utc": "2026-08-12T14:30:41.776614+00:00",
+ "command": "scripts/methodology_v2/run_part5d.py",
+ "python": "3.12.3 (main, Nov  6 2025, 13:44:16) [GCC 13.3.0]",
+ "platform": "Linux-6.8.0-79-generic-x86_64-with-glibc2.39",
+ "torch": "2.12.0+cu130",
+ "git": {
+  "commit": "c54c702de41f0c15f26117e1e57a31c31567abe2",
+  "branch": "bearing-generalisation-v1"
+ },
+ "part5c_checkpoint_commit": "c54c702de41f0c15f26117e1e57a31c31567abe2",
+ "upstream": {
+  "part2": "527ccc1d449b223a37ecf109ed27be5279e17d85ba4e881abb9c68f4035e69c6",
+  "part3b": "99ffde7e5c0e2cb9b05713801aedcb10b11ccc229d4c2d10a58a1506db10bb51",
+  "part4c": "ee9414e8988c36b8a1ecad7d2622a54439a4bcc180a6a4e6a50b2f256160064f",
+  "part5b_architecture": "962bb1de520a941a1c3a67c63c97d28983783327f7e263a73c9ec0bad0b6711f"
+ },
+ "part5c_spec_hash": "f5c65a7e021d85d667027b86e4e5c8d04b6a3e20dc1cef8c4e996c9bb05d6596",
+ "part5d_master_hash": "a1470bbb2f3d9c324e1c2a1ce06f177a462f905a9b491a0dc422abcfc40fdbac",
+ "smoke_label": "NOT_AN_EXPERIMENT"
+}

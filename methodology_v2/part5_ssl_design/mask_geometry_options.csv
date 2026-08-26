@@ -1,0 +1,21 @@
+geometry,dataset,valid_patches,masked_at_60pct,block_bands_x_time,physical_extent,fully_masked_bands_per20seeds,fully_masked_times_per20seeds
+M1_random,CWRU,759,455,"(1, 1)",0.75-0.78 kHz x 41-43 ms,0,0
+M1_random,JNU,792,475,"(1, 1)",0.75-0.78 kHz x 41-43 ms,0,0
+M1_random,HIT,408,245,"(1, 1)",0.75-0.78 kHz x 41-43 ms,0,0
+M1_random,MAFAULDA,792,475,"(1, 1)",0.75-0.78 kHz x 41-43 ms,0,0
+M2_block,CWRU,759,455,"(2, 3)",1.5-1.56 kHz x 123-128 ms,0,0
+M2_block,JNU,792,475,"(2, 3)",1.5-1.56 kHz x 123-128 ms,1,0
+M2_block,HIT,408,245,"(2, 3)",1.5-1.56 kHz x 123-128 ms,0,2
+M2_block,MAFAULDA,792,475,"(2, 3)",1.5-1.56 kHz x 123-128 ms,0,0
+M3_time_span,CWRU,759,455,"(1, 4)",0.75-0.78 kHz x 164-171 ms,1,0
+M3_time_span,JNU,792,475,"(1, 4)",0.75-0.78 kHz x 164-171 ms,0,0
+M3_time_span,HIT,408,245,"(1, 4)",0.75-0.78 kHz x 164-171 ms,2,0
+M3_time_span,MAFAULDA,792,475,"(1, 4)",0.75-0.78 kHz x 164-171 ms,2,0
+M4_band_span,CWRU,759,455,"(3, 1)",2.25-2.34 kHz x 41-43 ms,0,0
+M4_band_span,JNU,792,475,"(3, 1)",2.25-2.34 kHz x 41-43 ms,0,1
+M4_band_span,HIT,408,245,"(3, 1)",2.25-2.34 kHz x 41-43 ms,0,3
+M4_band_span,MAFAULDA,792,475,"(3, 1)",2.25-2.34 kHz x 41-43 ms,0,1
+M5_mixed,CWRU,759,455,mix,mixture,0,0
+M5_mixed,JNU,792,475,mix,mixture,0,0
+M5_mixed,HIT,408,245,mix,mixture,0,3
+M5_mixed,MAFAULDA,792,475,mix,mixture,0,0

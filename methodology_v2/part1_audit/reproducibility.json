@@ -1,0 +1,36 @@
+{
+ "stage": "methodology_v2 Part 1 dataset audit",
+ "started_utc": "2026-08-11T16:55:17.184998+00:00",
+ "finished_utc": "2026-08-11T16:56:21.107496+00:00",
+ "command": "scripts/methodology_v2/run_part1_audit.py --datasets CWRU JNU HIT MAFAULDA --mafaulda-workers 4",
+ "python": "3.12.3 (main, Nov  6 2025, 13:44:16) [GCC 13.3.0]",
+ "platform": "Linux-6.8.0-79-generic-x86_64-with-glibc2.39",
+ "numpy": "2.4.4",
+ "scipy": "1.18.0",
+ "pandas": "3.0.3",
+ "git": {
+  "commit": "9047ccbc6857d84c593c48222bf8aa526015c5e9",
+  "branch": "bearing-generalisation-v1",
+  "n_untracked_or_modified": 26
+ },
+ "dataset_sources": {
+  "CWRU": {
+   "url": "https://engineering.case.edu/bearingdatacenter",
+   "local_version": "pre-existing repo copies; rates per docs/cwru_legacy_rate_impact_note.md"
+  },
+  "JNU": {
+   "url": "https://github.com/ClarkGableWang/JNU-Bearing-Dataset",
+   "clone_commit": "75b33611b51649d1da8ff5999397899420753e5b"
+  },
+  "HIT": {
+   "url": "https://github.com/HouLeiHIT/HIT-dataset",
+   "clone_commit": "ef17655977519eda9463a3d060da9fb8b47fab6f",
+   "gdrive": "https://drive.google.com/drive/folders/1Km1Go4ilB_bI033SBJ7eJ0uCzbqEqbgt"
+  },
+  "MAFAULDA": {
+   "url": "https://www02.smt.ufrj.br/~offshore/mfs/page_01.html",
+   "archive": "/raw_mafaulda/full.zip",
+   "archive_sha256": "fc62677c000b7a3e79db88502a542df23b8bf797454a9ebad520ad9d3a915cc7"
+  }
+ }
+}

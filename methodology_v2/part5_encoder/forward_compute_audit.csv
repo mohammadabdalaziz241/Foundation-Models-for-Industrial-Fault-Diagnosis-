@@ -1,0 +1,5 @@
+device,batch_size,forward_ms,peak_forward_mem_mb,note
+cuda,8,134.5,147.0,forward/no-grad only; training overhead NOT extrapolated from this
+cuda,16,90.0,277.3,forward/no-grad only; training overhead NOT extrapolated from this
+cuda,32,235.7,539.5,forward/no-grad only; training overhead NOT extrapolated from this
+cuda,64,527.4,1059.5,forward/no-grad only; training overhead NOT extrapolated from this

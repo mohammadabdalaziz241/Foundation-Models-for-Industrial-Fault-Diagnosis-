@@ -1,0 +1,69 @@
+# representation_spec.yaml — methodology_v2 Part 4C
+# Status: FROZEN (Parts 1-4B approved; N2 approved). This is the exact
+# input contract for Part-5 models. Sealed under the Part-4C master
+# representation hash (normalizer_hashes.csv); consumers must fail closed
+# via verify_part4c_hashes() plus the Part-2 and Part-3B verifiers.
+
+methodology_version: methodology_v2.part4c.v1
+
+input:
+  window: 1.000 s raw acceleration from the sealed Part-3B window
+    manifests (master 99ffde7e5c0e2cb9b05713801aedcb10b11ccc229d4c2d10a58a1506db10bb51)
+  channels: {CWRU: DE, JNU: acc_vertical, HIT: ch3,
+             MAFAULDA: col3_underhang_radial}
+  sampling_rate_hz: {CWRU: 48000, JNU: 50000, HIT: 25000, MAFAULDA: 50000}
+  resampling: FORBIDDEN
+
+stft:
+  config: {CWRU: {n_fft: 1024, hop: 256}, JNU: {n_fft: 1024, hop: 256},
+           HIT: {n_fft: 512, hop: 128}, MAFAULDA: {n_fft: 1024, hop: 256}}
+  conventions: periodic Hann; center=false; no padding (complete frames
+    only, n_frames = floor((N - n_fft)/hop) + 1); one-sided real FFT;
+    explicit deterministic implementation
+    (src/methodology_v2/part4a_repdesign.py::tf_map)
+
+transform: log1p(abs(STFT(x)))   # no dB, no power, no RGB, no colormap
+                                 # input, no resize, no interpolation,
+                                 # no JPEG/PNG representation
+
+normalization:
+  strategy: N2 (APPROVED, frozen)
+  definition: X_norm[f,t] = (X[f,t] - mu[F,D,f]) / denom[F,D,f]
+  fitting: TRAIN windows of the SAME fold and dataset only; streaming
+    parallel-Welford in float64 over all TRAIN frames per frequency bin
+  fold_independence: normalizer_fold_1/2/3 fitted separately — never
+    pooled (groups swap train/test roles across folds)
+  dataset_independence: one statistic vector per dataset per fold
+    (12 normalizers total); no cross-dataset or cross-grid sharing
+  validation_test: reuse stored TRAIN statistics; never updated
+  std_floor_rule: bins with std_raw < 1.0e-6 keep std_raw recorded but
+    use denominator = 1.0 exactly; every affected bin reported;
+    no bin deleted
+
+coordinates:
+  frequency_hz: k * sampling_rate / n_fft per bin (stored in every
+    normalizer artifact); JNU/HIT/MaFaulDa share identical 48.828125 Hz
+    spacing, CWRU is 46.875 Hz — CWRU is NOT interpolated onto the
+    other grid
+  time_seconds: frame_index * hop / sampling_rate (frame left edge)
+  embeddings: NOT implemented (Part 5)
+
+tensor:
+  layout: (freq_bins, time_frames), single numeric channel
+  dtype: float32 model-domain (float64 used internally for STFT and
+    statistic accumulation only)
+  shapes: {CWRU: [513, 184], JNU: [513, 192], HIT: [257, 192],
+           MAFAULDA: [513, 192]}   # verified, not assumed
+
+reconstruction_target:
+  frozen: N2-normalized log1p magnitude STFT (this tensor) — future
+    masked-SSL predictions compare against it
+  not_defined_here: [mask ratio, mask geometry, decoder, loss beyond
+                     target domain, weighting]
+
+ablation_registry:
+  N1: per-window zero-mean/unit-std — pre-registered future
+    representation ablation only; NOT fitted or run at scale in Part 4C
+
+forbidden_operations: [resampling, image resizing, RGB conversion,
+                       validation/test statistic fitting]

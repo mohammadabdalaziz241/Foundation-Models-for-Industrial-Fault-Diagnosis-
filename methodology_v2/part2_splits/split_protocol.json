@@ -1,0 +1,223 @@
+{
+ "cwru": {
+  "grouping": "physical specimen across all loads, OR clock positions merged; 48 kHz DE family only; Healthy/0.028\"/12 kHz excluded",
+  "rotation": {
+   "1": {
+    "test": [
+     "IR021",
+     "B007",
+     "OR014"
+    ],
+    "train": [
+     "IR007",
+     "B014",
+     "OR021"
+    ],
+    "validation": [
+     "IR014",
+     "B021",
+     "OR007"
+    ]
+   },
+   "2": {
+    "test": [
+     "IR007",
+     "B014",
+     "OR021"
+    ],
+    "train": [
+     "IR014",
+     "B021",
+     "OR007"
+    ],
+    "validation": [
+     "IR021",
+     "B007",
+     "OR014"
+    ]
+   },
+   "3": {
+    "test": [
+     "IR014",
+     "B021",
+     "OR007"
+    ],
+    "train": [
+     "IR021",
+     "B007",
+     "OR014"
+    ],
+    "validation": [
+     "IR007",
+     "B014",
+     "OR021"
+    ]
+   }
+  },
+  "specimens": [
+   "IR007",
+   "IR014",
+   "IR021",
+   "B007",
+   "B014",
+   "B021",
+   "OR007",
+   "OR014",
+   "OR021"
+  ]
+ },
+ "fold_ids": [
+  1,
+  2,
+  3
+ ],
+ "hit": {
+  "acceptance_criteria": [
+   "H1 group-disjoint (construction)",
+   "H2 >=2 groups/class/partition",
+   "H3 every session in every partition",
+   "H4 LP tertiles 3/2/2"
+  ],
+  "allocation_rule": "per-session round(0.15*n) to val and test, floor>=1",
+  "github_release_split": "REJECTED as split authority (Part-1 finding H2)",
+  "predeclared_seeds": {
+   "1": 101,
+   "2": 102,
+   "3": 103
+  },
+  "target": {
+   "test": 0.15,
+   "train": 0.7,
+   "validation": 0.15
+  }
+ },
+ "jnu": {
+  "blocks": [
+   "A",
+   "B",
+   "C",
+   "D",
+   "E"
+  ],
+  "evaluation_label": "within-recording temporal holdout",
+  "guard_rule": {
+   "constraint": "guard_samples >= future_effective_window_span_samples",
+   "instantiation": "internal boundary b -> discard [b - ceil(G/2), b + ceil(G/2))",
+   "status": "symbolic-uninstantiated",
+   "windows_must_not_cross": [
+    "macro-block boundaries",
+    "split boundaries",
+    "guard regions"
+   ]
+  },
+  "rotation": {
+   "1": {
+    "test": [
+     "E"
+    ],
+    "train": [
+     "A",
+     "B",
+     "C"
+    ],
+    "validation": [
+     "D"
+    ]
+   },
+   "2": {
+    "test": [
+     "A"
+    ],
+    "train": [
+     "B",
+     "C",
+     "D"
+    ],
+    "validation": [
+     "E"
+    ]
+   },
+   "3": {
+    "test": [
+     "B"
+    ],
+    "train": [
+     "C",
+     "D",
+     "E"
+    ],
+    "validation": [
+     "A"
+    ]
+   }
+  }
+ },
+ "mafaulda": {
+  "acceptance_criteria": [
+   "M1 config-disjoint (construction)",
+   "M2 normal-recording-disjoint (construction)",
+   "M3 all 10 classes in every partition",
+   "M4 normal val/test span >=2 RPM tertiles"
+  ],
+  "allocation_rule": "per-class-stratum round(0.15*c) to val and test, floor>=1, over group units",
+  "classes": [
+   "normal",
+   "imbalance",
+   "horizontal-misalignment",
+   "vertical-misalignment",
+   "underhang/ball_fault",
+   "underhang/cage_fault",
+   "underhang/outer_race",
+   "overhang/ball_fault",
+   "overhang/cage_fault",
+   "overhang/outer_race"
+  ],
+  "predeclared_seeds": {
+   "1": 201,
+   "2": 202,
+   "3": 203
+  },
+  "target": {
+   "test": 0.15,
+   "train": 0.7,
+   "validation": 0.15
+  }
+ },
+ "methodology_version": "methodology_v2.part2.v1",
+ "seed_governance": {
+  "max_attempts": 5,
+  "replacement_increment": 1000,
+  "rule": "structural criteria only; never model performance"
+ },
+ "seeds_used": {
+  "1": {
+   "HIT": 101,
+   "MAFAULDA": 201
+  },
+  "2": {
+   "HIT": 102,
+   "MAFAULDA": 202
+  },
+  "3": {
+   "HIT": 103,
+   "MAFAULDA": 203
+  }
+ },
+ "usage_rules": {
+  "S0_supervised": {
+   "final_evaluation_on": "test (once, sealed until then)",
+   "model_selection_on": "validation",
+   "optimize_on": "train (labelled)"
+  },
+  "S1_finetuning": {
+   "final_evaluation_on": "test (once, sealed until then)",
+   "labelled_examples": "exactly the S0 train set of the same fold",
+   "model_selection_on": "validation"
+  },
+  "S1_ssl_pretraining": {
+   "forbidden": "validation and test signals, even unlabelled",
+   "signals": "train ONLY (labels withheld)"
+  },
+  "shared_rule": "S0 and S1 comparisons must consume identical frozen fold assignments; fold_id is a data partition, model_seed is future training stochasticity \u2014 never conflate them"
+ }
+}

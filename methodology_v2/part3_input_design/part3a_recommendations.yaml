@@ -1,0 +1,72 @@
+# part3a_recommendations.yaml — methodology_v2 Part 3A
+# Status: PENDING_HUMAN_APPROVAL — recommendations only, nothing frozen,
+# nothing implemented. Full evidence: PART3A_INPUT_DESIGN_REPORT.md.
+
+status: PENDING_HUMAN_APPROVAL
+
+channel_policy:
+  recommendation: single fixed radial/vertical accelerometer per dataset
+  channels: {CWRU: DE_time, JNU: acc_vertical, HIT: ch3,
+             MAFAULDA: col3_underhang_radial}
+  rationale: closest physical common denominator (radial acceleration on
+    or nearest the monitored bearing/casing); deterministic, label-blind
+  rejected: fault-position-adaptive channel selection (label leakage)
+
+common_sampling_rate:
+  recommendation: 25000
+  rationale: >
+    Only candidate under which no dataset is upsampled and the
+    lowest-rate dataset (HIT, natively 25 kHz) is bit-preserved; JNU and
+    MaFaulDa convert by exact 1/2 decimation; CWRU by rational 25/48
+    polyphase. Nyquist 12.5 kHz retains >=99.97% of CWRU and 100% of HIT
+    fold-1-train signal energy.
+  disclosed_costs: >
+    Fold-1 TRAIN diagnostics show JNU keeps only ~32% (min 15%) and
+    MaFaulDa ~67% (min 9%) of raw energy below 12.5 kHz; their
+    high-frequency resonance-carrier content is truncated. This is
+    structural to EVERY common-rate candidate (even 16 kHz Nyquist keeps
+    only ~52% for JNU); the only full-fidelity option is native-rate
+    processing, which sacrifices shared physical STFT axes. The
+    truncation applies identically to all classes and splits within each
+    dataset, so it affects representation quality, not leakage.
+  alternative_if_rejected: native-rate processing with per-dataset STFT
+    parameters aligned to physical frequency (documented consequence:
+    dataset-specific frequency-axis engineering)
+
+window_duration:
+  recommendation: 1.0  # seconds
+  rationale: >
+    >=10 shaft revolutions at every documented operating point of CWRU
+    (28.6+), JNU (10.0+), MaFaulDa (12.1+), and HIT LP (16.7+); the
+    binding case is the HIT inter-shaft RELATIVE speed (HP-LP), whose
+    slowest group (200 rpm) yields 3.3 relative revolutions at 1.0 s but
+    <1 at 0.25 s. 2.0 s is infeasible: JNU internal macro-blocks
+    (2.002 s) cannot hold a single window after guard carving, and one
+    CWRU load-0 recording (official 174, 1.329 s) is eliminated. 1.0 s
+    retains every recording of every dataset.
+  fallback: 0.5  # if JNU evaluation-window counts (24/split) are judged
+                 # too thin; costs HIT relative-revolution context (1.7
+                 # at slowest group)
+
+overlap_policy:
+  recommendation: {train: 0.5, validation: 0.0, test: 0.0}  # Policy B
+  rationale: >
+    50% train overlap roughly doubles gradient examples (~1.9x) without
+    touching evaluation; 0% evaluation overlap keeps val/test windows
+    disjoint so metrics count each signal sample once and remain
+    interpretable. Policy C (50% everywhere) inflates evaluation with
+    near-duplicate windows and induces optimistic metric correlation;
+    Policy A discards a cheap, standard training augmentation.
+
+jnu_guard:
+  rule: G >= effective window span; instantiate [b - ceil(G/2),
+    b + ceil(G/2)) around each frozen anchor b
+  at_recommended_1s: {guard_s: 1.0, samples_native_50k: 50000,
+                      samples_at_25k: 25000,
+                      fault_recording_usable: "6.01 s of 10.01 s (60%)",
+                      healthy_recording_usable: "26.03 s of 30.03 s (87%)"}
+
+future_normalization_rule:  # recorded only — NOT implemented in Part 3A
+  rule: any learned normalization statistic is fit on the TRAIN partition
+    of the relevant fold only; validation and test reuse those stored
+    training statistics; nothing was fit in Part 3A

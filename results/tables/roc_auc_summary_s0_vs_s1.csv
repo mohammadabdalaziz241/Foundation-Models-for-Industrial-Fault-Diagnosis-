@@ -1,0 +1,5 @@
+dataset,s0_auc_mean,s0_auc_sd,s1_auc_mean,s1_auc_sd,delta_auc_s1_minus_s0,auc_status
+JNU,,,,,,UNAVAILABLE_NO_CONTINUOUS_SCORES
+HIT,,,,,,UNAVAILABLE_NO_CONTINUOUS_SCORES
+MaFaulDa,,,,,,UNAVAILABLE_NO_CONTINUOUS_SCORES
+Macro-3,,,,,,UNAVAILABLE_NO_CONTINUOUS_SCORES

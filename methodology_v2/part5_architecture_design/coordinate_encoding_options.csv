@@ -1,0 +1,5 @@
+option,description,generalization_to_unseen_coordinates,parameter_count,arbitrary_rate_compatibility,overlap_with_prior,verdict
+C1_mlp_scalar_coords,MLP over [f_kHz t_s] scalars,moderate (smooth extrapolation),small (~2*64*d),yes,coordinate MLPs are routine (NeRF-adjacent; not used in ECHO),acceptable; slightly weaker high-frequency resolution of nearby bands
+C2_fourier_features,fixed multi-scale sin/cos of absolute f (kHz) and t (s) + linear,good (deterministic for any Hz),minimal (~64*d linear),yes,ECHO uses sinusoidal encoding of NORMALIZED f/Nyquist - absolute-Hz variant differs mechanically,RECOMMENDED (simplest defensible; absolute-Hz distinction explicit)
+C3_learned_discretized_embedding,embedding table over discretized Hz/time bins,poor (unseen bins untrained),largest,no (grid-tied),routine,rejected
+C4_normalized_plus_metadata,f/Nyquist coordinate + sampling-rate metadata vector,good,small,yes,direct overlap with ECHO (normalized PE) + VibFM (rate conditioning vector),rejected as primary - reproduces ECHO/VibFM mechanisms

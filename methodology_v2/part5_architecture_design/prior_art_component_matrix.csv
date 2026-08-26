@@ -1,0 +1,34 @@
+feature,VibFM,ECHO,FISHER,SSAMBA,AudioMamba,SepTr,SpecTNT,VibrMamba,OURS_proposed
+raw_waveform_input,NO,NO,NO,NO,NO,NO,NO,YES,NO
+stft_input,YES,YES,YES,PARTIAL (mel),PARTIAL (log-mel),PARTIAL (mel),PARTIAL (mel),NO,YES
+log_spectrogram,YES,YES,YES,YES,YES,YES,YES,NO,YES (log1p)
+native_sampling_rate_retained,NO (128x128 standardized),YES (seconds-specified STFT),YES (fixed-duration STFT),NO (single rate),NO,NO,NO,YES (single dataset),YES
+forced_common_sampling_rate,PARTIAL (via standardization),NO,NO,YES,YES,YES,YES,NO,NO
+fixed_image_resizing,YES (128x128),NO,NO,NO,NO,NO,NO,NO,NO (forbidden)
+variable_frequency_extent,NO,YES (band count ~ rate),YES,NO,NO,NO,NO,NO,YES (band count differs; HIT 17 vs 33)
+physical_hz_coordinates,NO,NO (normalized f/Nyquist),NO,NO,NO,NO,NO,NO,YES (absolute Hz)
+normalized_frequency_coordinates,NO,YES,UNCLEAR,NO,NO,NO,NO,NO,NO
+sampling_rate_metadata,YES (conditioning vector),PARTIAL (implicit via band count),PARTIAL,NO,NO,NO,NO,NO,PARTIAL (implicit via absolute Hz)
+time_coordinates,UNCLEAR,PARTIAL (frame-rate fixed),PARTIAL,NO (index PE),NO,NO,NO,NO,YES (seconds)
+frequency_positional_encoding,NO,YES (normalized),NO,NO,NO,NO,PARTIAL (FCT),NO,YES (absolute-Hz Fourier)
+patch_based_input,YES,YES (sliding),YES,YES,YES,PARTIAL (1D tokens),YES,NO,YES (16x8)
+convolutional_patch_stem,UNCLEAR,YES (conv tokenizer),UNCLEAR,NO (linear),NO (linear),NO,YES,YES,YES
+separate_temporal_modelling,NO,YES (per-band ViT over time),YES,NO,NO,YES (axis stages),YES (temporal stage),YES (1D),YES (per-band temporal SSM)
+separate_frequency_modelling,NO,NO (bands independent),NO,NO,NO,YES,YES (spectral stage),NO,YES (cross-band mixer)
+mamba_ssm,NO,NO,NO,YES (bidirectional),YES (selective),NO,NO,YES,YES (bidirectional)
+transformer,YES,YES (ViT),YES (ViT),NO,NO,YES,YES,NO,NO (fallback only)
+bidirectional_temporal_modelling,YES (attention),YES (attention),YES,YES,PARTIAL,YES,YES,YES,YES
+frequency_band_mixer,NO,NO (CLS concat only),NO,NO,NO,PARTIAL (freq attention),PARTIAL (FCT exchange),NO,YES (Hz-gated mixer)
+hierarchical_spectral_modelling,NO,YES,PARTIAL,NO,NO,NO,YES,NO,PARTIAL (band->global)
+cross_frequency_interaction,PARTIAL (global attention),NO,NO,PARTIAL (flat sequence),PARTIAL,YES,YES,NO,YES (explicit gated)
+masking,YES,YES (student input),YES,YES,YES,NO,NO,NO,YES (planned Part 5B)
+masked_reconstruction,YES,PARTIAL (feature alignment not pixels),PARTIAL (self-distillation),YES (generative head),YES,NO,NO,NO,YES (N2 target; planned)
+discriminative_ssl_loss,NO,YES (teacher-student),YES,YES (joint),NO,NO,NO,NO,NO (generative primary)
+generative_ssl_loss,YES,NO,NO,YES,YES,NO,NO,NO,YES
+multi_resolution_input,NO,NO,NO,NO,NO,NO,NO,NO,NO (pre-registered ablation only)
+multi_dataset_pretraining,YES (16 vibration sets),YES (audio corpora),YES (industrial signals),YES (AudioSet+LibriSpeech),YES (AudioSet),NO,NO,NO,YES (4 vibration sets)
+multi_domain_downstream,YES,YES (DCASE+machinery),YES (RMIS),YES (audio tasks),YES,YES (audio),YES (music),NO,YES (4 bearing datasets)
+dataset_specific_heads,UNCLEAR,NO (k-NN probing),NO,NO,NO,NO,NO,NO,YES (Task-B heads)
+few_shot_evaluation,PARTIAL (frozen features),YES (DCASE few-shot),YES,NO,NO,NO,NO,PARTIAL,YES (planned later stage)
+efficiency_analysis,UNCLEAR,YES (5.5M/22M),YES (size scaling),YES (speed/memory),YES,YES (param scaling),NO,YES (lightweight),YES (0.7-5.5M tiers)
+variable_shape_batching,NO,YES (sliding patches),PARTIAL,NO,NO,NO,NO,NO,YES (masks + variable band count)

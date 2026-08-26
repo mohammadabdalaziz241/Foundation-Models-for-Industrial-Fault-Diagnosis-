@@ -1,0 +1,134 @@
+[
+ {
+  "fold": 1,
+  "dataset": "CWRU",
+  "scope": "TRAIN",
+  "n_sampled_windows": 2,
+  "post_mean_avg": 0.6012,
+  "post_mean_min": 0.0021,
+  "post_mean_max": 1.2002,
+  "post_std_avg": 1.1084,
+  "finite_pct": 100.0
+ },
+ {
+  "fold": 1,
+  "dataset": "JNU",
+  "scope": "TRAIN",
+  "n_sampled_windows": 1,
+  "post_mean_avg": 0.7342,
+  "post_mean_min": 0.7342,
+  "post_mean_max": 0.7342,
+  "post_std_avg": 1.0906,
+  "finite_pct": 100.0
+ },
+ {
+  "fold": 1,
+  "dataset": "HIT",
+  "scope": "TRAIN",
+  "n_sampled_windows": 14,
+  "post_mean_avg": 0.0817,
+  "post_mean_min": -0.3389,
+  "post_mean_max": 0.6369,
+  "post_std_avg": 0.9676,
+  "finite_pct": 100.0
+ },
+ {
+  "fold": 1,
+  "dataset": "MAFAULDA",
+  "scope": "TRAIN",
+  "n_sampled_windows": 50,
+  "post_mean_avg": -0.1062,
+  "post_mean_min": -0.9546,
+  "post_mean_max": 2.2968,
+  "post_std_avg": 0.7314,
+  "finite_pct": 100.0
+ },
+ {
+  "fold": 2,
+  "dataset": "CWRU",
+  "scope": "TRAIN",
+  "n_sampled_windows": 2,
+  "post_mean_avg": 0.0632,
+  "post_mean_min": -0.4104,
+  "post_mean_max": 0.5367,
+  "post_std_avg": 0.7835,
+  "finite_pct": 100.0
+ },
+ {
+  "fold": 2,
+  "dataset": "JNU",
+  "scope": "TRAIN",
+  "n_sampled_windows": 1,
+  "post_mean_avg": 0.8009,
+  "post_mean_min": 0.8009,
+  "post_mean_max": 0.8009,
+  "post_std_avg": 1.1235,
+  "finite_pct": 100.0
+ },
+ {
+  "fold": 2,
+  "dataset": "HIT",
+  "scope": "TRAIN",
+  "n_sampled_windows": 14,
+  "post_mean_avg": 0.0354,
+  "post_mean_min": -0.2968,
+  "post_mean_max": 0.5755,
+  "post_std_avg": 0.9537,
+  "finite_pct": 100.0
+ },
+ {
+  "fold": 2,
+  "dataset": "MAFAULDA",
+  "scope": "TRAIN",
+  "n_sampled_windows": 51,
+  "post_mean_avg": -0.0569,
+  "post_mean_min": -0.9726,
+  "post_mean_max": 2.2772,
+  "post_std_avg": 0.73,
+  "finite_pct": 100.0
+ },
+ {
+  "fold": 3,
+  "dataset": "CWRU",
+  "scope": "TRAIN",
+  "n_sampled_windows": 1,
+  "post_mean_avg": -0.2222,
+  "post_mean_min": -0.2222,
+  "post_mean_max": -0.2222,
+  "post_std_avg": 0.7474,
+  "finite_pct": 100.0
+ },
+ {
+  "fold": 3,
+  "dataset": "JNU",
+  "scope": "TRAIN",
+  "n_sampled_windows": 1,
+  "post_mean_avg": 0.7453,
+  "post_mean_min": 0.7453,
+  "post_mean_max": 0.7453,
+  "post_std_avg": 1.1368,
+  "finite_pct": 100.0
+ },
+ {
+  "fold": 3,
+  "dataset": "HIT",
+  "scope": "TRAIN",
+  "n_sampled_windows": 14,
+  "post_mean_avg": -0.0267,
+  "post_mean_min": -0.4113,
+  "post_mean_max": 0.4729,
+  "post_std_avg": 0.9385,
+  "finite_pct": 100.0
+ },
+ {
+  "fold": 3,
+  "dataset": "MAFAULDA",
+  "scope": "TRAIN",
+  "n_sampled_windows": 50,
+  "post_mean_avg": -0.1142,
+  "post_mean_min": -0.875,
+  "post_mean_max": 1.9955,
+  "post_std_avg": 0.7246,
+  "finite_pct": 100.0
+ }
+]

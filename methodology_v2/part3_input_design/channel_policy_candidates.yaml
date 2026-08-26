@@ -1,0 +1,47 @@
+# channel_policy_candidates.yaml — methodology_v2 Part 3A
+# Status: CANDIDATES ONLY — nothing selected or implemented.
+#
+# Philosophy: one consistent single vibration channel per dataset so the
+# input structure is physically comparable across domains. The common
+# denominator across all four rigs is a RADIAL/VERTICAL ACCELEROMETER on
+# (or nearest to) the monitored bearing/casing. Channels were NOT chosen
+# by amplitude or appearance; no test signal content was inspected.
+
+primary_single_channel:
+  CWRU: {channel: DE_time, why: "accelerometer on the drive-end bearing
+    housing (12 o'clock, radial/vertical) — the housing of the seeded
+    fault bearing itself"}
+  JNU: {channel: acc_vertical, why: "the only channel; documented
+    vertical-direction accelerometer on the test bearing"}
+  HIT: {channel: ch3, why: "first casing accelerometer (K9000XL,
+    normal-to-casing = radial) in deterministic channel order; the four
+    casing accelerometers are the only acceleration channels"}
+  MAFAULDA: {channel: col3_underhang_radial, why: "radial axis of the
+    underhang-bearing accelerometer (IMI 601A01); radial-on-bearing
+    matches CWRU/JNU/HIT physics"}
+
+alternative_single_channel:
+  CWRU: {channel: FE_time, note: "fan-end housing; transfer path crosses
+    the motor — weaker fault coupling"}
+  JNU: {channel: null, note: "no alternative exists"}
+  HIT: {channel: ch4 (also ch5/ch6), note: "other casing stations; exact
+    axial position vs the inter-shaft bearing is not documented"}
+  MAFAULDA: {channel: col6_overhang_radial, note: "radial axis at the
+    overhang bearing"}
+
+rejected_policies:
+  fault_position_adaptive_channel:
+    description: "picking underhang vs overhang accelerometer per
+      recording according to the faulted position"
+    reason: "channel identity would encode the class label — label
+      leakage through preprocessing; forbidden"
+  displacement_or_microphone_or_tachometer_as_main_input:
+    reason: "different physical quantity; not comparable across datasets;
+      HIT ch1/ch2 (displacement), MaFaulDa col1 (tacho) and col8 (mic)
+      are excluded from the main encoder input"
+
+future_ablation_possibilities:  # documentation only — NOT implemented
+  - "HIT casing channels ch3 vs ch4/5/6 sensitivity"
+  - "MaFaulDa underhang vs overhang radial"
+  - "multi-channel (3-axis) MaFaulDa input; CWRU DE+FE dual channel"
+  - "JNU has no ablation (single channel)"

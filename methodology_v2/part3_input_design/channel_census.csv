@@ -1,0 +1,19 @@
+dataset,channel,sensor_type,orientation,location,near_faulted_bearing,synchronous,non_vibration,candidate_main_encoder,notes
+CWRU,DE_time,"accelerometer (IMI, 12 o'clock housing)",radial/vertical,drive-end bearing housing (faulted bearing),yes,yes (DE+FE same clock),no,PRIMARY,sensor directly on the housing of the seeded-fault bearing
+CWRU,FE_time,accelerometer (12 o'clock housing),radial/vertical,fan-end bearing housing,no (remote from DE fault),yes,no,alternative,transfer path crosses the motor; weaker fault coupling
+CWRU,RPM (scalar),torque transducer/encoder,-,shaft,-,-,yes,no,"single scalar per file, metadata only"
+JNU,acc_vertical,PCB MA352A60 accelerometer,vertical,test-bearing housing (documented: vertical direction),yes (documented),single channel,no,PRIMARY (only channel),no alternative exists
+HIT,ch1,displacement (paper Table IV: KISTLER 8776A50M1),horizontal,LP rotor,no (rotor displacement),yes (6ch),"yes (displacement, not acceleration)",no,different physical quantity; official GitHub windows came from ch1
+HIT,ch2,displacement,vertical,LP rotor,no,yes,yes (displacement),no,
+HIT,ch3,acceleration (K9000XL),normal-to-casing (radial),"casing, measuring point 3",casing (inter-shaft bearing internal),yes,no,PRIMARY,first casing accelerometer in deterministic channel order; exact axial station vs inter-shaft bearing not documented
+HIT,ch4,acceleration (K9000XL),normal-to-casing (radial),"casing, measuring point 4",casing,yes,no,alternative,
+HIT,ch5,acceleration (K9000XL),normal-to-casing (radial),"casing, measuring point 5",casing,yes,no,alternative,
+HIT,ch6,acceleration (K9000XL),normal-to-casing (radial),"casing, measuring point 6",casing,yes,no,alternative,
+MAFAULDA,col1 tachometer,Monarch MT-190 analog tachometer,-,shaft,-,"yes (8ch, 2x NI 9234)",yes (speed signal),no,usable later for speed verification only
+MAFAULDA,col2 underhang axial,IMI 601A01 accelerometer,axial,underhang bearing (between rotor and motor),yes,yes,no,no,
+MAFAULDA,col3 underhang radial,IMI 601A01 accelerometer,radial,underhang bearing,yes,yes,no,PRIMARY,radial on a bearing housing = closest common denominator
+MAFAULDA,col4 underhang tangential,IMI 601A01 accelerometer,tangential,underhang bearing,yes,yes,no,no,
+MAFAULDA,col5 overhang axial,IMI 604B31 triaxial,axial,overhang bearing (rotor between bearing and motor),yes,yes,no,no,
+MAFAULDA,col6 overhang radial,IMI 604B31 triaxial,radial,overhang bearing,yes,yes,no,alternative,fault-position-ADAPTIVE channel choice is REJECTED: it would inject label information into preprocessing
+MAFAULDA,col7 overhang tangential,IMI 604B31 triaxial,tangential,overhang bearing,yes,yes,no,no,
+MAFAULDA,col8 microphone,Shure SM81,-,ambient,-,yes,yes (acoustic),no,

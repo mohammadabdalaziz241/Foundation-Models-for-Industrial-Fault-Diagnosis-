@@ -1,0 +1,5 @@
+dataset,bands,time_patches,tokens,band_seq_len
+CWRU,33,23,759,23
+JNU,33,24,792,24
+HIT,17,24,408,24
+MAFAULDA,33,24,792,24

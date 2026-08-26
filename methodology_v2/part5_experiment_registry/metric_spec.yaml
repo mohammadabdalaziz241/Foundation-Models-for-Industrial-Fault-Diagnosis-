@@ -1,0 +1,44 @@
+{
+ "class_orders": {
+  "CWRU": [
+   "inner_race",
+   "outer_race",
+   "ball"
+  ],
+  "HIT": [
+   "0",
+   "1",
+   "2"
+  ],
+  "JNU": [
+   "n",
+   "ib",
+   "ob",
+   "tb"
+  ],
+  "MAFAULDA": [
+   "normal",
+   "imbalance",
+   "horizontal-misalignment",
+   "vertical-misalignment",
+   "underhang/ball_fault",
+   "underhang/cage_fault",
+   "underhang/outer_race",
+   "overhang/ball_fault",
+   "overhang/cage_fault",
+   "overhang/outer_race"
+  ]
+ },
+ "per_dataset": [
+  "accuracy",
+  "macro_f1",
+  "per_class_precision",
+  "per_class_recall",
+  "per_class_f1",
+  "confusion_matrix"
+ ],
+ "primary_test_metric": "MacroDomainF1_test = mean of 4 dataset Macro-F1",
+ "ssl_checkpoint": "MacroDomainReconMSE (min; per-dataset window-mean masked-cell MSE)",
+ "validation_checkpoint": "MacroDomainF1_val (max; tie -> earlier epoch)",
+ "zero_division": "0.0 explicit; absent classes never dropped"
+}

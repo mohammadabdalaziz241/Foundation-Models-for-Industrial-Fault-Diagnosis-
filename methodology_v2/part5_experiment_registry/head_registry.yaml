@@ -1,0 +1,42 @@
+{
+ "CWRU": {
+  "classes_in_order": [
+   "inner_race",
+   "outer_race",
+   "ball"
+  ],
+  "layer": "Linear(192,3)"
+ },
+ "HIT": {
+  "classes_in_order": [
+   "0",
+   "1",
+   "2"
+  ],
+  "layer": "Linear(192,3)"
+ },
+ "JNU": {
+  "classes_in_order": [
+   "n",
+   "ib",
+   "ob",
+   "tb"
+  ],
+  "layer": "Linear(192,4)"
+ },
+ "MAFAULDA": {
+  "classes_in_order": [
+   "normal",
+   "imbalance",
+   "horizontal-misalignment",
+   "vertical-misalignment",
+   "underhang/ball_fault",
+   "underhang/cage_fault",
+   "underhang/outer_race",
+   "overhang/ball_fault",
+   "overhang/cage_fault",
+   "overhang/outer_race"
+  ],
+  "layer": "Linear(192,10)"
+ }
+}

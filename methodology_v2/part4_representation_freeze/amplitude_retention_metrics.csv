@@ -1,0 +1,5 @@
+dataset,n_windows,rank_corr_pre_energy_vs_postN1,rank_corr_pre_energy_vs_postN2,window_mean_spread_preN,window_mean_spread_N1,window_mean_spread_N2,largest_window_postN2_mean
+CWRU,16,0.0,0.9588,0.162,0.0,0.5297,1.131
+HIT,132,0.0,0.9769,0.0988,0.0,0.2937,0.638
+JNU,6,0.0,1.0,0.3621,0.0,0.5875,0.875
+MAFAULDA,491,0.0,0.9923,0.3822,0.0,0.6389,4.423

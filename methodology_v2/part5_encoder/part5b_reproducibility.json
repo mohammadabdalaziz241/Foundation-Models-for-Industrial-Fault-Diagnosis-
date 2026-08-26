@@ -1,0 +1,35 @@
+{
+ "stage": "methodology_v2 Part 5B PC-STE implementation",
+ "started_utc": "2026-08-12T01:06:23.504323+00:00",
+ "finished_utc": "2026-08-12T01:06:27.664170+00:00",
+ "command": "scripts/methodology_v2/run_part5b.py",
+ "python": "3.12.3 (main, Nov  6 2025, 13:44:16) [GCC 13.3.0]",
+ "platform": "Linux-6.8.0-79-generic-x86_64-with-glibc2.39",
+ "torch": "2.12.0+cu130",
+ "cuda_available": true,
+ "gpu": "NVIDIA RTX 4000 Ada Generation",
+ "git": {
+  "commit": "d9e47dbd84cf74f88911b792bdda2284b3bd5e84",
+  "branch": "bearing-generalisation-v1"
+ },
+ "checkpoint_commit_part4c_5a": "d9e47dbd84cf74f88911b792bdda2284b3bd5e84",
+ "seals_verified": [
+  "part2",
+  "part3b",
+  "part4c"
+ ],
+ "architecture_hash": "962bb1de520a941a1c3a67c63c97d28983783327f7e263a73c9ec0bad0b6711f",
+ "verification_battery": {
+  "mask_invariance_max_abs_delta": 0.0,
+  "coordinate_sensitivity_max_abs_delta": 0.5911819338798523,
+  "crossband_effect_on_band0_after_mixer": 0.012047290802001953,
+  "crossband_effect_on_band0_before_mixer": 0.0,
+  "grad_max_patch_stem": 4.524875640869141,
+  "grad_max_coordinate_encoder": 4.524875640869141,
+  "grad_max_temporal_backbone": 6.333166122436523,
+  "grad_max_cross_band_mixer": 5.040565013885498,
+  "init_deterministic": true,
+  "forward_deterministic_cpu": true
+ },
+ "mamba_dependency_note": "official mamba-ssm/causal-conv1d unbuildable against torch 2.12.0+cu130; reference selective-scan implementation used (disclosed, architecture unchanged)"
+}

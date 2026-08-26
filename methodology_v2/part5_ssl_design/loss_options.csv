@@ -1,0 +1,4 @@
+loss,verdict
+L1_masked_cell_MSE,RECOMMENDED training loss AND reporting metric (TA requirement)
+L2_masked_cell_SmoothL1,"fallback if outlier residuals destabilise training (decide in 5D from training curves, not labels)"
+L3_frequency_balanced_MSE,not needed: N2 already normalizes every bin to unit TRAIN variance

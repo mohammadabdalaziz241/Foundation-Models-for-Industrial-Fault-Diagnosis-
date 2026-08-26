@@ -1,0 +1,5 @@
+window_s,guard_s,guard_samples_native_50k,guard_samples_20k,guard_samples_24k,guard_samples_25k,guard_samples_32k,fault_recording_usable_s,fault_usable_fraction,healthy_recording_usable_s,healthy_usable_fraction,internal_fault_block_usable_s,edge_fault_block_usable_s,internal_block_fits_one_window
+0.25,0.25,12500,5000,6000,6250,8000,9.01,0.9,29.03,0.967,1.752,1.877,True
+0.5,0.5,25000,10000,12000,12500,16000,8.01,0.8,28.03,0.933,1.502,1.752,True
+1.0,1.0,50000,20000,24000,25000,32000,6.01,0.6,26.03,0.867,1.002,1.502,True
+2.0,2.0,100000,40000,48000,50000,64000,2.01,0.201,22.03,0.734,0.002,1.002,False

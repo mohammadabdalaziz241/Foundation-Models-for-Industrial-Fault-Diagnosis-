@@ -1,0 +1,30 @@
+{
+ "stage": "methodology_v2 Part 5C SSL design study",
+ "started_utc": "2026-08-12T01:34:39.718212+00:00",
+ "finished_utc": "2026-08-12T01:34:45.499561+00:00",
+ "command": "scripts/methodology_v2/run_part5c.py",
+ "python": "3.12.3 (main, Nov  6 2025, 13:44:16) [GCC 13.3.0]",
+ "platform": "Linux-6.8.0-79-generic-x86_64-with-glibc2.39",
+ "torch": "2.12.0+cu130",
+ "git": {
+  "commit": "2eb0127ac01c2f2143b74e95391d51c85d0cf1bd",
+  "branch": "bearing-generalisation-v1"
+ },
+ "part5b_checkpoint_commit": "2eb0127ac01c2f2143b74e95391d51c85d0cf1bd",
+ "seals_verified": [
+  "part2",
+  "part3b",
+  "part4c",
+  "part5b_architecture_hash"
+ ],
+ "parity_gate": "PASSED (see part5_encoder/mamba_reference_parity.json)",
+ "data_access": "Fold-1 TRAIN dev windows only (Part-4A subset)",
+ "gradient_path_proof_max_grads": {
+  "stem": 0.002330808900296688,
+  "coords": 0.007826956920325756,
+  "temporal": 0.0032832222059369087,
+  "mixer": 0.0007731583318673074
+ },
+ "decoder_params": 119552,
+ "decoder_pct_of_encoder": 5.0
+}

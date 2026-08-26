@@ -1,0 +1,6 @@
+option,description,variable_nyquist_support,missing_high_band_support,differing_grids_support,cost,prior_overlap,verdict
+F1_mean_attention_pool,pool band summaries,yes (mask),yes,yes,~0,routine,ablation baseline
+F2_mlp_mixer,MLP across fixed band slots,no (fixed slot count),poor,poor,d^2,MLP-Mixer routine,rejected (fixed slots break variable band count)
+F3_freq_gated_mixer,gate = MLP(band feature + Fourier(absolute f_c)); gated exchange across valid bands,yes,yes (absent bands simply masked),yes (gate reads Hz not index),~3d^2,FISHER/ECHO have NO cross-band module; gating by absolute Hz not found in reviewed work,RECOMMENDED PRIMARY (potential C/D-level mechanism - wording per novelty table)
+F4_freq_self_attention,attention across band tokens,yes,yes,yes,d^2 x bands^2 (small),SepTr frequency stage,acceptable alternative
+F5_freq_axis_ssm,SSM across frequency axis,ordering assumption dubious (bands not a causal sequence),yes,yes,13.2d^2,frequency-axis SSMs appear in band-split speech enhancement,rejected (weak physical motivation)

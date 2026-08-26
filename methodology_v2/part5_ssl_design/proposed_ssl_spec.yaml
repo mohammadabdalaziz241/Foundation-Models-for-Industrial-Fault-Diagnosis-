@@ -1,0 +1,91 @@
+# proposed_ssl_spec.yaml — methodology_v2 Part 5C
+# Status: PENDING_HUMAN_APPROVAL — the complete proposed S1 pretraining
+# problem definition. No training has occurred.
+
+status: PENDING_HUMAN_APPROVAL
+upstream:
+  encoder_architecture_hash: 962bb1de520a941a1c3a67c63c97d28983783327f7e263a73c9ec0bad0b6711f
+  representation_hash: ee9414e8988c36b8a1ecad7d2622a54439a4bcc180a6a4e6a50b2f256160064f
+  parity_gate: PASSED (part5_encoder/mamba_reference_parity.json)
+
+masking:
+  unit: 16x8 valid patches only (padding/invalid patches never masked,
+    never counted)
+  geometry: M1 independent random patch masking   # data-driven choice:
+    # patch-level redundancy is LOW (temporal lag-1 corr 0.06-0.18;
+    # neighbour-interpolation residual ratio 1.24-1.67) and P1/P2
+    # copying baselines fail to beat P0-zero on most datasets, so the
+    # simplest scheme is already non-trivial. M2 (2 bands x 3 time
+    # blocks ~1.5 kHz x 125 ms) is the registered secondary if a
+    # harder pretext is ever needed.
+  ratio: 0.60 of valid patches (exact count round(0.6*V) per window;
+    identical policy for all datasets; V = 759/792/408/792)
+  determinism: per-window RNG = Philox seeded by
+    sha256(global_seed | epoch | window_id)[:8] — same seed reproduces
+    exact masks; epochs vary masks; no mask storage; no test data
+  placement: masked VALID patches never reach the stem — their token
+    embedding is replaced by ONE learned mask token; coordinate
+    embeddings still added (position known, values hidden); visible
+    patches embedded normally
+
+encoder_mask_token: E1 learned mask token (recommended over E2 zero
+  embedding — N2-zero means "dataset average", genuinely silent patches
+  exist, so a dedicated token disambiguates mask-vs-silence)
+
+decoder:  # pretraining-only; discarded after S1 (S0 never sees it)
+  choice: D1 per-token MLP + X1 additive post-mixer context
+  context_injection: q_{i,t} = z_{i,t} + P(h'_i)   # P: Linear(192,192)
+  head: Linear(192,256) -> GELU -> Linear(256,128)  # one 16x8 patch
+  params: 119552 (5.0% of the 2.38M encoder)
+  gradient_path: loss -> pred -> q -> [z: temporal->stem/coords] AND
+    [h': mixer -> all valid bands] — the Hz-gated mixer is on the path
+    of EVERY masked prediction (verified by bounded dummy backward:
+    nonzero grads stem/coords/temporal/mixer)
+
+target:
+  domain: frozen N2-normalized log1p magnitude STFT (Part-4C tensor)
+  per_patch: the original valid 16x8 cells; completion-padding cells
+    excluded from loss; no renormalization
+
+loss:
+  training: masked valid-cell MSE (L1 candidate)
+  reporting_metric: same masked valid-cell MSE (TA requirement)
+  normalization: per-window mean over masked valid cells -> mean over
+    batch windows (each window contributes equal weight regardless of
+    native bandwidth; HIT's 257 bins cannot be out-weighted by 513-bin
+    datasets)
+
+trivial_baselines:  # measured on Fold-1 TRAIN dev windows, M1@60%
+  P0_zero: {CWRU: 1.053, JNU: 1.452, HIT: 0.999, MAFAULDA: 1.851}
+  P1_temporal_neighbour: {CWRU: 1.138, JNU: 1.605, HIT: 1.086,
+                          MAFAULDA: 0.894}
+  P2_frequency_neighbour: {CWRU: 1.019, JNU: 0.881, HIT: 1.566,
+                           MAFAULDA: 1.049}
+  interpretation: a trained model must clearly undercut ~0.88-1.05 to
+    demonstrate non-trivial reconstruction
+
+sampler:  # conceptual specification only — no implementation
+  hierarchy: dataset -> group -> window (label-free)
+  dataset_balance: approx. equal dataset probability per batch
+  masking_policy: identical across datasets (valid-patch proportion)
+
+validation_use: frozen validation split MAY be used for pretraining
+  early stopping and checkpoint selection (reconstruction MSE only);
+  TEST remains sealed until final downstream evaluation
+
+logging_requirements_future: [train masked-cell MSE, validation
+  masked-cell MSE, per-dataset MSE, epoch, optimizer/checkpoint
+  metadata, encoder checkpoint hash]
+
+s0_s1_fairness:
+  - decoder + mask token are PRETRAINING-ONLY; discarded after S1
+  - S0 = random PC-STE encoder -> dataset-specific heads;
+    S1 = SSL-pretrained PC-STE encoder -> SAME heads
+  - downstream architecture hash excludes the decoder
+  - no contrastive/language/pseudo-label/teacher objective in primary S1
+
+compute_feasibility:  # reference backend, upper bound
+  epoch_min_per_fold: 3.6 (bs16) / 4.8 (bs32)
+  sixty_epochs_three_folds_hours: 10.9-14.3
+  verdict: FEASIBLE even without fused Mamba kernels; timings not
+    representative of optimized kernels

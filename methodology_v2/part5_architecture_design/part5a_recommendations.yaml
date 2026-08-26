@@ -1,0 +1,89 @@
+# part5a_recommendations.yaml — methodology_v2 Part 5A
+# Status: PENDING_HUMAN_APPROVAL — design recommendations only; no model
+# code exists. Evidence: PART5A_ARCHITECTURE_NOVELTY_REPORT.md.
+
+status: PENDING_HUMAN_APPROVAL
+
+patch_geometry: {freq_bins: 16, time_frames: 8, physical: "750/781.25 Hz
+  x ~41-42.7 ms patches; tokens 408-792; padding <=5.5% (HIT freq
+  remainder), CWRU time axis exact"}
+
+variable_shape: V1 minimal completion-padding + validity masks, riding on
+  S2's naturally variable band count (HIT contributes 17 bands, others
+  33 — no fabricated high-frequency content, no interpolation)
+
+coordinate_encoding: C2 Fourier features of ABSOLUTE physical
+  coordinates (f_c kHz, t seconds) + linear projection — mechanically
+  distinct from ECHO's normalized f/Nyquist encoding; simplest
+  defensible option
+
+sequence_organization: S2 — shared temporal encoder within each
+  frequency band, then cross-band mixing (machinery-motivated; variable
+  bandwidth natural; SSM-friendly)
+
+backbone: B2 bidirectional Mamba (4 blocks, d=192) with the honest
+  caveat that per-band sequences are short (23-24) so B1 would be
+  computationally equivalent here; decision is pre-registered as an
+  equal-capacity B1-vs-B2 ablation
+
+cross_frequency_mixer: F3 — gated mixer conditioned on absolute physical
+  frequency (main candidate architectural mechanism; FISHER/ECHO process
+  bands independently)
+
+global_pooling: masked mean pooling over valid tokens (simplest; robust
+  to variable band count); attention pooling documented as alternative
+
+parameter_budget:
+  primary_tier: Small (~1-3M; candidate A ~2.2M at d=192, 4 blocks)
+  rationale: credible lightweight-model story (smaller than ECHO-Tiny
+    5.5M and FISHER small models) while large enough for the mechanism
+  tiers: {Tiny: "~0.75M (d=128, 3 blocks)", Small: "~2.2M (d=192, 4)",
+          Medium: "~5.8M (d=256, 6)"}
+
+primary_architecture: candidate_A (PC-STE)
+fallback_architecture: candidate_B (axial compact Transformer)
+ambitious_alternative: candidate_C (interleaved mixer + optional
+  multi-resolution branch)
+
+preregistered_ablations:  # 4 max, each answers one question
+  - {q: "Does physical calibration matter?", ablation: "replace
+     absolute-Hz/time Fourier coordinates with learned index PE"}
+  - {q: "Does cross-band interaction matter?", ablation: "F3 gated mixer
+     -> F1 masked mean pooling"}
+  - {q: "Does the SSM backbone matter?", ablation: "equal-capacity B1
+     Transformer swap (~2.4M)"}
+  - {q: "Does N2 normalization matter?", ablation: "N2 -> N1 (already
+     pre-registered in Part 4C)"}
+  # conditional 5th (pre-registered since 4A): multi-resolution branch,
+  # only if slow-shaft deficits appear
+
+contribution_wording:  # exact proposed dissertation wording
+  methodological: "a hash-sealed, leakage-controlled evaluation protocol
+    for heterogeneous rotating-machinery vibration (specimen-,
+    configuration- and temporal-grouping per dataset) with a
+    matched-architecture S0/S1 comparison isolating pretraining history"
+  representation: "a physically matched native-rate log-STFT
+    representation (in line with seconds-specified STFT practice in
+    FISHER and ECHO) with explicit absolute physical coordinates and
+    fold-sealed per-dataset frequency-bin normalization — engineering
+    rigour, claimed as sound practice rather than novelty"
+  architectural: "a compact physically calibrated spectro-temporal
+    encoder whose tokens carry absolute physical-frequency coordinates
+    and whose frequency bands interact through a lightweight
+    frequency-gated mixer — in contrast to normalized-frequency,
+    independent-band designs (FISHER, ECHO); claimed as a mechanism-level
+    contribution, never as a first-of-kind foundation model"
+  empirical: "a controlled measurement of what self-supervised
+    pretraining adds over identical supervised training under sealed
+    leakage control, including label-efficiency behaviour, on four
+    heterogeneous bearing datasets"
+
+novelty_risks_remaining:
+  - ECHO v3 (2026) and FISHER are moving targets — re-verify their
+    latest versions immediately before dissertation submission
+  - VibFM full text not yet inspected beyond abstract (PHM Society page);
+    its conditioning-vector mechanism must be re-checked when the PDF is
+    accessible to confirm it does not gate features by frequency
+  - a supervised or SSL vibration work using absolute-Hz conditioning
+    may exist outside the searched venues; the claim wording therefore
+    always carries 'to our knowledge'

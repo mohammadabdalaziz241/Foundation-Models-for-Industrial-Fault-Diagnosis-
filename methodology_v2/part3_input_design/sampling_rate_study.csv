@@ -1,0 +1,21 @@
+target_rate_hz,dataset,native_rate_hz,operation,ratio_up_L,ratio_down_M,nyquist_hz,anti_alias_needed
+native,CWRU,48000,none (native),1,1,24000.0,False
+native,JNU,50000,none (native),1,1,25000.0,False
+native,HIT,25000,none (native),1,1,12500.0,False
+native,MAFAULDA,50000,none (native),1,1,25000.0,False
+20000,CWRU,48000,downsample,5,12,10000.0,True
+20000,JNU,50000,downsample,2,5,10000.0,True
+20000,HIT,25000,downsample,4,5,10000.0,True
+20000,MAFAULDA,50000,downsample,2,5,10000.0,True
+24000,CWRU,48000,downsample,1,2,12000.0,True
+24000,JNU,50000,downsample,12,25,12000.0,True
+24000,HIT,25000,downsample,24,25,12000.0,True
+24000,MAFAULDA,50000,downsample,12,25,12000.0,True
+25000,CWRU,48000,downsample,25,48,12500.0,True
+25000,JNU,50000,downsample,1,2,12500.0,True
+25000,HIT,25000,none (native),1,1,12500.0,False
+25000,MAFAULDA,50000,downsample,1,2,12500.0,True
+32000,CWRU,48000,downsample,2,3,16000.0,True
+32000,JNU,50000,downsample,16,25,16000.0,True
+32000,HIT,25000,UPSAMPLE (creates no information),32,25,16000.0,False
+32000,MAFAULDA,50000,downsample,16,25,16000.0,True

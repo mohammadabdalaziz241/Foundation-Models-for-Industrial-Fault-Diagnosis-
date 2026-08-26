@@ -1,0 +1,27 @@
+# part5c_recommendations.yaml — methodology_v2 Part 5C
+# Status: PENDING_HUMAN_APPROVAL. Full evidence:
+# PART5C_SSL_DESIGN_REPORT.md; complete proposal: proposed_ssl_spec.yaml.
+
+status: PENDING_HUMAN_APPROVAL
+
+mask_geometry: M1 independent random patch masking (data-driven — the
+  simplest scheme is measurably non-trivial; M2 2x3 blocks registered
+  secondary)
+mask_ratio: 0.60 of valid patches
+mask_token: E1 learned token
+decoder: D1 per-token MLP (192->256->128) + X1 additive post-mixer
+  context (119,552 params = 5.0% of encoder)
+loss: masked valid-cell MSE; per-window mean then batch mean
+target: frozen N2 log1p STFT patches (valid cells only)
+sampler: dataset -> group -> window, label-free, dataset-balanced
+determinism: sha256(global_seed|epoch|window_id)-seeded per-window RNG
+compute: feasible on reference backend (~11-14 h for 60 epochs x 3 folds)
+
+approval_items:
+  1: freeze masking = M1 @ 60% with E1 token (or choose M2 secondary)
+  2: freeze decoder D1 + X1 and the loss/normalization policy
+  3: confirm validation-based early stopping/checkpoint selection for
+     pretraining (test remains sealed)
+  4: confirm sampler principle for Part 5D implementation
+  5: authorize Part 5D (experiment registry + actual S1 pretraining and
+     S0 supervised training)

@@ -1,0 +1,5 @@
+dataset,orig_bins,orig_frames,batch_padded_shape,valid_bands,valid_tokens,freq_pad_bins_last_band,time_pad_frames,pct_padding_in_own_grid,max_real_freq_khz,max_band_centre_khz
+CWRU,513,184,"(513, 192)",33,759,15,0,2.84,24.0,24.0
+JNU,513,192,"(513, 192)",33,792,15,0,2.84,25.0,25.0
+HIT,257,192,"(513, 192)",17,408,15,0,5.51,12.5,12.5
+MAFAULDA,513,192,"(513, 192)",33,792,15,0,2.84,25.0,25.0

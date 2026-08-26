@@ -1,0 +1,16 @@
+{
+ "stage": "methodology_v2 Part 3A input design study",
+ "started_utc": "2026-08-11T20:06:57.850704+00:00",
+ "finished_utc": "2026-08-11T20:07:09.516380+00:00",
+ "command": "scripts/methodology_v2/run_part3a.py",
+ "python": "3.12.3 (main, Nov  6 2025, 13:44:16) [GCC 13.3.0]",
+ "platform": "Linux-6.8.0-79-generic-x86_64-with-glibc2.39",
+ "git": {
+  "commit": "9047ccbc6857d84c593c48222bf8aa526015c5e9",
+  "branch": "bearing-generalisation-v1",
+  "n_untracked_or_modified": 26
+ },
+ "part2_master_hash_verified": true,
+ "part2_split_hashes_sha256": "8eabcf349d32f37b904bc1c0ea9e89d36b7812d16366eb3b78e533db4a580616",
+ "sealed_data_rule": "raw TEST signal content never read; diagnostics restricted to fold-1 TRAIN"
+}

@@ -1,0 +1,16 @@
+{
+ "ssl": {
+  "batch": "16x4=64",
+  "dataset_prob": 0.25,
+  "hierarchy": "dataset->group->window",
+  "labels": null,
+  "replacement": true
+ },
+ "supervised": {
+  "batch": "16x4=64",
+  "class_balance": "deterministic class cycling",
+  "hierarchy": "dataset->class->group->window",
+  "replacement": true,
+  "source": "selected labelled subset only"
+ }
+}

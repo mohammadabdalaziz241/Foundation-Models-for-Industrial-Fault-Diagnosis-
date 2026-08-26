@@ -1,0 +1,5 @@
+dataset,unnormalized_mean,unnormalized_std,N1_mean,N1_std,N2_mean,N2_within_dataset_mean_spread
+CWRU,0.5353,0.8498,0.0,1.0,0.0,0.5297
+HIT,0.8629,0.5632,0.0,1.0,-0.0,0.2937
+JNU,1.2205,0.5918,0.0,1.0,0.0,0.5875
+MAFAULDA,1.1562,0.8078,0.0,1.0,0.0,0.6389
