@@ -1,6 +1,6 @@
 # Foundation Models for Industrial Fault Diagnosis: PC-STE
 
-This repository is the clean reproducibility release of an MSc dissertation study of **PC-STE** (Physics-Conditioned Spectral–Temporal Encoder) for rotating-machinery fault diagnosis. It represents the experiment that was actually executed.
+This repository is the clean reproducibility release of an MSc dissertation study of **PC-STE** (Physical-Coordinate Spectro-Temporal Encoder) for rotating-machinery fault diagnosis. It represents the experiment that was actually executed.
 
 ## Quick review
 
@@ -87,7 +87,7 @@ python scripts/methodology_v2/benchmark_part6_latency.py --help
 
 ## Results summary
 
-Compact, unchanged result tables are under `results/tables/`; selected figures are under `results/figures/`. Principal reported means include full-label S0 Macro-3 0.9214, S1 0.9199, K1 0.936913 and Q8(K1) 0.937011. These are Macro-3 summaries of models trained under the executed four-domain protocol. See `results/PROVENANCE.md` before reuse.
+Compact, unchanged result tables are under `results/tables/`; selected figures are under `results/figures/`. Principal reported means are Macro-4: full-label S0 0.7711, S1 0.7708, K1 0.793125 and Q8(K1) 0.793382. The corresponding historical Macro-3 values, excluding CWRU, are 0.9214, 0.9199, 0.936913 and 0.937011. Both are computed from the same per-dataset results of the executed four-domain protocol. These are Macro-3 summaries of models trained under the executed four-domain protocol. See `results/PROVENANCE.md` before reuse.
 
 ## Repository layout
 
