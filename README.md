@@ -99,7 +99,7 @@ Compact, unchanged result tables are under `results/tables/`; selected figures a
 - `results/`: curated summaries only
 - `docs/`: methodology, reproducibility and layout documentation
 
-No raw data, checkpoints, teacher caches, probability caches or training logs are included. No software licence has yet been selected.
+No raw data, checkpoints, teacher caches, probability caches or training logs are included. This repository is released under the MIT License. See [`LICENSE`](LICENSE) for details.
 
 ## Citation
 
