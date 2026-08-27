@@ -75,7 +75,7 @@ Exact public label-efficiency execution paths are included:
 - 10%: `scripts/run_methodology_v2_10pct.py`
 - 100%: `scripts/methodology_v2/experiment_executor.py`
 
-The 1% path is a reduced-label extension executed after the primary registered grid. All paths train CWRU, JNU, HIT and MaFaulDa with four dataset heads and select checkpoints by four-domain validation `MacroDomainF1`. Principal Macro-3 reporting is the later mean over JNU, HIT and MaFaulDa from the saved four-domain outputs; these are not native three-domain experiments. See `docs/reproducibility.md` and `docs/low_label_provenance.md`.
+The 1% path was executed after the primary grid for scheduling reasons and retains its historical launcher name; all four fractions belong to the registered design. All paths train CWRU, JNU, HIT and MaFaulDa with four dataset heads and select checkpoints by four-domain validation `MacroDomainF1`. Principal Macro-3 reporting is the later mean over JNU, HIT and MaFaulDa from the saved four-domain outputs; these are not native three-domain experiments. See `docs/reproducibility.md` and `docs/low_label_provenance.md`.
 
 To reproduce the existing compact analyses after generating checkpoints/results:
 
