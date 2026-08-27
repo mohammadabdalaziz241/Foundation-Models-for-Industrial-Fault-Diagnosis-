@@ -20,7 +20,7 @@ The publication executor is not byte-identical. Its only textual and AST-level s
 
 Publication-only launcher edits were limited to: (1) resolving fraction output roots through `PCSTE_RESULTS_ROOT` with the historical repository-relative fallback; (2) resolving primary SSL/downstream dependencies through the publication executor's results root; (3) emitting portable provenance paths when the results root is external; and (4) removing the historical single-host assertion. No scientific parameter changed.
 
-The 1% states retain internal scientific status `POST_HOC`; publicly it is described as a 1% reduced-label extension executed after the primary registered grid. The 5% and 10% paths belong to the registered grid.
+All four label fractions (1%, 5%, 10%, 100%) belong to the registered experimental design; they are specified in <path to frozen spec>. The 1% run directories carry a legacy internal status string POST_HOC. That string is a misnomer and is corrected here: it records only that the 1% grid was executed after the 100%, 5% and 10% grids for scheduling reasons on shared compute, not that the condition was introduced in response to any observed result. No TEST result influenced the choice of label fractions. The _1pct_extension launcher and output-directory names are retained unchanged so that the recorded artifact paths and hashes remain valid; "extension" there denotes execution order, not a change of scope.
 
 ## Protocol and artifacts
 
