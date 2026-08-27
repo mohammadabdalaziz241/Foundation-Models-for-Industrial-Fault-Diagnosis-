@@ -9,7 +9,8 @@ If you are reviewing the dissertation implementation, the main entry points are:
 - **Model and training implementation:** `src/methodology_v2/`
 - **Experiment entry points:** `scripts/`
 - **Dataset acquisition, layout and integrity:** `DATA.md`
-- **Frozen experimental specifications, splits and manifests:** `methodology_v2/`
+- **Final dissertation protocol:** `configs/dissertation/experiment_protocol.yaml`
+- **Historical frozen specifications, splits and manifests:** `methodology_v2/`
 - **Reproducibility instructions:** `docs/reproducibility.md`
 - **Final compact results:** `results/`
 - **Result provenance:** `results/PROVENANCE.md`
@@ -21,6 +22,8 @@ Raw third-party vibration recordings and trained checkpoints are intentionally n
 ## Scientific scope and provenance
 
 Masked-reconstruction SSL used CWRU, JNU, HIT and MaFaulDa. The downstream S0/S1 experiment also used all four datasets, four dataset-specific heads and four-domain validation `MacroDomainF1`. The dissertation reports **Macro-4**, the equal mean of CWRU, JNU, HIT and MaFaulDa Macro-F1, matching the executed four-domain protocol. **Macro-3**, the equal mean of JNU, HIT and MaFaulDa only, is retained here as a historical secondary aggregate from an earlier reporting stage. Neither is a natively three-domain experiment.
+
+The downstream label-efficiency study used exactly **1%, 5%, 10%, and 100% labels**. No 25% or 50% experiment was executed or reported. The sealed pre-execution Part 5D planning registry contains candidate 25% and 50% rows; those rows are preserved only as historical planning provenance so that its original hash chain remains verifiable. The authoritative dissertation-facing fraction list is `configs/dissertation/experiment_protocol.yaml`.
 
 S0 is a randomly initialized PC-STE trained end-to-end with supervised loss. S1 uses the matched SSL checkpoint and then trains the same encoder and heads end-to-end. K1 is the retained four-block, one-direction student initialized by surgery from Full S1 and trained with `(1-alpha) CE + alpha T^2 KL + L_rel`, where `alpha=0.5`, `T=4`, and `L_rel` is mixer-attention relational KL with weight 1.0. Q8 is the recorded weight-only per-output-channel INT8 representation; packed dynamic INT8 is separately used for CPU latency.
 
@@ -75,7 +78,7 @@ Exact public label-efficiency execution paths are included:
 - 10%: `scripts/run_methodology_v2_10pct.py`
 - 100%: `scripts/methodology_v2/experiment_executor.py`
 
-The 1% path was executed after the other three label fractions and uses the identical protocol. Its historical launcher and directory names are retained unchanged so that recorded paths and hashes remain valid. All paths train CWRU, JNU, HIT and MaFaulDa with four dataset heads and select checkpoints by four-domain validation `MacroDomainF1`. The dissertation reports Macro-4 over all four datasets; Macro-3 over JNU, HIT and MaFaulDa is retained as a historical secondary aggregate derived from the same saved four-domain outputs. See `docs/reproducibility.md` and `docs/low_label_provenance.md`.
+These are the only four label regimes used in the dissertation. The 1% path was executed after the other three executed label fractions and uses the identical protocol. Its historical launcher and directory names are retained unchanged so that recorded paths and hashes remain valid. All paths train CWRU, JNU, HIT and MaFaulDa with four dataset heads and select checkpoints by four-domain validation `MacroDomainF1`. The dissertation reports Macro-4 over all four datasets; Macro-3 over JNU, HIT and MaFaulDa is retained as a historical secondary aggregate derived from the same saved four-domain outputs. See `docs/reproducibility.md` and `docs/low_label_provenance.md`.
 
 To reproduce the existing compact analyses after generating checkpoints/results:
 
@@ -93,8 +96,8 @@ Compact, unchanged result tables are under `results/tables/`; selected figures a
 
 - `src/methodology_v2/`: complete current implementation
 - `scripts/methodology_v2/`: frozen builders, executor and compression tools
-- `methodology_v2/`: frozen specifications, manifests, registries and hashes
-- `configs/dissertation/`: convenient copies of authoritative frozen specifications
+- `methodology_v2/`: historical frozen specifications, manifests, registries and hashes
+- `configs/dissertation/`: dissertation-facing specifications aligned with the final report
 - `tests/methodology_v2/`: current PC-STE tests
 - `results/`: curated summaries only
 - `docs/`: methodology, reproducibility and layout documentation
