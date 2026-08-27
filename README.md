@@ -20,7 +20,7 @@ Raw third-party vibration recordings and trained checkpoints are intentionally n
 
 ## Scientific scope and provenance
 
-Masked-reconstruction SSL used CWRU, JNU, HIT and MaFaulDa. The original downstream S0/S1 experiment also used all four datasets, four dataset-specific heads and four-domain validation `MacroDomainF1`. Dissertation-facing **Macro-3** tables were subsequently derived as the equal mean of JNU, HIT and MaFaulDa Macro-F1. They must not be interpreted as natively three-domain training.
+Masked-reconstruction SSL used CWRU, JNU, HIT and MaFaulDa. The original downstream S0/S1 experiment also used all four datasets, four dataset-specific heads and four-domain validation `MacroDomainF1`. The dissertation reports **Macro-4**, the equal mean of CWRU, JNU, HIT and MaFaulDa Macro-F1, matching the executed four-domain protocol. Macro-3, the equal mean of JNU, HIT and MaFaulDa only, is retained here as a historical secondary aggregate from an earlier reporting stage. Neither is a natively three-domain experiment.
 
 S0 is a randomly initialized PC-STE trained end-to-end with supervised loss. S1 uses the matched SSL checkpoint and then trains the same encoder and heads end-to-end. K1 is the retained four-block, one-direction student initialized by surgery from Full S1 and trained with `(1-alpha) CE + alpha T^2 KL + L_rel`, where `alpha=0.5`, `T=4`, and `L_rel` is mixer-attention relational KL with weight 1.0. Q8 is the recorded weight-only per-output-channel INT8 representation; packed dynamic INT8 is separately used for CPU latency.
 
