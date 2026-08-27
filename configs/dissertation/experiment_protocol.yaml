@@ -10,19 +10,18 @@
   3
  ],
  "label_fractions": [
+  0.01,
   0.05,
   0.1,
-  0.25,
-  0.5,
   1.0
  ],
  "part5c_spec_hash": "f5c65a7e021d85d667027b86e4e5c8d04b6a3e20dc1cef8c4e996c9bb05d6596",
  "primary_comparison": "S1@100% vs S0@100% on MacroDomainF1_test",
  "primary_hypothesis": "S1 improves MacroDomainF1_test over S0 at 100% labels",
  "run_matrix": {
-  "downstream": 90,
+  "downstream": 72,
   "ssl": 9,
-  "total": 99
+  "total": 81
  },
  "run_states": [
   "REGISTERED",
@@ -30,7 +29,7 @@
   "COMPLETE",
   "FAILED"
  ],
- "secondary": "label efficiency at 5/10/25/50%",
+ "secondary": "label efficiency at 1/5/10%",
  "seeds": [
   42,
   1337,
