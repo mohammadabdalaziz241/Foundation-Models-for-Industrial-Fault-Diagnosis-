@@ -7,19 +7,7 @@ for the dissertation.
 
 The dissertation reports **Macro-4** as the principal cross-dataset metric:
 
-\[
-\mathrm{Macro\text{-}4}
-=
-\frac{
-F1_{\mathrm{CWRU}}
-+
-F1_{\mathrm{JNU}}
-+
-F1_{\mathrm{HIT}}
-+
-F1_{\mathrm{MaFaulDa}}
-}{4}.
-\]
+**Macro-4 = (F1_CWRU + F1_JNU + F1_HIT + F1_MaFaulDa) / 4**
 
 This matches the executed four-domain downstream protocol, in which CWRU, JNU,
 HIT and MaFaulDa all contribute supervised loss through dataset-specific heads.
