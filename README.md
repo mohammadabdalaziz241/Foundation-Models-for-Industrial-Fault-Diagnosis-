@@ -20,7 +20,7 @@ Raw third-party vibration recordings and trained checkpoints are intentionally n
 
 ## Scientific scope and provenance
 
-Masked-reconstruction SSL used CWRU, JNU, HIT and MaFaulDa. The original downstream S0/S1 experiment also used all four datasets, four dataset-specific heads and four-domain validation `MacroDomainF1`. The dissertation reports **Macro-4**, the equal mean of CWRU, JNU, HIT and MaFaulDa Macro-F1, matching the executed four-domain protocol. Macro-3, the equal mean of JNU, HIT and MaFaulDa only, is retained here as a historical secondary aggregate from an earlier reporting stage. Neither is a natively three-domain experiment.
+Masked-reconstruction SSL used CWRU, JNU, HIT and MaFaulDa. The downstream S0/S1 experiment also used all four datasets, four dataset-specific heads and four-domain validation `MacroDomainF1`. The dissertation reports **Macro-4**, the equal mean of CWRU, JNU, HIT and MaFaulDa Macro-F1, matching the executed four-domain protocol. **Macro-3**, the equal mean of JNU, HIT and MaFaulDa only, is retained here as a historical secondary aggregate from an earlier reporting stage. Neither is a natively three-domain experiment.
 
 S0 is a randomly initialized PC-STE trained end-to-end with supervised loss. S1 uses the matched SSL checkpoint and then trains the same encoder and heads end-to-end. K1 is the retained four-block, one-direction student initialized by surgery from Full S1 and trained with `(1-alpha) CE + alpha T^2 KL + L_rel`, where `alpha=0.5`, `T=4`, and `L_rel` is mixer-attention relational KL with weight 1.0. Q8 is the recorded weight-only per-output-channel INT8 representation; packed dynamic INT8 is separately used for CPU latency.
 
@@ -75,7 +75,7 @@ Exact public label-efficiency execution paths are included:
 - 10%: `scripts/run_methodology_v2_10pct.py`
 - 100%: `scripts/methodology_v2/experiment_executor.py`
 
-The 1% path was executed after the primary grid for scheduling reasons and retains its historical launcher name; all four fractions belong to the registered design. All paths train CWRU, JNU, HIT and MaFaulDa with four dataset heads and select checkpoints by four-domain validation `MacroDomainF1`. Principal Macro-3 reporting is the later mean over JNU, HIT and MaFaulDa from the saved four-domain outputs; these are not native three-domain experiments. See `docs/reproducibility.md` and `docs/low_label_provenance.md`.
+The 1% path was executed after the other three label fractions and uses the identical protocol. Its historical launcher and directory names are retained unchanged so that recorded paths and hashes remain valid. All paths train CWRU, JNU, HIT and MaFaulDa with four dataset heads and select checkpoints by four-domain validation `MacroDomainF1`. The dissertation reports Macro-4 over all four datasets; Macro-3 over JNU, HIT and MaFaulDa is retained as a historical secondary aggregate derived from the same saved four-domain outputs. See `docs/reproducibility.md` and `docs/low_label_provenance.md`.
 
 To reproduce the existing compact analyses after generating checkpoints/results:
 
@@ -87,7 +87,7 @@ python scripts/methodology_v2/benchmark_part6_latency.py --help
 
 ## Results summary
 
-Compact, unchanged result tables are under `results/tables/`; selected figures are under `results/figures/`. Principal reported means are Macro-4: full-label S0 0.7711, S1 0.7708, K1 0.793125 and Q8(K1) 0.793382. The corresponding historical Macro-3 values, excluding CWRU, are 0.9214, 0.9199, 0.936913 and 0.937011. Both are computed from the same per-dataset results of the executed four-domain protocol. These are Macro-3 summaries of models trained under the executed four-domain protocol. See `results/PROVENANCE.md` before reuse.
+Compact, unchanged result tables are under `results/tables/`; selected figures are under `results/figures/`. Principal reported means are Macro-4, the equal mean of CWRU, JNU, HIT and MaFaulDa Macro-F1: full-label S0 0.7711, S1 0.7708, K1 0.793125 and Q8(K1) 0.793382. The corresponding historical Macro-3 values, which exclude CWRU, are 0.9214, 0.9199, 0.936913 and 0.937011. Both are computed from the same per-dataset results of the executed four-domain protocol. See `results/PROVENANCE.md` before reuse.
 
 ## Repository layout
 
@@ -103,4 +103,4 @@ No raw data, checkpoints, teacher caches, probability caches or training logs ar
 
 ## Citation
 
-Dissertation citation to be added after final bibliographic approval.
+Abdalaziz, M. (2026). *A Foundation-Model-Based Approach for Fault Diagnosis in Industrial Rotating Machinery.* MSc dissertation, University of Surrey.
