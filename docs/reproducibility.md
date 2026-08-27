@@ -17,7 +17,7 @@
 - Sampling: effective batch 64 = 16 windows per dataset, with replacement; dataset→class→group→window supervised hierarchy. Fold-specific steps/epoch: 202, 205, 201.
 - Downstream selector: maximum four-domain validation MacroDomainF1, strict improvement, earlier epoch on exact ties.
 - TEST: checkpoint sealed first; one TEST evaluation; no TEST-driven selection.
-- Macro-3 reports: later mean of JNU, HIT and MaFaulDa from saved four-domain outputs.
+- Primary dissertation aggregate: Macro-4, the equal mean of CWRU, JNU, HIT and MaFaulDa Macro-F1 from the executed four-domain outputs. Historical Macro-3 summaries, averaging JNU, HIT and MaFaulDa only, are retained as secondary results.
 - K1: 1,375,953-parameter unidirectional encoder, initialized by retaining the forward direction of all four S1 blocks; CE + KL plus relational mixer-attention KL.
 
 ## Roots
@@ -37,7 +37,7 @@ The publication release contains the execution paths used for all dissertation-f
 - 10%: `scripts/run_methodology_v2_10pct.py`
 - 100%: `scripts/methodology_v2/experiment_executor.py`
 
-The 1% experiment is retained with its historical provenance as a reduced-label extension executed after the primary registered grid. The 5% and 10% launchers belong to the registered reduced-label grid. All four public execution paths preserve the executed four-domain supervised protocol: CWRU, JNU, HIT and MaFaulDa contribute supervised loss and encoder gradients through four dataset-specific heads; checkpoints are selected by four-domain validation MacroDomainF1; the principal reported Macro-3 statistic averages JNU, HIT and MaFaulDa from the saved four-domain outputs.
+The 1% experiment is retained with its historical provenance as a reduced-label extension executed after the primary registered grid. The 5% and 10% launchers belong to the registered reduced-label grid. All four public execution paths preserve the executed four-domain supervised protocol: CWRU, JNU, HIT and MaFaulDa contribute supervised loss and encoder gradients through four dataset-specific heads; checkpoints are selected by four-domain validation MacroDomainF1; the principal reported Macro-4 statistic averages CWRU, JNU, HIT and MaFaulDa from the saved four-domain outputs. Historical Macro-3 summaries average JNU, HIT and MaFaulDa only and are retained as secondary aggregates.
 
 The original 1%, 5% and 10% launchers were recovered from their authoritative execution copies. Their historical and publication SHA-256 hashes, publication-only portability edits, output naming and pairing evidence are documented in `docs/low_label_provenance.md`. Original compact result summaries are under `results/tables/low_label/`, and original S0/S1 subset/stream pairing proofs are under `methodology_v2/low_label_provenance/`.
 
