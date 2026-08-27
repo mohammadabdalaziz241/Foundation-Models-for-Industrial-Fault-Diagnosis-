@@ -13,6 +13,7 @@
 - PC-STE: stem channels 8; `d_model=192`; four Mamba-1 temporal blocks; two directions fused by mean; absolute Fourier Hz/seconds coordinates; Hz-gated cross-band mixer; validity-masked mean pooling. Encoder parameters: 2,382,033.
 - SSL: 60 epochs, 60% random patch masking, reconstruction in normalized log-STFT space.
 - Downstream: 50 epochs, no early stopping. S0 random initialization; S1 matched best SSL initialization; encoder and heads fully trained.
+- Dissertation label regimes: **1%, 5%, 10%, and 100% only**.
 - AdamW: lr `3e-4`, betas `(0.9,0.95)`, eps `1e-8`, weight decay `0.05`, global gradient clip 1.0, 5 warm-up epochs, cosine decay to `1e-6`.
 - Sampling: effective batch 64 = 16 windows per dataset, with replacement; dataset→class→group→window supervised hierarchy. Fold-specific steps/epoch: 202, 205, 201.
 - Downstream selector: maximum four-domain validation MacroDomainF1, strict improvement, earlier epoch on exact ties.
@@ -26,7 +27,7 @@
 
 ## Frozen artifacts
 
-`methodology_v2/part1_audit` through `part6_compression` include the dataset audit, splits, window manifests, N2 normalizers, architecture/SSL/experiment/compression specifications, registries and hashes. The largest manifest is under 9 MB and is included directly.
+`methodology_v2/part1_audit` through `part6_compression` include the dataset audit, splits, window manifests, N2 normalizers, architecture/SSL/experiment/compression specifications, registries and hashes. The historical Part 5D planning registry is preserved byte-for-byte where required by its seal. It includes candidate 25% and 50% rows that were **not executed and are not dissertation-facing conditions**. The final dissertation protocol is `configs/dissertation/experiment_protocol.yaml` and lists only 1%, 5%, 10%, and 100%.
 
 ## Label-efficiency execution paths
 
@@ -37,8 +38,10 @@ The publication release contains the execution paths used for all dissertation-f
 - 10%: `scripts/run_methodology_v2_10pct.py`
 - 100%: `scripts/methodology_v2/experiment_executor.py`
 
-The 1% path was executed after the other three label fractions and uses the identical protocol. Its historical launcher and directory names are retained unchanged so that recorded paths and hashes remain valid. All four public execution paths preserve the executed four-domain supervised protocol: CWRU, JNU, HIT and MaFaulDa contribute supervised loss and encoder gradients through four dataset-specific heads; checkpoints are selected by four-domain validation MacroDomainF1; the principal reported statistic is Macro-4 over all four datasets. Historical Macro-3 summaries average JNU, HIT and MaFaulDa only and are retained as secondary aggregates.
+No 25% or 50% downstream experiment was executed or reported.
+
+The 1% path was executed after the other three executed label fractions and uses the identical protocol. Its historical launcher and directory names are retained unchanged so that recorded paths and hashes remain valid. All four public execution paths preserve the executed four-domain supervised protocol: CWRU, JNU, HIT and MaFaulDa contribute supervised loss and encoder gradients through four dataset-specific heads; checkpoints are selected by four-domain validation MacroDomainF1; the principal reported statistic is Macro-4 over all four datasets. Historical Macro-3 summaries average JNU, HIT and MaFaulDa only and are retained as secondary aggregates.
 
 The original 1%, 5% and 10% launchers were recovered from their authoritative execution copies. Their historical and publication SHA-256 hashes, publication-only portability edits, output naming and pairing evidence are documented in `docs/low_label_provenance.md`. Original compact result summaries are under `results/tables/low_label/`, and original S0/S1 subset/stream pairing proofs are under `methodology_v2/low_label_provenance/`.
 
-Raw datasets, model checkpoints, full predictions, continuous-score caches and full experiment run trees are deliberately not included. Artifact-dependent integration tests therefore require locally regenerated or separately preserved artifacts, but the publication repository contains the code paths, frozen scientific specifications, manifests, compact result summaries and provenance needed to inspect and rerun the study after obtaining the third-party datasets.
+Raw datasets, model checkpoints, full predictions, continuous-score caches and full experiment run trees are deliberately not included. Artifact-dependent integration tests therefore require locally regenerated or separately preserved artifacts, but the publication repository contains the code paths, final dissertation-facing specification, manifests, compact result summaries and provenance needed to inspect and rerun the reported study after obtaining the third-party datasets.
