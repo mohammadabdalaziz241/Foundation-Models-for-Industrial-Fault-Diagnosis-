@@ -113,7 +113,7 @@ Principal reported means use Macro-4, the equal mean of CWRU, JNU, HIT and MaFau
 | Full S0 | 0.7711 ± 0.0330 |
 | Full S1 | 0.7708 ± 0.0344 |
 | K1 | 0.7931 ± 0.0288 |
-| Q8(K1) | 0.793382 |
+| Q8(K1) | 0.793382 ± 0.028887 |
 | InceptionTime baseline | 0.2816 ± 0.0442 |
 
 For the controlled external comparison, Full S1 exceeded InceptionTime in all **9/9** matched fold-seed cells, with mean paired difference **+0.4891** and exact two-sided sign-flip **p = 0.00390625**. K1 also exceeded the baseline in all 9/9 cells, with mean paired difference **+0.5115** and the same exact p-value. These results support superiority over the evaluated supervised Inception-style baseline **under this dissertation's common protocol**; they are not a claim of universal superiority over InceptionTime or published fault-diagnosis methods in general.
@@ -128,7 +128,7 @@ The final dissertation efficiency benchmark uses nine matched fold-seed cells, a
 |---|---:|---:|---:|---:|---:|
 | Full S1 FP32 | 2,382,033 | 9.579 MB | 3.058 | 22.2394 ± 0.6728 | 7.6638 ± 0.0295 |
 | K1 FP32 | 1,375,953 | 5.543 MB | 1.680 | 11.7294 ± 0.2985 | 4.1529 ± 0.0131 |
-| Packed Q8(K1) CPU | 1,375,953 logical | 1.600 MB | — | 11.3912 ± 0.0728 | N/A |
+| Packed Q8(K1) CPU | 1,375,953 logical | 1.600 MB | 1.680 logical | 11.3912 ± 0.0728 | N/A |
 
 Relative to Full S1, K1 reduces encoder parameters by 42.24%, FLOPs by 45.08%, sequential scan steps by 50%, CPU latency by 47.26%, and GPU latency by 45.81%. Its CPU/GPU speed-ups are 1.8960×/1.8454×. Packed Q8(K1) gives a 1.9523× CPU speed-up and 48.78% CPU latency reduction versus Full S1.
 

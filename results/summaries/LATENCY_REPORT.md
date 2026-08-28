@@ -22,6 +22,7 @@ summary remains beside this file with `THREE_DOMAIN_HISTORICAL` in its name.
 |---|---:|---:|
 | Full S1 | 3.058269056 | — |
 | K1 | 1.679675264 | 45.077584% |
+| Q8(K1) | 1.679675264 logical | 45.077584% logical |
 
 | Dataset | Full S1 scan steps | K1 scan steps | Reduction |
 |---|---:|---:|---:|
