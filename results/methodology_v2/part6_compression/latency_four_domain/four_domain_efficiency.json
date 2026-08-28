@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "scope": "equal-weight four-domain inference efficiency",
+  "datasets": ["CWRU", "JNU", "HIT", "MaFaulDa"],
+  "folds": [1, 2, 3],
+  "seeds": [42, 1337, 2026],
+  "batch_size": 1,
+  "warmup_passes_per_configuration": 50,
+  "timed_passes_per_configuration": 500,
+  "total_warmup_forwards": 9000,
+  "total_timed_forwards": 90000,
+  "total_forwards": 99000,
+  "benchmark_session": {
+    "start": "2026-08-28T19:31:56.533394781+01:00",
+    "end": "2026-08-28T19:51:08.237387074+01:00",
+    "elapsed_seconds": 1151.703992293,
+    "host": "REDACTED (institutional hostname)",
+    "cpu": "Intel(R) Core(TM) i9-14900",
+    "cpu_intraop_threads": 4,
+    "cpu_interop_threads": 1,
+    "gpu": "NVIDIA RTX 4000 Ada Generation",
+    "torch": "2.12.0+cu130",
+    "cuda": "13.0",
+    "git_commit_measured": "b16532db020cf64174d49d4cf654f0673a84c652"
+  },
+  "per_dataset": {
+    "CWRU": {"input_geometry": [513, 184], "full_s1_flops_g": 3.375500928, "k1_flops_g": 1.854049920, "full_s1_scan_steps": 184, "k1_scan_steps": 92, "full_s1_cpu_ms": 23.9680, "k1_cpu_ms": 12.6195, "q8_k1_cpu_ms": 12.1704, "full_s1_gpu_ms": 7.4614, "k1_gpu_ms": 4.0638, "full_s1_peak_gpu_mib": 33.228515625, "k1_peak_gpu_mib": 28.2783203125},
+    "JNU": {"input_geometry": [513, 192], "full_s1_flops_g": 3.521685504, "k1_flops_g": 1.934137344, "full_s1_scan_steps": 192, "k1_scan_steps": 96, "full_s1_cpu_ms": 24.7976, "k1_cpu_ms": 13.0578, "q8_k1_cpu_ms": 12.6153, "full_s1_gpu_ms": 7.7343, "k1_gpu_ms": 4.1836, "full_s1_peak_gpu_mib": 33.5625, "k1_peak_gpu_mib": 28.564453125},
+    "HIT": {"input_geometry": [257, 192], "full_s1_flops_g": 1.814201984, "k1_flops_g": 0.996374144, "full_s1_scan_steps": 192, "k1_scan_steps": 96, "full_s1_cpu_ms": 15.3343, "k1_cpu_ms": 8.1432, "q8_k1_cpu_ms": 8.1730, "full_s1_gpu_ms": 7.7191, "k1_gpu_ms": 4.1791, "full_s1_peak_gpu_mib": 25.58642578125, "k1_peak_gpu_mib": 21.15087890625},
+    "MaFaulDa": {"input_geometry": [513, 192], "full_s1_flops_g": 3.521687808, "k1_flops_g": 1.934139648, "full_s1_scan_steps": 192, "k1_scan_steps": 96, "full_s1_cpu_ms": 24.8575, "k1_cpu_ms": 13.0972, "q8_k1_cpu_ms": 12.6061, "full_s1_gpu_ms": 7.7407, "k1_gpu_ms": 4.1853, "full_s1_peak_gpu_mib": 33.5625, "k1_peak_gpu_mib": 28.564453125}
+  },
+  "four_domain": {
+    "full_s1_flops_g": 3.058269056,
+    "k1_flops_g": 1.6796752640000001,
+    "k1_flops_reduction_percent": 45.077583651292706,
+    "full_s1_cpu_ms": 22.239369560666667,
+    "k1_cpu_ms": 11.729429466,
+    "k1_cpu_speedup": 1.8960316548329776,
+    "k1_cpu_latency_reduction_percent": 47.25826452047867,
+    "q8_k1_cpu_ms": 11.391178557166667,
+    "q8_cpu_speedup_vs_full_s1": 1.9523326273096606,
+    "q8_cpu_latency_reduction_percent": 48.77921999500603,
+    "full_s1_gpu_ms": 7.663847509622574,
+    "k1_gpu_ms": 4.1529419282807245,
+    "k1_gpu_speedup": 1.8454020407637457,
+    "k1_gpu_latency_reduction_percent": 45.81126616798712,
+    "full_s1_peak_gpu_mib_max": 33.5625,
+    "k1_peak_gpu_mib_max": 28.564453125
+  },
+  "parity": {
+    "criterion": "packed dynamic INT8 CPU compared with registered weight-only-Q8/FP32-compute representation; deviations reported without weakening the original criterion",
+    "windows": 576,
+    "maximum_absolute_logit_deviation": 3.987194061279297,
+    "mean_cell_prediction_agreement_percent": 99.13194444444444,
+    "all_predictions_identical": false,
+    "audit_pass": true
+  },
+  "q8_gpu": null,
+  "q8_gpu_reason": "No genuine packed INT8 CUDA implementation; the registered CUDA path dequantizes to FP32."
+}

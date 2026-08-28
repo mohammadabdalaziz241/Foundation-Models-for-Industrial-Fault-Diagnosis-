@@ -99,8 +99,10 @@ To reproduce the existing compact PC-STE analyses after generating checkpoints/r
 ```bash
 python scripts/extract_100pct_final_analysis.py
 python scripts/posthoc_100pct_frozen_evaluation.py --help
-python scripts/methodology_v2/benchmark_part6_latency.py --help
+python scripts/methodology_v2/benchmark_part6_latency_four_domain.py --help
 ```
+
+The old `scripts/methodology_v2/benchmark_part6_latency.py` entry point is retained only as historical three-domain latency provenance.
 
 ## Results summary
 
@@ -117,6 +119,22 @@ Principal reported means use Macro-4, the equal mean of CWRU, JNU, HIT and MaFau
 For the controlled external comparison, Full S1 exceeded InceptionTime in all **9/9** matched fold-seed cells, with mean paired difference **+0.4891** and exact two-sided sign-flip **p = 0.00390625**. K1 also exceeded the baseline in all 9/9 cells, with mean paired difference **+0.5115** and the same exact p-value. These results support superiority over the evaluated supervised Inception-style baseline **under this dissertation's common protocol**; they are not a claim of universal superiority over InceptionTime or published fault-diagnosis methods in general.
 
 The completed training programme comprises **99 successful training runs** and approximately **661.01 summed GPU-hours**. The nine InceptionTime runs contributed **91.49 GPU-hours**, averaging **10.17 h/run**, each on one NVIDIA RTX 4000 Ada Generation GPU.
+
+### Four-domain efficiency
+
+The final dissertation efficiency benchmark uses nine matched fold-seed cells, all four datasets with equal domain weight, batch size 1, 9,000 warm-up forwards and 90,000 timed forwards in one controlled session.
+
+| Model | Encoder parameters | Serialized size | GFLOP/window | CPU ms/window | GPU ms/window |
+|---|---:|---:|---:|---:|---:|
+| Full S1 FP32 | 2,382,033 | 9.579 MB | 3.058 | 22.2394 ± 0.6728 | 7.6638 ± 0.0295 |
+| K1 FP32 | 1,375,953 | 5.543 MB | 1.680 | 11.7294 ± 0.2985 | 4.1529 ± 0.0131 |
+| Packed Q8(K1) CPU | 1,375,953 logical | 1.600 MB | — | 11.3912 ± 0.0728 | N/A |
+
+Relative to Full S1, K1 reduces encoder parameters by 42.24%, FLOPs by 45.08%, sequential scan steps by 50%, CPU latency by 47.26%, and GPU latency by 45.81%. Its CPU/GPU speed-ups are 1.8960×/1.8454×. Packed Q8(K1) gives a 1.9523× CPU speed-up and 48.78% CPU latency reduction versus Full S1.
+
+There is no genuine packed INT8 CUDA latency result: the CUDA-compatible Q8 simulation dequantizes to FP32. Packed-versus-simulated Q8 showed **high class-level agreement**, 571/576 validation windows (99.13%), but not exact numerical parity and not universally identical predictions.
+
+Authoritative evidence is under `results/methodology_v2/part6_compression/latency_four_domain/`; the independent read-only audit is `results/methodology_v2/verification/four_domain_verification.md`.
 
 Compact PC-STE result tables are under `results/tables/`; selected figures are under `results/figures/`; the baseline evidence is under `results/baselines/inceptiontime_four_domain/`. Historical Macro-3 values remain in some preserved summaries as secondary aggregates derived from the same four-domain model outputs. See `results/PROVENANCE.md` before reuse.
 

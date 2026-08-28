@@ -30,6 +30,10 @@ This is a **complete-method comparison**, not an architecture-only ablation. Inc
 
 The InceptionTime dataset-level means are CWRU `0.1440 ± 0.0823`, JNU `0.2835 ± 0.1083`, HIT `0.4762 ± 0.2233`, and MaFaulDa `0.2228 ± 0.0817`.
 
+## Four-domain efficiency
+
+The final efficiency evidence is under [`methodology_v2/part6_compression/latency_four_domain/`](methodology_v2/part6_compression/latency_four_domain/), with a read-only verification report at [`methodology_v2/verification/four_domain_verification.md`](methodology_v2/verification/four_domain_verification.md). It uses nine matched cells and an equal-domain mean over CWRU, JNU, HIT and MaFaulDa. The dissertation-facing Full S1/K1 CPU latencies are `22.2394 ± 0.6728`/`11.7294 ± 0.2985` ms, and GPU latencies are `7.6638 ± 0.0295`/`4.1529 ± 0.0131` ms. The older three-domain latency files are retained as explicitly labelled historical provenance.
+
 ## Training programme
 
 The final audited programme contains **99 successful training runs** and approximately **661.01 summed GPU-hours**. The controlled InceptionTime baseline contributes nine runs, averaging **10.17 h/run** and totalling **91.49 GPU-hours**. Its timing evidence is included in `baselines/inceptiontime_four_domain/training_cost.csv`.
