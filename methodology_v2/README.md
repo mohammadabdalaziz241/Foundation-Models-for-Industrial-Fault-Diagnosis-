@@ -53,7 +53,9 @@ The same encoder is used for masked-reconstruction SSL and downstream classifica
 - `low_label_provenance/` — pairing proofs for the 1%, 5% and 10% reduced-label experiments.
 - `part6_compression/` — lightweight PC-STE study, including the K1 student, knowledge distillation, PTQ/Q8 specifications, statistics and execution provenance.
 
-Implementation code lives under `src/methodology_v2/`, experiment and analysis entry points under `scripts/`, and verification tests under `tests/methodology_v2/`.
+PC-STE implementation code lives under `src/methodology_v2/`, experiment and analysis entry points under `scripts/`, and verification tests under `tests/methodology_v2/`.
+
+The final dissertation additionally contains a controlled full-label four-domain **InceptionTime** comparison. That baseline is intentionally kept outside this historical Methodology V2 provenance directory: its implementation is under `src/baselines/`, execution/analysis tools under `scripts/baselines/`, tests under `tests/baselines/`, and compact result/protocol evidence under `results/baselines/inceptiontime_four_domain/`. It uses the same frozen downstream partitions and is reported as a complete-method comparison, not an architecture-only ablation.
 
 Curated dissertation-facing result tables, summaries and figures are under `results/`.
 
@@ -61,10 +63,10 @@ Curated dissertation-facing result tables, summaries and figures are under `resu
 
 Some sealed planning files intentionally preserve superseded candidate conditions or historical names so that their hashes and provenance remain verifiable. In particular, the original Part 5D planning registry contains candidate **25%** and **50%** label fractions that were **not executed and are not reported as dissertation experiments**. They are retained only as historical provenance.
 
-Similarly, files whose names contain `macro3`, `posthoc`, or `extension` may be retained unchanged when renaming them would break recorded paths or hashes. The dissertation-facing configuration and documentation define the authoritative interpretation.
+Similarly, files whose names contain `macro3`, `posthoc`, `extension`, or other historical terminology may be retained unchanged when renaming them would break recorded paths, imports or hashes. The dissertation-facing configuration and documentation define the authoritative interpretation.
 
 ## Status
 
-The main Methodology V2 pipeline, four-domain S0/S1 experiments, reduced-label evaluations, lightweight K1 study, Q8 evaluation, latency analysis and curated result export are complete and represented in this repository. Historical development artefacts are preserved where necessary for reproducibility rather than rewritten after the fact.
+The main Methodology V2 pipeline, four-domain S0/S1 experiments, reduced-label evaluations, lightweight K1 study, Q8 evaluation, latency analysis and curated result export are complete and represented in this repository. The final controlled InceptionTime baseline is also complete and represented in the separate baseline paths identified above. Historical development artefacts are preserved where necessary for reproducibility rather than rewritten after the fact.
 
 Raw datasets, large checkpoints and machine-local execution directories are not committed to the repository; see the root documentation and `results/PROVENANCE.md` for reproducibility and result provenance details.
