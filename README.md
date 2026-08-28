@@ -108,7 +108,7 @@ Principal reported means use Macro-4, the equal mean of CWRU, JNU, HIT and MaFau
 
 | Model | Macro-4 mean ± sample SD |
 |---|---:|
-| Full S0 | 0.7711 |
+| Full S0 | 0.7711 ± 0.0330 |
 | Full S1 | 0.7708 ± 0.0344 |
 | K1 | 0.7931 ± 0.0288 |
 | Q8(K1) | 0.793382 |
