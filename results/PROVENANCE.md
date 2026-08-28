@@ -8,7 +8,8 @@ The publication repository preserves compact dissertation evidence without redis
 - `tables/lightweight_macro3_*`: `results/lightweight_macro3_reaggregation/tables/`.
 - `tables/cwru_*` and `four_dataset_reconstruction_summary.csv`: `results/cwru_reconstruction_analysis/tables/`.
 - `tables/Q8_K1_COMPARISON.csv`, `PTQ_TABLE.csv`: `results/methodology_v2/part6_compression/ptq/`.
-- `summaries/LATENCY_REPORT.md`, `latency_summary.csv`: `results/methodology_v2/part6_compression/latency/` (hostname redacted only; numerical content retained).
+- `summaries/LATENCY_REPORT.md`, `latency_summary.csv`: final four-domain dissertation-facing summaries derived from `results/methodology_v2/part6_compression/latency_four_domain/`.
+- `summaries/LATENCY_REPORT_THREE_DOMAIN_HISTORICAL.md`, `latency_summary_three_domain_historical.csv`: preserved historical three-domain latency summaries.
 - `summaries/100pct_FINAL_REPORT.md`: `results/100pct_final_analysis/FINAL_REPORT.md`.
 - `summaries/lightweight_macro3_README.md`: `results/lightweight_macro3_reaggregation/README.md`.
 - `summaries/cwru_reconstruction_README.md`: `results/cwru_reconstruction_analysis/README.md`.
@@ -16,6 +17,12 @@ The publication repository preserves compact dissertation evidence without redis
 - `figures/cwru_reconstruction_example.png`: `results/cwru_reconstruction_analysis/figures/cwru_reconstruction/`.
 
 The S0/S1/K1/Q8 models were trained and evaluated under the executed four-domain protocol. The dissertation reports Macro-4 over CWRU, JNU, HIT and MaFaulDa. Macro-3, a three-dataset aggregate excluding CWRU, is retained as a historical secondary reporting view derived from the same per-dataset four-domain results.
+
+## Four-domain efficiency evidence
+
+The **primary dissertation efficiency evidence** is `methodology_v2/part6_compression/latency_four_domain/`, with the independent audit at `methodology_v2/verification/four_domain_verification.md`. These are authoritative for dissertation Tables 5.10 and 5.11 and their discussion.
+
+The models were already trained under the four-domain protocol. The earlier `methodology_v2/part6_compression/latency/` benchmark aggregated runtime over JNU, HIT and MaFaulDa and excluded CWRU; it is retained, unchanged, as **historical three-domain latency provenance**. The final dissertation benchmark remeasured all four datasets in one controlled session rather than splicing CWRU into the earlier timings.
 
 ## Controlled InceptionTime baseline
 

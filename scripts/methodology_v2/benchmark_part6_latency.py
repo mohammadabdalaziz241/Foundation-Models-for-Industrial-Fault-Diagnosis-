@@ -1,5 +1,8 @@
 #!/usr/bin/env python
-"""Validation-only latency benchmark for the final Part-6 Macro-3 study.
+"""Historical validation-only three-domain Part-6 latency benchmark.
+
+This file is preserved as three-domain provenance. The dissertation-facing
+four-domain benchmark is ``benchmark_part6_latency_four_domain.py``.
 
 This intentionally reuses the sealed Part-6 constructors/loaders and Q8
 implementations.  It never requests an allow_test token and fails if any
