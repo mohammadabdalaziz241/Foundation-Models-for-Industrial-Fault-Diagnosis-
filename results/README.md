@@ -12,7 +12,7 @@ This matches the executed four-domain downstream protocol, in which CWRU, JNU, H
 
 | Model | Macro-4 | Historical Macro-3 |
 |---|---:|---:|
-| Full S0 | 0.7711 | 0.9214 |
+| Full S0 | 0.7711 ± 0.0330 | 0.9214 |
 | Full S1 | 0.7708 ± 0.0344 | 0.9199 |
 | K1 | 0.7931 ± 0.0288 | 0.936913 |
 | Q8(K1) | 0.793382 | 0.937011 |
