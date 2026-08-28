@@ -1,4 +1,5 @@
 {
+ "scope": "PC-STE SSL plus matched S0/S1 downstream experiment; lightweight K1 and controlled InceptionTime runs are audited separately",
  "arms": {
   "S0": "random PC-STE encoder + dataset heads",
   "S1": "SSL-pretrained PC-STE encoder (best MacroDomainReconMSE checkpoint) + SAME heads"
@@ -16,12 +17,20 @@
   1.0
  ],
  "part5c_spec_hash": "f5c65a7e021d85d667027b86e4e5c8d04b6a3e20dc1cef8c4e996c9bb05d6596",
- "primary_comparison": "S1@100% vs S0@100% on MacroDomainF1_test",
- "primary_hypothesis": "S1 improves MacroDomainF1_test over S0 at 100% labels",
+ "primary_comparison": "S1@100% vs S0@100% on four-domain Macro-4 TEST performance",
+ "primary_hypothesis": "S1 improves four-domain downstream performance over S0 at 100% labels",
  "run_matrix": {
+  "scope": "9 SSL + 72 S0/S1 downstream executions only",
   "downstream": 72,
   "ssl": 9,
   "total": 81
+ },
+ "completed_programme_audit": {
+  "pcste_ssl_and_s0_s1_runs": 81,
+  "k1_distillation_runs": 9,
+  "inceptiontime_baseline_runs": 9,
+  "successful_training_runs_total": 99,
+  "summed_gpu_hours": 661.01
  },
  "run_states": [
   "REGISTERED",
