@@ -1,0 +1,10 @@
+fold,seed,host,timing_source,start_utc,end_utc,duration_hours,gpu_count,gpu_model
+1,42,otter133,state.json started_at to completed_at,2026-08-27T15:32:42.881876+00:00,2026-08-28T01:34:57.350114+00:00,10.037352288333334,1,NVIDIA RTX 4000 Ada Generation
+1,1337,otter134,state.json started_at to completed_at,2026-08-27T15:32:43.077602+00:00,2026-08-28T01:36:29.697830+00:00,10.062950063333334,1,NVIDIA RTX 4000 Ada Generation
+1,2026,otter135,state.json started_at to completed_at,2026-08-27T15:30:43.520412+00:00,2026-08-28T01:41:04.465556+00:00,10.172484762222222,1,NVIDIA RTX 4000 Ada Generation
+2,42,otter135,state.json started_at to completed_at,2026-08-28T01:41:12.542777+00:00,2026-08-28T11:58:09.136907+00:00,10.282387258333333,1,NVIDIA RTX 4000 Ada Generation
+2,1337,otter145,state.json started_at to completed_at,2026-08-27T15:35:10.455384+00:00,2026-08-28T01:56:56.015592+00:00,10.362655613333335,1,NVIDIA RTX 4000 Ada Generation
+2,2026,otter146,state.json started_at to completed_at,2026-08-27T15:32:43.578242+00:00,2026-08-28T01:52:00.926884+00:00,10.321485733888888,1,NVIDIA RTX 4000 Ada Generation
+3,42,otter134,state.json started_at to completed_at,2026-08-28T01:36:42.430017+00:00,2026-08-28T11:40:06.063185+00:00,10.056564768888888,1,NVIDIA RTX 4000 Ada Generation
+3,1337,otter146,state.json started_at to completed_at,2026-08-28T01:52:12.788846+00:00,2026-08-28T12:01:40.760531+00:00,10.157769912499999,1,NVIDIA RTX 4000 Ada Generation
+3,2026,otter133,state.json started_at to completed_at,2026-08-28T01:35:12.282578+00:00,2026-08-28T11:37:05.449804+00:00,10.031435340555555,1,NVIDIA RTX 4000 Ada Generation

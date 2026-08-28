@@ -1,0 +1,36 @@
+{
+  "architecture": {
+    "name": "single InceptionTime-style supervised waveform network",
+    "modules": 6,
+    "residual_every_modules": 3,
+    "bottleneck_channels": 32,
+    "filters_per_convolution_branch": 32,
+    "kernel_sizes": [40, 20, 10],
+    "global_average_pooling": true,
+    "dataset_head_classes": {"CWRU": 3, "JNU": 4, "HIT": 3, "MAFAULDA": 10}
+  },
+  "input": {
+    "representation": "native-length raw one-second waveform",
+    "native_lengths": {"CWRU": 48000, "JNU": 50000, "HIT": 25000, "MAFAULDA": 50000},
+    "stft": false,
+    "n2": false
+  },
+  "design": {
+    "datasets": ["CWRU", "JNU", "HIT", "MAFAULDA"],
+    "folds": [1, 2, 3],
+    "seeds": [42, 1337, 2026],
+    "labels_percent": 100,
+    "epochs": 50,
+    "effective_batch": 64,
+    "per_dataset_batch": 16,
+    "steps_per_epoch": {"1": 202, "2": 205, "3": 201},
+    "optimizer": "AdamW",
+    "learning_rate": 0.0003,
+    "warmup_epochs": 5,
+    "minimum_learning_rate": 0.000001,
+    "checkpoint_selector": "strict maximum validation MacroDomainF1 over four equally weighted domains",
+    "test_policy": "single sealed TEST evaluation after checkpoint selection",
+    "primary_metric": "Macro-4: equal mean of four dataset-level Macro-F1 values"
+  },
+  "comparison_scope": "complete-method comparison; not an architecture-only ablation"
+}
