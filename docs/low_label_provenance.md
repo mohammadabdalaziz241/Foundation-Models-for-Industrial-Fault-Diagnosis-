@@ -1,33 +1,47 @@
-# Low-label recovery provenance
+# Reduced-label execution provenance
 
-The dissertation evaluates exactly **1%, 5%, 10%, and 100%** label regimes. The exact 1%, 5% and 10% launchers were recovered from the authoritative execution copies identified by the read-only cross-host audit. Source host names are retained here only as scientific recovery provenance; public-facing instructions are host-neutral.
+The dissertation evaluates exactly **1%, 5%, 10%, and 100%** labelled-data regimes under the same four-domain downstream protocol.
 
-## Executor equivalence
+## Execution paths
 
-- Historical executor SHA-256: `63b4705b3b5953a3e8253c0641abf95c91b1fb4f2096215ae88bfb52ed9ff070`
-- Publication executor SHA-256: `6d1e8cc63826d7e65603b933cb24b53f390073ec6bac2e65578b97862af21012`
-- Status: **scientifically equivalent after publication-only path portability edit**
+| Fraction | Publication launcher | Output naming |
+|---|---|---|
+| 1% | `scripts/run_methodology_v2_1pct_extension.py` | `methodology_v2_1pct_extension/downstream/[s0|s1]_f{fold}_s{seed}_l001` |
+| 5% | `scripts/run_methodology_v2_5pct.py` | `methodology_v2_5pct/downstream/[s0|s1]_f{fold}_s{seed}_l005` |
+| 10% | `scripts/run_methodology_v2_10pct.py` | `methodology_v2_10pct/downstream/[s0|s1]_f{fold}_s{seed}_l010` |
+| 100% | `scripts/methodology_v2/experiment_executor.py` | principal downstream run tree |
 
-The publication executor is not byte-identical. Its only textual and AST-level semantic difference is that the historical fixed `REPO / "results" / "methodology_v2"` root is replaced by `PCSTE_RESULTS_ROOT`, with the identical repository-relative `results/` default. No dataset, model, initialization, optimizer, scheduler, sampler, loss, validation, checkpoint-selection, TEST, seed, fold or deterministic-control logic differs.
+The reduced-label launchers preserve the same scientific protocol as the full-label experiment. Portability edits affect path resolution only; dataset definitions, model architecture, initialization, optimizer, scheduler, sampler, loss, validation, checkpoint selection, TEST handling, seeds, folds, and deterministic controls remain unchanged.
 
-## Recovered launchers
+## Matched design
 
-| Fraction | Recovery host | Historical launcher SHA-256 | Publication launcher SHA-256 | Output naming |
-|---|---|---|---|---|
-| 1% | `otter133` | `a0a15ee286d1d2097c1d3c451a2bc3c37a42ddb0eb2559518a47903addef3331` | `e7db6cfbb662cf12de07834f1fe1736c2396a4f57931d25db6a8c5a782b2b8e5` | `methodology_v2_1pct_extension/downstream/[s0|s1]_f{fold}_s{seed}_l001` |
-| 5% | `otter134` | `1fb449fac29d15a45afacb35fed6754fc6540ddb0c15e46b197c18abb4477352` | `846db345856e65c9398397687edb86ae29141be20ce9647f77fbee06fdae7154` | `methodology_v2_5pct/downstream/[s0|s1]_f{fold}_s{seed}_l005` |
-| 10% | `otter146` | `0464ea80e6655b96dd6c5b9ccfe7941f0a2f4a8aa11468b68e7b036a4b206973` | `adc64c320c91410ed6a22b10af5d236d70721c66a45ca9858569533cb7d3256c` | `methodology_v2_10pct/downstream/[s0|s1]_f{fold}_s{seed}_l010` |
+For each executed fraction:
 
-Publication-only launcher edits were limited to: (1) resolving fraction output roots through `PCSTE_RESULTS_ROOT` with the historical repository-relative fallback; (2) resolving primary SSL/downstream dependencies through the publication executor's results root; (3) emitting portable provenance paths when the results root is external; and (4) removing the historical single-host assertion. No scientific parameter changed.
+- folds are 1, 2, and 3;
+- seeds are 42, 1337, and 2026;
+- arms are S0 and S1;
+- there are 18 runs and 9 matched fold-seed cells;
+- downstream training lasts 50 epochs;
+- CWRU, JNU, HIT, and MaFaulDa contribute supervised loss and encoder gradients through four dataset-specific heads;
+- checkpoints maximize four-domain validation MacroDomainF1 under the strict-improvement rule;
+- TEST is evaluated only after checkpoint selection;
+- final cross-dataset reporting uses **Macro-4**, the equal mean of CWRU, JNU, HIT, and MaFaulDa dataset-level Macro-F1.
 
-The 1% grid was executed after the 100%, 5% and 10% grids. It uses the identical protocol: the same folds, seeds, arms, architecture, optimisation recipe and four-domain checkpoint-selection rule, with 18 runs and 9 paired cells. The 1% run directories carry a legacy internal status string `POST_HOC`, which recorded execution order rather than a change to the executed training protocol; it is superseded by this note. The `_1pct_extension` launcher and output-directory names are retained unchanged so that the recorded artifact paths and hashes remain valid.
+## Public result and pairing evidence
 
-## Historical Part 5D planning registry
+The dissertation-facing reduced-label results are stored in:
 
-The sealed pre-execution Part 5D planning registry contains candidate 25% and 50% rows in addition to 5%, 10%, and 100%. **Those 25% and 50% conditions were never executed and are not dissertation results.** They are retained only because changing the sealed files would invalidate the historical master hash. The final dissertation-facing protocol is `configs/dissertation/experiment_protocol.yaml`, which lists exactly 1%, 5%, 10%, and 100%.
+- `results/tables/low_label/reduced_label_classification_summary.csv`
+- `results/tables/statistical_analysis.csv`
 
-## Protocol and artifacts
+The corresponding S0/S1 subset and batch-stream pairing proofs are stored under `methodology_v2/low_label_provenance/`. Across the 1%, 5%, and 10% regimes, these proofs record matching paired subset hashes and batch-stream hashes for each fold-seed cell.
 
-For every executed fraction (1%, 5%, 10%, 100%): folds are 1, 2 and 3; seeds are 42, 1337 and 2026; arms are S0 and S1; there are 18 runs and 9 paired cells; downstream training lasts 50 epochs. CWRU, JNU, HIT and MaFaulDa contribute CE and encoder gradients through four dataset-specific heads. Checkpoints maximize four-domain validation MacroDomainF1 with strict improvement, retaining the earlier epoch on exact ties. TEST is evaluated once after checkpoint sealing. Principal dissertation reporting uses Macro-4, averaging CWRU, JNU, HIT and MaFaulDa. Historical Macro-3 summaries average JNU, HIT and MaFaulDa only.
+The reduced-label aggregate values reported in the dissertation are:
 
-Original compact result tables are in `results/tables/low_label/`. Original pairing proofs are in `methodology_v2/low_label_provenance/`; all 27 rows record matching S0/S1 subset hashes and batch-stream hashes for the three reduced-label regimes. No checkpoint, prediction file, score cache, epoch history, log, run directory or archive is included. The invalid `s0_f1_s42_l005_INTERRUPTED_MISNAMED` directory was explicitly excluded.
+| Labels | S0 Macro-4 F1 | S1 Macro-4 F1 | Δ S1−S0 | Exact p |
+|---|---:|---:|---:|---:|
+| 1% | 0.4803 ± 0.0655 | 0.5051 ± 0.0547 | +0.0249 | 0.3125 |
+| 5% | 0.6519 ± 0.0248 | 0.6427 ± 0.0243 | −0.0092 | 0.4492 |
+| 10% | 0.7135 ± 0.0425 | 0.7187 ± 0.0388 | +0.0052 | 0.6328 |
+
+These artefacts provide the compact public evidence for the reduced-label experiments while the raw datasets, checkpoints, full prediction caches, and node-local logs remain outside the repository.
