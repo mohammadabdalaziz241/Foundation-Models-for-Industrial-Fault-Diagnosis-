@@ -1,2 +1,5 @@
-metric,n_pairs,observed_mean_difference_s1_minus_s0,median_difference,sd_difference,cohen_dz,exact_two_sided_p,n_sign_flips,alpha,significant,procedure
-Macro-3 F1 (equal JNU/HIT/MaFaulDa weight),9,-0.0015030657812407004,0.001793791351122,0.031069342825084653,-0.04837777836830075,0.8828125,512,0.05,False,exact paired sign-flip test on mean; all 2^9 patterns
+label_fraction,mean_delta_s1_minus_s0,exact_two_sided_p,interpretation
+1%,0.0249,0.3125,Descriptive positive tendency
+5%,-0.0092,0.4492,No systematic difference
+10%,0.0052,0.6328,No systematic difference
+100%,-0.0003,0.9805,No systematic difference

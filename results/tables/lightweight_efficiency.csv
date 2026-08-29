@@ -1,0 +1,4 @@
+model,encoder_parameters,serialized_size_mb,mean_flops_gflop_per_window,scan_steps
+Full S1 FP32,2382033,9.579,3.058,192
+K1 FP32,1375953,5.543,1.680,96
+Q8(K1),1375953,1.600,1.680,96
