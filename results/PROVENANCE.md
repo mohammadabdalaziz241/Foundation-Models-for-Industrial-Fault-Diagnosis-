@@ -1,53 +1,54 @@
-# Curated result provenance
+# Results Provenance
 
-The publication repository preserves compact dissertation evidence without redistributing raw datasets, checkpoints or complete execution trees. Existing PC-STE result files listed below were copied without numerical recalculation from the research workspace; the controlled InceptionTime evidence was generated read-only from the already completed authoritative baseline outputs, without retraining or another TEST evaluation.
+The public result tables in this repository follow the four-domain evaluation protocol reported in the dissertation. The downstream domains are **CWRU, JNU, HIT, and MaFaulDa**, and aggregate classification performance is reported as their equal-weight **Macro-4** mean.
 
-## PC-STE curated outputs
+## Principal S0-S1 results
 
-- `tables/classification_*`, `paired_s0_s1.csv`, `per_class_*`, `roc_auc_*`, `statistical_analysis.csv`, `reconstruction_*`, `run_inventory.csv`, `class_mapping.csv`, `macro_f1_consistency.csv`: `results/100pct_final_analysis/tables/` in the research workspace.
-- `tables/lightweight_macro3_*`: `results/lightweight_macro3_reaggregation/tables/`.
-- `tables/cwru_*` and `four_dataset_reconstruction_summary.csv`: `results/cwru_reconstruction_analysis/tables/`.
-- `tables/Q8_K1_COMPARISON.csv`, `PTQ_TABLE.csv`: `results/methodology_v2/part6_compression/ptq/`.
-- `summaries/LATENCY_REPORT.md`, `latency_summary.csv`: final four-domain dissertation-facing summaries derived from `results/methodology_v2/part6_compression/latency_four_domain/`.
-- `summaries/LATENCY_REPORT_THREE_DOMAIN_HISTORICAL.md`, `latency_summary_three_domain_historical.csv`: preserved historical three-domain latency summaries.
-- `summaries/100pct_FINAL_REPORT.md`: `results/100pct_final_analysis/FINAL_REPORT.md`.
-- `summaries/lightweight_macro3_README.md`: `results/lightweight_macro3_reaggregation/README.md`.
-- `summaries/cwru_reconstruction_README.md`: `results/cwru_reconstruction_analysis/README.md`.
-- aggregate confusion-matrix/ROC figures: `results/100pct_final_analysis/figures/`.
-- `figures/cwru_reconstruction_example.png`: `results/cwru_reconstruction_analysis/figures/cwru_reconstruction/`.
+The main result artefacts correspond directly to the dissertation:
 
-The S0/S1/K1/Q8 models were trained and evaluated under the executed four-domain protocol. The dissertation reports Macro-4 over CWRU, JNU, HIT and MaFaulDa. Macro-3, a three-dataset aggregate excluding CWRU, is retained as a historical secondary reporting view derived from the same per-dataset four-domain results.
+| Repository artefact | Dissertation evidence |
+|---|---|
+| `tables/classification_summary_s0_vs_s1.csv` | Table 5.2, full-label downstream classification performance |
+| `tables/paired_s0_s1.csv` | Table 5.3, nine paired full-label Macro-4 cells |
+| `tables/statistical_analysis.csv` | Table 5.5, exact paired comparison across label fractions |
+| `tables/per_class_cwru_summary.csv` | Table A.1, CWRU 100% per-class precision, recall, F1, and AUC |
+| `tables/per_class_jnu_summary.csv` | Table A.2, JNU per-class analysis |
+| `tables/per_class_hit_summary.csv` | Table A.3, HIT per-class analysis |
+| `tables/per_class_mafaulda_summary.csv` | Table A.4, MaFaulDa per-class analysis |
 
-## Four-domain efficiency evidence
+At 100% labels, the dissertation reports S0 Macro-4 F1 of **0.7711 ± 0.0330** and S1 Macro-4 F1 of **0.7708 ± 0.0344**. The exact paired two-sided sign-flip test gives **p = 0.9805**.
 
-The **primary dissertation efficiency evidence** is `methodology_v2/part6_compression/latency_four_domain/`, with the independent audit at `methodology_v2/verification/four_domain_verification.md`. These are authoritative for dissertation Tables 5.10 and 5.11 and their discussion.
+At reduced label fractions, the Macro-4 F1 results are:
 
-The models were already trained under the four-domain protocol. The earlier `methodology_v2/part6_compression/latency/` benchmark aggregated runtime over JNU, HIT and MaFaulDa and excluded CWRU; it is retained, unchanged, as **historical three-domain latency provenance**. The final dissertation benchmark remeasured all four datasets in one controlled session rather than splicing CWRU into the earlier timings.
+| Labels | S0 | S1 | S1-S0 |
+|---|---:|---:|---:|
+| 1% | 0.4803 ± 0.0655 | 0.5051 ± 0.0547 | +0.0249 |
+| 5% | 0.6519 ± 0.0248 | 0.6427 ± 0.0243 | -0.0092 |
+| 10% | 0.7135 ± 0.0425 | 0.7187 ± 0.0388 | +0.0052 |
+| 100% | 0.7711 ± 0.0330 | 0.7708 ± 0.0344 | -0.0003 |
 
-## Controlled InceptionTime baseline
+The corresponding exact paired p-values are 0.3125, 0.4492, 0.6328, and 0.9805.
 
-The public baseline evidence is under `baselines/inceptiontime_four_domain/` and was derived read-only from the completed nine-cell baseline run outputs. No model was retrained and the sealed TEST partition was not evaluated again for publication packaging.
+## CWRU evidence
 
-- `baseline_spec.json` records the portable frozen architecture/training/evaluation protocol.
-- `per_cell_results.csv` contains the nine fold–seed TEST Macro-F1 results for CWRU, JNU, HIT and MaFaulDa together with Macro-4.
-- `paired_macro4.csv` records the strict fold–seed pairing against Full S1 and K1.
-- `dataset_summary.csv` contains dataset-level descriptive summaries.
-- `aggregate_summary.csv` contains aggregate means, sample standard deviations, paired differences, exact two-sided sign-flip p-values and win counts.
-- `training_cost.csv` contains explicit baseline run-state start/completion timing provenance.
-- `README.md` states the interpretation and publication boundary.
+CWRU uses the specimen-grouped downstream protocol and is the most challenging domain in the reported results. Full-label Macro-F1 is **0.3200 ± 0.0902** for S0 and **0.3234 ± 0.1286** for S1. The 100% per-class S1 results in `tables/per_class_cwru_summary.csv` are:
 
-The frozen baseline evidence reproduces the dissertation values: InceptionTime `0.2816 ± 0.0442` Macro-4; Full S1 `0.7708 ± 0.0344`, paired difference `+0.4891`, exact two-sided `p=0.00390625`, 9/9 wins; and K1 `0.7931 ± 0.0288`, paired difference `+0.5115`, exact two-sided `p=0.00390625`, 9/9 wins. InceptionTime dataset means are CWRU `0.1440 ± 0.0823`, JNU `0.2835 ± 0.1083`, HIT `0.4762 ± 0.2233`, and MaFaulDa `0.2228 ± 0.0817`.
+- inner-race fault: F1 0.1764 ± 0.2835; AUC 0.5100 ± 0.3819;
+- outer-race fault: F1 0.2486 ± 0.3627; AUC 0.3939 ± 0.2456;
+- rolling-element fault: F1 0.5452 ± 0.3016; AUC 0.8143 ± 0.1862.
 
-Baseline timing evidence gives nine successful runs, mean `10.17` hours/run and `91.49` summed GPU-hours, with one NVIDIA RTX 4000 Ada Generation GPU per run. Combined with the previously audited programme, the dissertation reports **99 successful training runs** and approximately **661.01 GPU-hours**.
+These values support the dissertation discussion that persistent race-fault confusion limits CWRU performance.
 
-The baseline is a complete-method comparison rather than an architecture-only ablation: its model consumes native-length raw one-second waveforms while Full S1 uses the log-STFT/N2 PC-STE representation after SSL pretraining.
+## Lightweight models
 
-## Reduced-label recovery
+The dissertation compares Full S1, K1, and Q8(K1) over the same four downstream domains and nine fold-seed cells. Mean Macro-4 is **0.770791 ± 0.034432** for Full S1, **0.793125 ± 0.028787** for K1, and **0.793382 ± 0.028887** for Q8(K1). The one-sided non-inferiority tests give **p = 0.001953** for K1 versus Full S1 at the -0.02 margin and **p = 0.001953** for Q8(K1) versus K1 at the -0.01 margin.
 
-Exact public execution paths exist for 1%, 5%, 10% and 100%. The recovered launchers are `scripts/run_methodology_v2_1pct_extension.py`, `scripts/run_methodology_v2_5pct.py`, and `scripts/run_methodology_v2_10pct.py`; 100% uses `scripts/methodology_v2/experiment_executor.py`. Each low-label path covers 18 runs (folds 1–3, seeds 42/1337/2026, S0/S1), trains CWRU, JNU, HIT and MaFaulDa, and selects by four-domain validation MacroDomainF1. Principal dissertation reporting uses Macro-4, averaging CWRU, JNU, HIT and MaFaulDa. Historical Macro-3 summaries average JNU, HIT and MaFaulDa only.
+Four-domain latency and efficiency evidence is stored under `methodology_v2/part6_compression/latency_four_domain/`. The dissertation reports Full S1 versus K1 equal-domain latency of 22.2394 versus 11.7294 ms/window on CPU and 7.6638 versus 4.1529 ms/window on GPU.
 
-Original compact classification/AUC summaries are under `tables/low_label/`; original nine-cell pairing proofs are under `../methodology_v2/low_label_provenance/`. The 1% path was executed after the other three label fractions and uses the identical protocol. Its historical launcher and directory names are retained unchanged so that recorded paths and hashes remain valid. Historical and publication hashes and all portability edits are recorded in `docs/low_label_provenance.md`. No low-label numerical result was recomputed for the publication repository.
+## Controlled baseline
 
-## Publication exclusions
+`baselines/inceptiontime_four_domain/` contains the controlled InceptionTime comparison. Under the same four-domain downstream protocol, InceptionTime achieves **0.2816 ± 0.0442 Macro-4**, Full S1 **0.7708 ± 0.0344**, and K1 **0.7931 ± 0.0288**. Full S1 and K1 each outperform the matched baseline in all nine cells, with exact two-sided **p = 0.0039**.
 
-Raw vibration recordings, trained checkpoints, full predictions, probability caches, teacher caches, complete experiment run trees, SLURM/node-local logs, temporary files and secrets are intentionally excluded. These exclusions preserve dataset-distribution terms and keep the public release compact without changing the scientific results or frozen partition evidence.
+## Evaluation integrity
+
+The repository preserves the leakage controls described in the dissertation: partitions are defined before one-second window generation; N2 normalisation statistics are estimated from training data only; self-supervised pretraining is restricted to training-partition groups; and TEST data are excluded from optimisation and checkpoint selection. S0 and S1 use matched folds, seeds, labelled subsets, optimisation, validation, and TEST partitions.
