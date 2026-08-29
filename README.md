@@ -24,7 +24,7 @@ Across the nine fold-seed cells, full-label Macro-4 F1 is:
 
 The exact paired two-sided sign-flip test gives **p = 0.9805**, indicating no systematic full-label difference between S0 and S1. The clearest mean S1 advantage occurs at 1% labels, where Macro-4 F1 increases from 0.4803 to 0.5051.
 
-CWRU is the only domain on which the model does not exceed the chance level. At 100% labels, its Macro-F1 is 0.3200 ± 0.0902 for S0 and 0.3234 ± 0.1286 for S1, against a fold-averaged chance floor of 0.3174. Per-class AUC shows the rolling-element fault is ranked well above chance, while the two race faults are ranked at or below it.
+CWRU is the only domain on which the model remains approximately at the uniform-random chance reference under specimen-disjoint evaluation. At 100% labels, its Macro-F1 is 0.3200 ± 0.0902 for S0 and 0.3234 ± 0.1286 for S1, against a fold-averaged uniform-random chance reference of 0.3174. Per-class AUC shows the rolling-element fault is ranked well above chance, while the two race faults are ranked at or below it.
 
 ## Lightweight model
 
@@ -47,7 +47,7 @@ under 1% of each window before global temporal average pooling.
 Chance-level references for the frozen TEST partitions, computed as the
 uniform-random macro-F1 for each class prior, are 0.3174 for CWRU (fold-averaged
 over supports [35,35,35], [35,99,35] and [28,99,35]), 0.2143 for JNU, 0.3258 for
-HIT and 0.0961 for MaFaulDa, giving a Macro-4 floor of 0.2384. Chance macro-AUC
+HIT and 0.0961 for MaFaulDa, giving a Macro-4 uniform-random chance reference of 0.2384. Chance macro-AUC
 is 0.5.
 
 ## Repository layout
