@@ -19,7 +19,7 @@
 - Sampling: effective batch 64 = 16 windows per dataset, with replacement; dataset→class→group→window supervised hierarchy. Fold-specific steps/epoch: 202, 205, 201.
 - Downstream selector: maximum four-domain validation MacroDomainF1, strict improvement, earlier epoch on exact ties.
 - TEST: checkpoint sealed first; one TEST evaluation; no TEST-driven selection.
-- Primary dissertation aggregate: Macro-4, the equal mean of CWRU, JNU, HIT and MaFaulDa Macro-F1 from the executed four-domain outputs. Historical Macro-3 summaries, averaging JNU, HIT and MaFaulDa only, are retained as secondary results.
+- Dissertation aggregate: **Macro-4**, the equal mean of CWRU, JNU, HIT and MaFaulDa dataset-level Macro-F1.
 - K1: 1,375,953-parameter unidirectional encoder, initialized by retaining the forward direction of all four S1 blocks; CE + KL plus relational mixer-attention KL.
 
 ## Controlled InceptionTime baseline
@@ -35,14 +35,6 @@ The dissertation's external baseline is a supervised InceptionTime-style network
 - Primary comparison: Full S1 vs InceptionTime by matched fold and seed using Macro-4 and the exact two-sided paired sign-flip test over all `2^9 = 512` sign assignments. K1 vs InceptionTime is the secondary comparison.
 
 The portable baseline protocol is `results/baselines/inceptiontime_four_domain/baseline_spec.json`. Implementation and public entry points are in `src/baselines/` and `scripts/baselines/`.
-
-Useful commands:
-
-```bash
-python scripts/baselines/run_inceptiontime.py --help
-python scripts/baselines/aggregate_inceptiontime_four_domain.py --help
-python scripts/baselines/analyze_inceptiontime_public.py --help
-```
 
 The compact public evidence is under `results/baselines/inceptiontime_four_domain/`. It records InceptionTime Macro-4 `0.2816 ± 0.0442`; Full S1 `0.7708 ± 0.0344` with paired difference `+0.4891`, 9/9 wins and exact two-sided `p=0.00390625`; and K1 `0.7931 ± 0.0288` with paired difference `+0.5115`, 9/9 wins and the same exact p-value.
 
@@ -60,15 +52,13 @@ The final dissertation programme contains **99 successful training executions** 
 | InceptionTime baseline | 9 | 10.17 | 91.49 |
 | **Total** | **99** | — | **661.01** |
 
-The nine InceptionTime runs used one NVIDIA RTX 4000 Ada Generation GPU per run. Their durations are recorded in `results/baselines/inceptiontime_four_domain/training_cost.csv` from explicit run-state start/completion timestamps. The baseline increased the previously audited 90-run programme by nine runs and 91.49 GPU-hours.
-
 ## Roots
 
 `PCSTE_DATA_ROOT` defaults to `./data`; `PCSTE_RESULTS_ROOT` defaults to `./results`. Optional distributed scheduling uses neutral worker names from `PCSTE_WORKER_HOSTS`.
 
 ## Frozen artifacts
 
-`methodology_v2/part1_audit` through `part6_compression` include the dataset audit, splits, window manifests, N2 normalizers, architecture/SSL/experiment/compression specifications, registries and hashes. The historical Part 5D planning registry is preserved byte-for-byte where required by its seal. It includes candidate 25% and 50% rows that were **not executed and are not dissertation-facing conditions**. The final dissertation protocol is `configs/dissertation/experiment_protocol.yaml` and lists only 1%, 5%, 10%, and 100%.
+`methodology_v2/part1_audit` through `part6_compression` include the dataset audit, splits, window manifests, N2 normalizers, architecture/SSL/experiment/compression specifications, registries and hashes. The final dissertation protocol is `configs/dissertation/experiment_protocol.yaml` and lists 1%, 5%, 10%, and 100% labelled conditions.
 
 ## Label-efficiency execution paths
 
@@ -79,10 +69,8 @@ The publication release contains the execution paths used for all dissertation-f
 - 10%: `scripts/run_methodology_v2_10pct.py`
 - 100%: `scripts/methodology_v2/experiment_executor.py`
 
-No 25% or 50% downstream experiment was executed or reported.
+All four public execution paths preserve the four-domain supervised protocol: CWRU, JNU, HIT and MaFaulDa contribute supervised loss and encoder gradients through four dataset-specific heads; checkpoints are selected by four-domain validation MacroDomainF1; and final TEST aggregation uses Macro-4 over all four datasets.
 
-The 1% path was executed after the other three executed label fractions and uses the identical protocol. Its historical launcher and directory names are retained unchanged so that recorded paths and hashes remain valid. All four public execution paths preserve the executed four-domain supervised protocol: CWRU, JNU, HIT and MaFaulDa contribute supervised loss and encoder gradients through four dataset-specific heads; checkpoints are selected by four-domain validation MacroDomainF1; the principal reported statistic is Macro-4 over all four datasets. Historical Macro-3 summaries average JNU, HIT and MaFaulDa only and are retained as secondary aggregates.
+The reduced-label dissertation-facing summary is `results/tables/low_label/reduced_label_classification_summary.csv`. S0/S1 subset and stream pairing proofs are under `methodology_v2/low_label_provenance/`.
 
-The original 1%, 5% and 10% launchers were recovered from their authoritative execution copies. Their historical and publication SHA-256 hashes, publication-only portability edits, output naming and pairing evidence are documented in `docs/low_label_provenance.md`. Original compact result summaries are under `results/tables/low_label/`, and original S0/S1 subset/stream pairing proofs are under `methodology_v2/low_label_provenance/`.
-
-Raw datasets, model checkpoints, full predictions, probability caches, teacher caches, full experiment run trees and node-local logs are deliberately not included. Artifact-dependent integration tests therefore require locally regenerated or separately preserved artifacts, but the publication repository contains the code paths, final dissertation-facing specifications, manifests, compact result summaries and provenance needed to inspect and rerun the reported study after obtaining the third-party datasets.
+Raw datasets, model checkpoints, full predictions, probability caches, teacher caches, full experiment run trees and node-local logs are deliberately not included. Artifact-dependent integration tests therefore require locally regenerated or separately preserved artifacts, but the publication repository contains the code paths, final specifications, manifests, compact result summaries and provenance needed to inspect and rerun the reported study after obtaining the third-party datasets.
