@@ -1,41 +1,35 @@
 # Results
 
-This directory contains the curated result tables, figures, summaries and controlled-baseline evidence used for the dissertation.
+This directory contains the dissertation-facing outputs for the four-domain PC-STE evaluation on **CWRU, JNU, HIT, and MaFaulDa**.
 
-## Primary aggregate
+## Reporting convention
 
-The dissertation reports **Macro-4** as the principal cross-dataset metric:
+Final downstream performance is reported with **Macro-4**, the equal mean of the four dataset-level Macro-F1 values:
 
-**Macro-4 = (F1_CWRU + F1_JNU + F1_HIT + F1_MaFaulDa) / 4**
+`Macro-4 = (F1_CWRU + F1_JNU + F1_HIT + F1_MaFaulDa) / 4`.
 
-This matches the executed four-domain downstream protocol, in which CWRU, JNU, HIT and MaFaulDa all contribute supervised loss through dataset-specific heads.
+The same four-domain scope is used for the main S0-S1 evaluation, lightweight-model analysis, efficiency reporting, and controlled InceptionTime comparison.
 
-| Model | Macro-4 | Historical Macro-3 |
-|---|---:|---:|
-| Full S0 | 0.7711 ± 0.0330 | 0.9214 |
-| Full S1 | 0.7708 ± 0.0344 | 0.9199 |
-| K1 | 0.7931 ± 0.0288 | 0.936913 |
-| Q8(K1) | 0.793382 | 0.937011 |
-| InceptionTime baseline | 0.2816 ± 0.0442 | — |
+## Main S0-S1 files
 
-The historical **Macro-3** values average JNU, HIT and MaFaulDa only. They are retained as secondary results from an earlier reporting stage and do not represent three-domain training; both Macro-4 and the historical Macro-3 summaries for PC-STE are derived from models trained under the same executed four-domain protocol.
+- `tables/classification_summary_s0_vs_s1.csv` — Dissertation Table 5.2: full-label dataset-level results and Macro-4 aggregate.
+- `tables/paired_s0_s1.csv` — Dissertation Table 5.3: nine matched full-label Macro-4 cells.
+- `tables/statistical_analysis.csv` — Dissertation Table 5.5: exact paired S0-S1 tests across 1%, 5%, 10%, and 100% labels.
+- `tables/per_class_cwru_summary.csv` — CWRU full-label per-class results corresponding to the 100% rows of Dissertation Table A.1.
+- `tables/per_class_jnu_summary.csv`, `per_class_hit_summary.csv`, and `per_class_mafaulda_summary.csv` — per-class summaries for the other downstream datasets.
 
-## Controlled InceptionTime comparison
+At 100% labels, S0 achieves **0.7711 ± 0.0330 Macro-4 F1** and S1 **0.7708 ± 0.0344**, with exact paired two-sided **p = 0.9805**. At 1% labels, the mean Macro-4 F1 increases from **0.4803** for S0 to **0.5051** for S1.
 
-The completed full-label baseline evidence is under [`baselines/inceptiontime_four_domain/`](baselines/inceptiontime_four_domain/). The baseline was evaluated in nine matched cells (folds 1–3 × seeds 42, 1337 and 2026) with the same frozen downstream partitions, 50-epoch budget, validation-only four-domain checkpoint selector and sealed TEST boundary used for the controlled PC-STE comparison.
+## CWRU per-class result
 
-Full S1 exceeded InceptionTime in all 9/9 cells. The mean paired Macro-4 difference was **+0.4891**, with exact two-sided sign-flip **p = 0.00390625**. K1 also exceeded InceptionTime in all 9/9 cells, with paired difference **+0.5115** and the same exact p-value.
+CWRU is the most challenging downstream domain. With complete labelled data, rolling-element faults are recognised more reliably than the two race-fault classes. For S1, the full-label class-level AUC values are **0.5100** for inner-race fault, **0.3939** for outer-race fault, and **0.8143** for rolling-element fault. The corresponding class-level F1 values are **0.1764**, **0.2486**, and **0.5452**.
 
-This is a **complete-method comparison**, not an architecture-only ablation. InceptionTime consumes native-length raw one-second waveforms, whereas Full S1 uses the frozen log-STFT/N2 spectrogram representation and SSL initialisation. The result therefore supports the dissertation's claim only under the common experimental protocol adopted here; it is not a universal ranking against published InceptionTime or other fault-diagnosis methods.
+## Lightweight and efficiency outputs
 
-The InceptionTime dataset-level means are CWRU `0.1440 ± 0.0823`, JNU `0.2835 ± 0.1083`, HIT `0.4762 ± 0.2233`, and MaFaulDa `0.2228 ± 0.0817`.
+The four-domain lightweight analysis compares Full S1, K1, and Q8(K1). Mean Macro-4 is **0.7708** for Full S1, **0.7931** for K1, and **0.7934** for Q8(K1). K1 reduces encoder parameters by 42.24%, counted forward-pass computation by 45.08%, and selective-scan processing by 50% relative to Full S1.
 
-## Four-domain efficiency
+Four-domain runtime artefacts are under `methodology_v2/part6_compression/latency_four_domain/`. The controlled InceptionTime comparison is under `baselines/inceptiontime_four_domain/`.
 
-The final efficiency evidence is under [`methodology_v2/part6_compression/latency_four_domain/`](methodology_v2/part6_compression/latency_four_domain/), with a read-only verification report at [`methodology_v2/verification/four_domain_verification.md`](methodology_v2/verification/four_domain_verification.md). It uses nine matched cells and an equal-domain mean over CWRU, JNU, HIT and MaFaulDa. The dissertation-facing Full S1/K1 CPU latencies are `22.2394 ± 0.6728`/`11.7294 ± 0.2985` ms, and GPU latencies are `7.6638 ± 0.0295`/`4.1529 ± 0.0131` ms. The older three-domain latency files are retained as explicitly labelled historical provenance.
+## Provenance
 
-## Training programme
-
-The final audited programme contains **99 successful training runs** and approximately **661.01 summed GPU-hours**. The controlled InceptionTime baseline contributes nine runs, averaging **10.17 h/run** and totalling **91.49 GPU-hours**. Its timing evidence is included in `baselines/inceptiontime_four_domain/training_cost.csv`.
-
-For detailed provenance, see [`PROVENANCE.md`](PROVENANCE.md). Curated PC-STE numerical outputs are under [`tables/`](tables/), figures under [`figures/`](figures/), compact reports under [`summaries/`](summaries/), and controlled-baseline evidence under [`baselines/inceptiontime_four_domain/`](baselines/inceptiontime_four_domain/).
+See `PROVENANCE.md` for the correspondence between repository artefacts and the dissertation tables and sections.
