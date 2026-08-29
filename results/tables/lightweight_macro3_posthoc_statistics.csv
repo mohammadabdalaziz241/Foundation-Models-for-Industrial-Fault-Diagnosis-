@@ -1,3 +1,0 @@
-contrast,analysis_label,ni_threshold,observed_mean_difference,mean_above_ni_threshold,raw_p_one_sided_margin_shifted_exact_sign_flip,raw_p_two_sided_exact_sign_flip,n_sign_patterns,multiplicity_adjustment
-K1 - Full S1,POST-HOC / SENSITIVITY ANALYSIS,-0.02,0.01699143176868488,True,0.001953125,0.01171875,512,none; no confirmatory claim
-Q8(K1) - K1,POST-HOC / SENSITIVITY ANALYSIS,-0.01,9.851314459193479e-05,True,0.001953125,,512,none; no confirmatory claim
