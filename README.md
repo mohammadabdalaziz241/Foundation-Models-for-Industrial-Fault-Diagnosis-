@@ -50,6 +50,106 @@ over supports [35,35,35], [35,99,35] and [28,99,35]), 0.2143 for JNU, 0.3258 for
 HIT and 0.0961 for MaFaulDa, giving a Macro-4 uniform-random chance reference of 0.2384. Chance macro-AUC
 is 0.5.
 
+## Data
+
+The four datasets are **not redistributed in this repository**. They are obtained from their original
+sources and placed on disk under a single data root. Raw data is excluded from version control
+(`data/` is listed in `.gitignore`).
+
+### Sources
+
+| Dataset | Source | Reference |
+|---|---|---|
+| CWRU | https://engineering.case.edu/bearingdatacenter | CWRU Bearing Data Center |
+| JNU | https://github.com/ClarkGableWang/JNU-Bearing-Dataset | Jiangnan University bearing dataset (pinned commit `75b33611b51649d1da8ff5999397899420753e5b`) |
+| HIT | https://github.com/HouLeiHIT/HIT-dataset | Hou et al. 2023, doi:10.37965/jdmd.2023.314 (pinned commit `ef17655977519eda9463a3d060da9fb8b47fab6f`) |
+| MaFaulDa | https://www02.smt.ufrj.br/~offshore/mfs/page_01.html | UFRJ/SMT Machinery Fault Database |
+
+Licence and provenance for each dataset, as documented by the original distributor, are recorded per
+dataset in `methodology_v2/part1_audit/dataset_census.csv` (`licence_provenance` column). Where the
+distributor states no explicit licence, that is recorded as such rather than assumed.
+
+### Data root
+
+All dataset paths resolve from a single root, set via environment variable (see `.env.example`):
+
+```bash
+export PCSTE_DATA_ROOT=/path/to/local/pcste-data
+```
+
+If unset, the root defaults to `data/` inside the repository. The resolution is in
+`src/methodology_v2/registry.py`, which is the single source of truth for dataset paths, valid
+labels, and documented acquisition facts.
+
+### Expected layout
+
+```
+$PCSTE_DATA_ROOT/
+├── raw/                                  # CWRU, 12 kHz drive-end
+│   ├── ball/                             #  16 files
+│   ├── inner_race/                       #  16 files
+│   ├── outer_race/                       #  24 files
+│   └── normal/                           #   4 files
+├── raw_cwru_48k/                         # CWRU, 48 kHz drive-end
+│   ├── ball/                             #  12 files
+│   ├── inner_race/                       #  12 files
+│   ├── outer_race/                       #  28 files
+│   └── normal/                           #   4 files
+├── raw_jnu/
+│   └── JNU-Bearing-Dataset/              # 12 single-column CSVs
+├── raw_hit/
+│   ├── HIT-dataset/                      # GitHub release (.mat shards)
+│   └── gdrive_full/
+│       └── HIT-dataset/                  # data1.npy ... data5.npy
+└── raw_mafaulda/
+    ├── full.zip                          # downloaded archive
+    └── full/                             # extracted, 1,951 CSVs
+        ├── normal/                       #    49
+        ├── horizontal-misalignment/      #   197
+        ├── vertical-misalignment/        #   301
+        ├── imbalance/                    #   333
+        ├── underhang/                    #   558
+        └── overhang/                     #   513
+```
+
+### Per-dataset notes
+
+**CWRU.** Local files are the official CWRU `.mat` files renamed to a readable convention
+(`B007_0_DE12k.mat`, `IR014_2_DE12k.mat`, and so on). The internal MATLAB variable names
+(`X097`, `X105`, …) preserve the canonical CWRU file numbers, so the mapping back to the official
+distribution is recoverable from the file contents. The 12 kHz and 48 kHz trees are kept separate
+because sampling rate is not reliably inferable from the official filenames; the four `Normal_*`
+baseline files are byte-identical in both trees and are genuinely 48 kHz.
+
+**JNU.** Twelve CSVs, one per (condition, speed) pair, with file prefixes `n`, `ib`, `ob`, `tb` for
+healthy, inner-race, outer-race, and rolling-element respectively.
+
+**HIT.** Two copies are used for different purposes. The pipeline consumes the five session-level
+`.npy` arrays under `gdrive_full/`, which retain the session and speed-group structure needed for
+leakage-safe grouping. The GitHub release shards (`xtrain_*.mat`, `xtest.mat`, …) are retained for
+auditing only: that release ships an official train/test split, but it is window-level random and is
+therefore **rejected as a split authority** in this work (`src/methodology_v2/part2_builder.py`).
+
+**MaFaulDa.** Extract `full.zip` in place. The archive's own folder taxonomy is treated as
+operational ground truth; the website prose in section 1.4.5 permutes fault-type names relative to
+its own summary table, and this discrepancy is flagged in the integrity report rather than silently
+resolved.
+
+### Verifying a local copy
+
+Part 1 of the methodology is a strictly read-only audit that rebuilds the manifest, census, and
+per-file hashes from raw data alone. It creates no windows, splits, or training artefacts, and is the
+fastest way to confirm a local copy matches the one used for the reported results:
+
+```bash
+python scripts/methodology_v2/run_part1_audit.py --datasets CWRU JNU HIT MAFAULDA
+```
+
+Compare the regenerated output against the committed
+`methodology_v2/part1_audit/raw_file_hashes.csv`, which records SHA-256 digests for 2,094 raw files.
+Both whole-file and payload-level digests are stored, so a copy that differs only in container
+metadata can be distinguished from one that differs in signal content.
+
 ## Repository layout
 
 - `src/` — model, preprocessing, experiment, and compression implementation.
