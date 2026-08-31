@@ -171,7 +171,3 @@ metadata can be distinguished from one that differs in signal content.
 ## Reproducibility principles
 
 The experimental protocol partitions recordings or physical groups before one-second window generation, estimates N2 normalisation statistics from training data only, restricts SSL pretraining to training-partition groups, and keeps TEST data isolated until the selected checkpoint is evaluated. S0 and S1 use matched folds, seeds, labelled subsets, architecture, optimisation, validation rule, and TEST partitions; encoder initialisation is the controlled difference between the two arms.
-
-## License
-
-See `LICENSE`.
