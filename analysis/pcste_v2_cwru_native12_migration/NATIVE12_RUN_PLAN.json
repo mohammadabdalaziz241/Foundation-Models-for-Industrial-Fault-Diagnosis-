@@ -1,0 +1,112 @@
+{
+  "schema": "scientific_run_plan_not_executor_config_v1",
+  "training_allowed": false,
+  "protocol_status": "NOT_FROZEN",
+  "protocol_freeze_sha256": null,
+  "screen_runs": [
+    {
+      "run_id": "pcstev2_n12v1_c0_f1_s42",
+      "arm": "c0",
+      "fold": 1,
+      "seed": 42,
+      "epochs": 50,
+      "regime": "S0",
+      "protocol_id": "pcste_v2_cwru_native12_specimen_v1",
+      "historical_control_reuse": false,
+      "status": "BLOCKED_PENDING_AUDIT_AND_FREEZE"
+    },
+    {
+      "run_id": "pcstev2_n12v1_c1_f1_s42",
+      "arm": "c1",
+      "fold": 1,
+      "seed": 42,
+      "epochs": 50,
+      "regime": "S0",
+      "protocol_id": "pcste_v2_cwru_native12_specimen_v1",
+      "historical_control_reuse": false,
+      "status": "BLOCKED_PENDING_AUDIT_AND_FREEZE"
+    },
+    {
+      "run_id": "pcstev2_n12v1_c2_f1_s42",
+      "arm": "c2",
+      "fold": 1,
+      "seed": 42,
+      "epochs": 50,
+      "regime": "S0",
+      "protocol_id": "pcste_v2_cwru_native12_specimen_v1",
+      "historical_control_reuse": false,
+      "status": "BLOCKED_PENDING_AUDIT_AND_FREEZE"
+    },
+    {
+      "run_id": "pcstev2_n12v1_c0_f3_s42",
+      "arm": "c0",
+      "fold": 3,
+      "seed": 42,
+      "epochs": 50,
+      "regime": "S0",
+      "protocol_id": "pcste_v2_cwru_native12_specimen_v1",
+      "historical_control_reuse": false,
+      "status": "BLOCKED_PENDING_AUDIT_AND_FREEZE"
+    },
+    {
+      "run_id": "pcstev2_n12v1_c1_f3_s42",
+      "arm": "c1",
+      "fold": 3,
+      "seed": 42,
+      "epochs": 50,
+      "regime": "S0",
+      "protocol_id": "pcste_v2_cwru_native12_specimen_v1",
+      "historical_control_reuse": false,
+      "status": "BLOCKED_PENDING_AUDIT_AND_FREEZE"
+    },
+    {
+      "run_id": "pcstev2_n12v1_c2_f3_s42",
+      "arm": "c2",
+      "fold": 3,
+      "seed": 42,
+      "epochs": 50,
+      "regime": "S0",
+      "protocol_id": "pcste_v2_cwru_native12_specimen_v1",
+      "historical_control_reuse": false,
+      "status": "BLOCKED_PENDING_AUDIT_AND_FREEZE"
+    }
+  ],
+  "conditional_confirmation": {
+    "arms": [
+      "c0",
+      "selected_candidate"
+    ],
+    "folds": [
+      1,
+      2,
+      3
+    ],
+    "seeds": [
+      42,
+      1337,
+      2026
+    ],
+    "total_cells": 18,
+    "additional_after_native12_screen": 14,
+    "automatic_launch_in_this_task": false
+  },
+  "cost_reference": {
+    "historical_seconds_per_epoch": [
+      491,
+      511
+    ],
+    "screen_gpu_hours": [
+      40.916666666666664,
+      42.583333333333336
+    ],
+    "screen_and_confirmation_gpu_hours": [
+      136.38888888888889,
+      141.94444444444446
+    ],
+    "three_arm_full_matrix_gpu_hours": [
+      184.125,
+      191.625
+    ],
+    "native12_throughput_measured": false
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "kind": "migration_artifact_hashes_not_protocol_freeze",
+  "protocol_frozen": false,
+  "sha256": {
+    "NATIVE12_RUN_PLAN.json": "29aa44f951a977118d9cac3ce57d7b013284ca205b1ae00080c8292155070e53",
+    "NATIVE12_SOURCE_AUDIT_STATUS.md": "1484897c11aafeaa6703295184a47e59c4e665433e57f93a66725b6d01d02691",
+    "OFFICIAL_NATIVE12_SOURCE_INVENTORY.json": "bd97cebced8be3a1425ba5edbff116386edf7b63756282376d1c715a0a22f611",
+    "PCSTE_V2_CWRU_NATIVE12_PROTOCOL.md": "759942872bcd4d3e4423e248bf6cf197b0ac70effb92f31562d823852125ee06",
+    "audit_official_sources.py": "8c8ccd51cd04e7efefc22fbfdd03332033ad1df1286f633821b6b22852c33bb3"
+  }
+}
