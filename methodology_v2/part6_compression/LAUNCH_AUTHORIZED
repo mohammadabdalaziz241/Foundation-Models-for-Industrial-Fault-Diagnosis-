@@ -1,0 +1,41 @@
+Part-6 Stage-3 execution AUTHORIZED by the researcher on 2026-08-20
+(instruction: "seal Part 6 and begin execution immediately ... Start the
+Stage-3 worker on otter135 tonight").
+
+Scope: the 27 enabled REGISTERED core rows (k1/c_small/k0 x folds 1-3 x
+seeds 42/1337/2026) of the sealed registry, consumed through the shared
+atomic work queue by workers on otter135 (tonight) and otter133/134
+(joined manually later, when their current experiments finish).
+Selective-scan backend: REFERENCE (no approved fast backend exists).
+One GPU per run; no multi-GPU distribution within a run.
+Stage-5 TEST remains CLOSED. Optional/push arms remain disabled.
+
+Compact-student architecture: half_4x1 (4 layers x forward direction,
+mean-of-remaining residual) — the outcome of the pre-registered Stage-2
+rule executed before sealing (half_student_decision.json: median
+validation MacroDomainF1 after training-free removal, 4x1 0.684 vs 2x2
+0.557, 9/9 models), confirmed by the researcher over the earlier
+2-block instruction.
+
+Disclosures recorded at sealing:
+- The primary aggregate topline (mean delta, p) appeared in the driver
+  log tail while confirming DRIVER DONE; no Part-6 rule derives from it
+  (design frozen at commit 161e5596; decisions supplied beforehand).
+- Primary per-run TEST reports exist on disk; Part 6 does not open them
+  before the Stage-5 statistics step.
+- Engineering placeholders resolved for DISABLED arms only:
+  student_dw_stem_rank=None (full stem); f1_batch_composition deferred
+  until the registered 10%-label S1 runs exist (amendment required
+  before enabling F1).
+
+SCHEDULING AMENDMENT (researcher instruction, 2026-08-21): execution
+switches from fully dynamic consumption to a STATIC balanced allocation
+of exactly 9 runs per host (otter135 / otter134 / otter133), recorded in
+execution_assignment.json (Latin-square rule; 3 K1 + 3 C_small + 3 K0
+per host, folds and seeds each 3x per host; k1_f1_s42 counted for
+otter135 where it was already running, uninterrupted). Execution
+metadata only — the sealed scientific registry, seal hashes,
+architectures, seeds, losses, checkpoints and statistics are unchanged.
+Workers claim (and stale-reclaim) ONLY their own host's runs and EXIT
+after their assigned set completes; redistribution between hosts
+requires a new explicit researcher authorization.

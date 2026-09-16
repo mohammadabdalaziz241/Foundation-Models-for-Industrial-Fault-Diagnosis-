@@ -9,12 +9,12 @@ Deterministic balanced rule (a Latin-square over the 3x3x3 core):
 
     host = HOSTS[(ARM_INDEX[arm] + (fold - 1) + SEED_INDEX[seed]) mod 3]
 
-with HOSTS = (worker1, worker2, worker3), ARM_INDEX k1=0 / c_small=1 /
+with HOSTS = (otter135, otter134, otter133), ARM_INDEX k1=0 / c_small=1 /
 k0=2, SEED_INDEX 42=0 / 1337=1 / 2026=2. Properties (test-enforced):
 every host receives exactly 9 runs = 3 K1 + 3 C_small + 3 K0, and within
 EACH arm one run per fold and one per seed — so each host also carries
 each fold exactly 3x and each seed exactly 3x; hostname is uncorrelated
-with arm, fold and seed. k1_f1_s42 lands on worker1 (already running
+with arm, fold and seed. k1_f1_s42 lands on otter135 (already running
 there when the rule was fixed).
 
 The provenance file (execution_assignment.json) records the rule, the
@@ -30,7 +30,6 @@ assignment file — no worker does it automatically.
 from __future__ import annotations
 
 import json
-import os
 import socket
 from datetime import datetime, timezone
 from pathlib import Path
@@ -40,9 +39,7 @@ import pandas as pd
 from .guards import Part6GuardError
 from .protocol import PART6_DIR
 
-HOSTS = tuple(x.strip() for x in os.environ.get("PCSTE_WORKER_HOSTS", "worker1,worker2,worker3").split(",") if x.strip())
-if len(HOSTS) != 3:
-    raise RuntimeError("PCSTE_WORKER_HOSTS must contain exactly three comma-separated names")
+HOSTS = ("otter135", "otter134", "otter133")
 ARM_INDEX = {"k1": 0, "c_small": 1, "k0": 2}
 SEED_INDEX = {42: 0, 1337: 1, 2026: 2}
 ASSIGNMENT_FILE = "execution_assignment.json"

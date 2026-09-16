@@ -1171,9 +1171,9 @@ def test_assignment_rule_balance_and_determinism():
         for arm, g in sub.groupby("arm"):
             assert sorted(g["fold"]) == [1, 2, 3]
             assert sorted(g["seed"]) == [42, 1337, 2026]
-    # the run already executing on worker1 belongs to worker1
-    assert "k1_f1_s42" in a1["worker1"]
-    assert ASG.host_for("k1", 1, 42) == "worker1"
+    # the run already executing on otter135 belongs to otter135
+    assert "k1_f1_s42" in a1["otter135"]
+    assert ASG.host_for("k1", 1, 42) == "otter135"
     with pytest.raises(G.Part6GuardError):
         ASG.host_for("b1", 1, 42)                    # no rule for push arms
     with pytest.raises(G.Part6GuardError):
@@ -1192,8 +1192,8 @@ def test_assignment_file_roundtrip_and_tamper(tmp_path):
         ASG.load_assignment(rows, "reg-sha", "other-seal", base=tmp_path)
     # hand-editing the lists (moving a run between hosts) fails closed
     d = json.loads(ASG.assignment_path(tmp_path).read_text())
-    moved = d["hosts"]["worker1"].pop()
-    d["hosts"]["worker2"].append(moved)
+    moved = d["hosts"]["otter135"].pop()
+    d["hosts"]["otter134"].append(moved)
     ASG.assignment_path(tmp_path).write_text(json.dumps(d))
     with pytest.raises(G.Part6GuardError, match="deterministic rule"):
         ASG.load_assignment(rows, "reg-sha", "seal-sha", base=tmp_path)

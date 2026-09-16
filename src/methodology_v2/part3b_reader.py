@@ -14,37 +14,31 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from .registry import DATA_ROOT, REPO_ROOT
-
-
-def _source_path(source_file: str) -> Path:
-    p = Path(source_file)
-    parts = p.parts[1:] if p.parts and p.parts[0] == "data" else p.parts
-    return DATA_ROOT.joinpath(*parts)
+from .registry import REPO_ROOT
 from . import part3b_protocol as P
 
 
 @lru_cache(maxsize=8)
 def _cwru_channel(source_file: str, recording_id: str) -> np.ndarray:
     import scipy.io as sio
-    mat = sio.loadmat(str(_source_path(source_file)))
+    mat = sio.loadmat(str(REPO_ROOT / source_file))
     pid = recording_id.removeprefix("cwru_")
     return np.ascontiguousarray(mat[f"{pid}_DE_time"]).ravel()
 
 
 @lru_cache(maxsize=4)
 def _jnu_channel(source_file: str) -> np.ndarray:
-    return np.loadtxt(_source_path(source_file))
+    return np.loadtxt(REPO_ROOT / source_file)
 
 
 @lru_cache(maxsize=8)
 def _hit_session(source_file: str) -> np.ndarray:
-    return np.load(_source_path(source_file), mmap_mode="r")
+    return np.load(REPO_ROOT / source_file, mmap_mode="r")
 
 
 @lru_cache(maxsize=32)
 def _mafaulda_channel(source_file: str) -> np.ndarray:
-    return pd.read_csv(_source_path(source_file), header=None,
+    return pd.read_csv(REPO_ROOT / source_file, header=None,
                        usecols=[2], dtype=np.float64).to_numpy().ravel()
 
 

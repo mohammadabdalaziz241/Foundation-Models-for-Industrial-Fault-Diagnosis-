@@ -1,6 +1,6 @@
 """Shared atomic work queue for multi-machine Stage-3 execution.
 
-All workers (worker1/133/134) consume the SAME sealed registry over the
+All workers (otter135/133/134) consume the SAME sealed registry over the
 shared filesystem. Claiming is hardlink-based — `os.link(tmp, lock)` is
 atomic on local filesystems AND on NFS (the classic NFS-safe protocol),
 so two workers can never own the same run:

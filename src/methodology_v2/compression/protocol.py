@@ -16,7 +16,6 @@ from __future__ import annotations
 
 import hashlib
 import json
-import os
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
@@ -28,9 +27,8 @@ from ..experiment.trainers import (DOWNSTREAM_EPOCHS, EFFECTIVE_BATCH,
 
 PART6_VERSION = "part6.v1"
 PART6_DIR = REPO_ROOT / "methodology_v2" / "part6_compression"
-RESULTS_ROOT = Path(os.environ.get("PCSTE_RESULTS_ROOT", REPO_ROOT / "results")).expanduser()
-PART6_RESULTS = RESULTS_ROOT / "methodology_v2" / "part6_compression"
-PRIMARY_RESULTS = RESULTS_ROOT / "methodology_v2"
+PART6_RESULTS = REPO_ROOT / "results" / "methodology_v2" / "part6_compression"
+PRIMARY_RESULTS = REPO_ROOT / "results" / "methodology_v2"
 PRIMARY_DOWNSTREAM = PRIMARY_RESULTS / "downstream"
 PRIMARY_SSL = PRIMARY_RESULTS / "ssl"
 

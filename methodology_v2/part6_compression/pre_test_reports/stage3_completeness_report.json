@@ -1,0 +1,25 @@
+{
+  "assignment_verified": true,
+  "by_arm": {
+    "c_small": 9,
+    "k0": 9,
+    "k1": 9
+  },
+  "by_host": {
+    "otter133": 9,
+    "otter134": 9,
+    "otter135": 9
+  },
+  "checkpoint_selection_verified": true,
+  "complete": 27,
+  "content_hashes_verified": true,
+  "execution_commit": "9996e96a2fd31818fc6ca0dec65e6bf6eb2705fa",
+  "failed": 0,
+  "pairing_streams_verified": true,
+  "part6_master_seal": "989696925cf8c230bb346667bf401ec2161282ae365fd64a6e43151bab735592",
+  "registry_sha256": "bb375a5b40a2ac7a92329da97ddbf2c4b878dca7f765591c47e870dc07596fcd",
+  "running": 0,
+  "scope": "TRAIN/VALIDATION only; no TEST artifacts opened",
+  "stale": 0,
+  "waiting": 0
+}

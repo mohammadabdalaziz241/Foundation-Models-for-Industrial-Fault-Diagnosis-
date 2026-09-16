@@ -8,10 +8,9 @@ represented as None / "unknown" downstream — never inferred silently.
 from __future__ import annotations
 
 from pathlib import Path
-import os
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-DATA_ROOT = Path(os.environ.get("PCSTE_DATA_ROOT", REPO_ROOT / "data")).expanduser()
+DATA_ROOT = REPO_ROOT / "data"
 OUTPUT_DIR = REPO_ROOT / "methodology_v2" / "part1_audit"
 
 # ---------------------------------------------------------------------------

@@ -1,0 +1,63 @@
+{
+ "arm_index": {
+  "c_small": 1,
+  "k0": 2,
+  "k1": 0
+ },
+ "created_at": "2026-08-20T23:36:42.637142+00:00",
+ "host_order": [
+  "otter135",
+  "otter134",
+  "otter133"
+ ],
+ "hosts": {
+  "otter133": [
+   "k1_f1_s2026",
+   "k1_f2_s1337",
+   "k1_f3_s42",
+   "c_small_f1_s1337",
+   "c_small_f2_s42",
+   "c_small_f3_s2026",
+   "k0_f1_s42",
+   "k0_f2_s2026",
+   "k0_f3_s1337"
+  ],
+  "otter134": [
+   "k1_f1_s1337",
+   "k1_f2_s42",
+   "k1_f3_s2026",
+   "c_small_f1_s42",
+   "c_small_f2_s2026",
+   "c_small_f3_s1337",
+   "k0_f1_s2026",
+   "k0_f2_s1337",
+   "k0_f3_s42"
+  ],
+  "otter135": [
+   "k1_f1_s42",
+   "k1_f2_s2026",
+   "k1_f3_s1337",
+   "c_small_f1_s2026",
+   "c_small_f2_s1337",
+   "c_small_f3_s42",
+   "k0_f1_s1337",
+   "k0_f2_s42",
+   "k0_f3_s2026"
+  ]
+ },
+ "part6_master_hash": "989696925cf8c230bb346667bf401ec2161282ae365fd64a6e43151bab735592",
+ "purpose": "EXECUTION METADATA ONLY \u2014 schedules where each sealed run executes; the sealed scientific registry is not modified by this file",
+ "redistribution_policy": "workers claim (and stale-reclaim) ONLY their own host's runs; moving runs between hosts requires an explicit researcher authorization recorded in a new assignment file",
+ "registry_sha256": "bb375a5b40a2ac7a92329da97ddbf2c4b878dca7f765591c47e870dc07596fcd",
+ "rule": "host = HOSTS[(ARM_INDEX[arm] + fold - 1 + SEED_INDEX[seed]) mod 3]",
+ "runs_per_host": {
+  "otter133": 9,
+  "otter134": 9,
+  "otter135": 9
+ },
+ "seed_index": {
+  "1337": 1,
+  "2026": 2,
+  "42": 0
+ }
+}
