@@ -83,7 +83,7 @@ from src.methodology_v2.compression.trainer import (
 from src.pcste_v2.protocol import label_subset_frame
 from src.pcste_v2.representation import ItemBuilder
 import src.pcste_v2.representation as REPR
-from src.pcste_v2.protocol_cwru_native12 import load_allowlist
+from src.pcste_v2 import native12_freeze as N12
 
 
 STUDY = "pcste_v2_lightweight_v1"
@@ -107,6 +107,10 @@ REGISTERED_PROTOCOL_SHA256 = (
 
 TEACHER_SEEDS = (42, 1337, 2026)
 DATASETS = ("CWRU", "JNU", "HIT", "MAFAULDA")
+
+NATIVE12_FREEZE_DIGEST_SHA256 = (
+    "ddf4d32573c016b08da65b4f878ee0511a9bae4b15444626e1d932d24ebf39e4"
+)
 
 
 def sha256_file(p: Path) -> str:
@@ -161,6 +165,29 @@ def verify_frozen_contract() -> None:
 
     assert sha256_file(CELLS) == REGISTERED_CELLS_SHA256
     assert sha256_file(CONTRACT) == REGISTERED_PROTOCOL_SHA256
+
+
+def install_native12_gate(
+    fold: int,
+    check_bytes: bool = True,
+) -> dict:
+    """Apply the SAME frozen native-12 launch gate as final-v1.
+
+    This verifies the frozen bundle digest, protocol status,
+    CWRU 12-kHz-only constraint, allowlisted source identity,
+    raw-file bytes when requested, and normalizer registry.
+    """
+    allow = N12.preflight(
+        REPO,
+        PDIR,
+        fold,
+        NATIVE12_FREEZE_DIGEST_SHA256,
+        check_bytes=check_bytes,
+    )
+
+    REPR.NATIVE12_ALLOWLIST = allow
+
+    return allow
 
 
 def registered_row(fold: int, seed: int) -> pd.Series:
@@ -378,6 +405,11 @@ def frozen_spec_and_loss():
 def preflight(fold: int, seed: int) -> None:
     verify_frozen_contract()
 
+    install_native12_gate(
+        fold,
+        check_bytes=True,
+    )
+
     m = manifest(fold)
     mi = m.set_index("window_id", drop=False)
 
@@ -484,11 +516,12 @@ def preflight(fold: int, seed: int) -> None:
         [r.run_id for r in ts.refs],
     )
     print("TEST rejection probe  : PASS")
+    print("native-12 byte gate   : PASS")
     print()
     print("PASS: production preflight")
     print("NO teacher-cache inference performed.")
     print("NO training performed.")
-    print("NO TEST waveform was read.")
+    print("NO TEST representation/model inference performed.")
 
 
 def make_rep_store(
@@ -690,6 +723,13 @@ def run_cell(
     if not torch.cuda.is_available() and device.startswith("cuda"):
         raise RuntimeError("CUDA requested but unavailable")
 
+    # Same fail-closed native-12 gate as the baseline executor.
+    # This runs BEFORE the K1 result directory is created.
+    install_native12_gate(
+        fold,
+        check_bytes=True,
+    )
+
     run_id = (
         f"pcstev2_lightweight_v1_k1_gf{fold}_s{seed}"
     )
@@ -840,6 +880,28 @@ def run_cell(
     if int(cache.meta["n_windows"]) != len(tv_ids):
         raise RuntimeError(
             "teacher cache window-count mismatch"
+        )
+
+    expected_cache_identity = [
+        (
+            str(w),
+            str(mi.loc[w, "dataset"]),
+            str(mi.loc[w, "split"]),
+        )
+        for w in tv_ids
+    ]
+
+    actual_cache_identity = list(
+        zip(
+            map(str, cache.arrays["window_id"]),
+            map(str, cache.arrays["dataset"]),
+            map(str, cache.arrays["split"]),
+        )
+    )
+
+    if actual_cache_identity != expected_cache_identity:
+        raise RuntimeError(
+            "teacher cache TRAIN+VAL identity/order mismatch"
         )
 
     # ------------------------------------------------------------

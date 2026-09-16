@@ -7,7 +7,7 @@ for the frozen local experiment history.
 
 Exact source commit reviewed:
 
-`8b08dfd76b014f5a7d464fe78c30fcef6ce71ae2`
+`c473fde3891922ef1716b9f4550f10ec6da09e55`
 
 Source branch:
 
@@ -49,3 +49,18 @@ Runtime stream/checkpoint/protocol parity was frozen separately in:
 
 No K1 training or K1 TEST inference had begun when this review snapshot
 was created.
+
+## Post-review integrity hardening
+
+Before any K1 training began, the production executor received one
+integrity-only patch:
+
+- apply the same frozen native-12 preflight/byte gate used by final-v1;
+- require exact TRAIN+VAL teacher-cache window/dataset/split identity.
+
+This changed no architecture, loss, teacher policy, seed, batch stream,
+optimizer, scheduler, epoch count, checkpoint selector or TEST policy.
+
+Final executor SHA-256:
+
+`1f5d86a1c6b7f2b637ecdd6d61c279a0b86e9edb54bdbe0490d2a4b20fd62308`
